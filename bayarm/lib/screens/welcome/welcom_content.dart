@@ -1,6 +1,7 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +94,7 @@ class _WelcomeContent extends State<WelcomeContent> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => NavigationScreen()));
+                                  builder: (_) => LoginScreen()));
                         }
                         _controller.nextPage(
                           duration: Duration(milliseconds: 900),

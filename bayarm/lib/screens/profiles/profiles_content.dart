@@ -2,10 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../constants/constants.dart';
-import '../../models/salle.dart';
-import '../components/forms/custom_text.dart';
-
 class ProfileContent extends StatefulWidget {
   const ProfileContent({Key? key}) : super(key: key);
 

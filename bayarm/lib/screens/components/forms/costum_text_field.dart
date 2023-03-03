@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 
-class CustTextField extends StatefulWidget {
+class CustomTextField extends StatefulWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
@@ -10,7 +10,7 @@ class CustTextField extends StatefulWidget {
   final bool border;
   final Color fillColor;
 
-  const CustTextField({
+  const CustomTextField({
     super.key,
     required this.hintText,
     this.icon = Icons.map,
@@ -21,11 +21,11 @@ class CustTextField extends StatefulWidget {
   });
 
   @override
-  State<CustTextField> createState() =>
-      _CustTextField(hintText, icon, onChanged, controller!, border,fillColor);
+  State<CustomTextField> createState() =>
+      _CustomTextField(hintText, icon, onChanged, controller!, border,fillColor);
 }
 
-class _CustTextField extends State<CustTextField> {
+class _CustomTextField extends State<CustomTextField> {
   final TextEditingController controller;
   final String hintText;
   final IconData icon;
@@ -33,7 +33,7 @@ class _CustTextField extends State<CustTextField> {
   final bool border;
   final Color fillColor;
 
-  _CustTextField(
+  _CustomTextField(
       this.hintText, this.icon, this.onChanged, this.controller, this.border, this.fillColor);
 
   @override

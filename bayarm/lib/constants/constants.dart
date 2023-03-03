@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Colors used in this app
-const primaryColor = Color.fromRGBO(51, 169, 68, 1.0);
+const primaryColor = Color.fromRGBO(1, 183, 99, 1.0);
 const secondaryColor = Color.fromRGBO(207, 24, 28, 1.0);
 const bgColor = Color.fromRGBO(255, 255, 255, 1.0);
 const textFieldColor = Color.fromRGBO(245, 245, 245, 1.0);

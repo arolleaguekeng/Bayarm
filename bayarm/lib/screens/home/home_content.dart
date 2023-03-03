@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 
 import '../../constants/constants.dart';
-import '../../models/salle.dart';
+
 import '../components/forms/custom_text.dart';
 
 class HomeContent extends StatefulWidget {
@@ -64,7 +64,7 @@ class _HomeContent extends State<HomeContent> {
             const SizedBox(
               height: appPadding,
             ),
-            CustTextField(
+            CustomTextField(
               hintText: "Search...",
               onChanged: (value) {},
               controller: searchController,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/constants.dart';
-import 'login_content.dart';
+import '../../../constants/constants.dart';
+import 'password_login_content.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({Key? key}) : super(key: key);
+class PasswordLoginScreen extends StatelessWidget {
+  const PasswordLoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
           children: const [
             Expanded(
               flex: 5,
-              child: CartContent(),
+              child: PasswordLoginContent(),
             )
           ],
         ),
