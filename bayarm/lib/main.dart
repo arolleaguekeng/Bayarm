@@ -1,4 +1,5 @@
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
+import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/constants.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           ),
           backgroundColor: Colors.brown
       ),
-      home:  NavigationScreen(),
+      home:  WelcomeScreen(),
       color: secondaryColor,
     );
   }
