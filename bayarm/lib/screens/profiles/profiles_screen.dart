@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
-import 'history_content.dart';
+import 'profiles_content.dart';
 
-class HistoryScreen extends StatelessWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,10 @@ class HistoryScreen extends StatelessWidget {
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Expanded(
               flex: 5,
-              child: OrientationExample(),
+              child: ProfileContent(),
             )
           ],
         ),

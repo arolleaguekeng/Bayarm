@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
-import 'routes_content.dart';
+import 'cart_content.dart';
 
-class RouteScreen extends StatelessWidget {
-  const RouteScreen({Key? key}) : super(key: key);
+class CartScreen extends StatelessWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class RouteScreen extends StatelessWidget {
           children: const [
             Expanded(
               flex: 5,
-              child: RoutesContent(),
+              child: CartContent(),
             )
           ],
         ),

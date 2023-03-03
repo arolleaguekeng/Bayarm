@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
-import 'dashboard_content.dart';
+import 'wallets_content.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+class WalletScreen extends StatelessWidget {
+  const WalletScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
           children: const [
             Expanded(
               flex: 5,
-              child: DashboardContent(),
+              child: WalletContent(),
             )
           ],
         ),

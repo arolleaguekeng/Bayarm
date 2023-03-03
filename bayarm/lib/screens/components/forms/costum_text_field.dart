@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustTextField extends StatefulWidget {
   final String hintText;
   final IconData icon;
   final ValueChanged<String> onChanged;
@@ -10,22 +10,22 @@ class CustomTextField extends StatefulWidget {
   final bool border;
   final Color fillColor;
 
-  const CustomTextField({
+  const CustTextField({
     super.key,
     required this.hintText,
     this.icon = Icons.map,
     required this.onChanged,
     required this.controller,
     this.border = false,
-    this.fillColor = Colors.white
+    this.fillColor = textFieldColor
   });
 
   @override
-  State<CustomTextField> createState() =>
-      _CustomTextField(hintText, icon, onChanged, controller!, border,fillColor);
+  State<CustTextField> createState() =>
+      _CustTextField(hintText, icon, onChanged, controller!, border,fillColor);
 }
 
-class _CustomTextField extends State<CustomTextField> {
+class _CustTextField extends State<CustTextField> {
   final TextEditingController controller;
   final String hintText;
   final IconData icon;
@@ -33,7 +33,7 @@ class _CustomTextField extends State<CustomTextField> {
   final bool border;
   final Color fillColor;
 
-  _CustomTextField(
+  _CustTextField(
       this.hintText, this.icon, this.onChanged, this.controller, this.border, this.fillColor);
 
   @override
@@ -42,14 +42,14 @@ class _CustomTextField extends State<CustomTextField> {
       decoration: InputDecoration(
           hintText: hintText,
           helperStyle: TextStyle(
-            color: textColor.withOpacity(0.5),
+            color: textFieldColor,
             fontSize: 2,
           ),
           fillColor: fillColor,
           filled: true,
           border: OutlineInputBorder(
               borderSide: this.border == false ? BorderSide.none : BorderSide(),
-              borderRadius: BorderRadius.circular(10)),
+              borderRadius: BorderRadius.circular(16)),
           prefixIcon: Icon(
             icon,
             color: textColor.withOpacity(0.5),
