@@ -19,11 +19,13 @@ class MyApp extends StatelessWidget {
       title: 'Imap',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+          fontFamily: 'Urbanist',
           primarySwatch: Colors.green,
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(
-            bodyText2: TextStyle(color: textColor),
+            bodyText2: TextStyle(color: textColor)
           ),
+
           backgroundColor: Colors.brown
       ),
       home:  WelcomeScreen(),

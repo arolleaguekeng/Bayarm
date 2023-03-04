@@ -66,6 +66,18 @@ flutter:
     - assets/images/svg/
     - assets/icons/
 
+  # Add Custom fonts
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: fonts/Urbanist-Regular.ttf
+        - asset: fonts/Urbanist-Italic.ttf
+          style: italic
+    - family: RobotoMono
+      fonts:
+        - asset: fonts/Urbanist-Regular.ttf
+        - asset: fonts/Urbanist-Bold.ttf
+          weight: 700
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
