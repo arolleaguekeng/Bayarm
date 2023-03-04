@@ -12,15 +12,13 @@ var welcomeDatas = [
       title: "Bienvenue Sur Bayarm",
       description:
           "Ici, Vous pouvez acheter et vendre des produits agros alimentaire",
-      image: "images/svg/performance.svg"),
+      image: "assets/images/svg/performance.svg"),
   Welcome(
       title: "Vous êtes un Producteur ?",
-      description:
-      "Cette application est faite pour vous",
-      image: "images/svg/drone.svg"),
+      description: "Cette application est faite pour vous",
+      image: "assets/images/svg/drone.svg"),
   Welcome(
       title: "Vous êtes clients ?",
-      description:
-      "Vous pourer parcourrir un large choix de produits",
-      image: "images/svg/quality.svg"),
+      description: "Vous pourer parcourrir un large choix de produits",
+      image: "assets/images/svg/quality.svg"),
 ];

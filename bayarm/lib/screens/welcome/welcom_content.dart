@@ -2,8 +2,6 @@ import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
-import 'package:bayarm/screens/navigations/navigation_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -91,10 +89,8 @@ class _WelcomeContent extends State<WelcomeContent> {
                       width: size.width * 0.8,
                       onPressed: () {
                         if (currentIndex == welcomeDatas.length - 1) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => LoginScreen()));
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (_) => LoginScreen()));
                         }
                         _controller.nextPage(
                           duration: Duration(milliseconds: 900),

@@ -1,7 +1,3 @@
-import 'package:bayarm/main.dart';
-import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-import 'package:bayarm/screens/components/forms/custom_text.dart';
-import 'package:bayarm/screens/home/home_content.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -17,16 +13,14 @@ class NavigationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: bgColor,
       body: SafeArea(
-          child:
-          Container(
+          child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
+          children: const [
+            SizedBox(
               height: appPadding,
             ),
-
-            const Expanded(
+            Expanded(
               flex: 5,
               child: NavigationContent(),
             )
