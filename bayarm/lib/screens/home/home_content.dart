@@ -69,6 +69,13 @@ class _HomeContent extends State<HomeContent> {
               onChanged: (value) {},
               controller: searchController,
               icon: Icons.search_rounded,
+            ),
+
+            const SizedBox(height: appPadding,),
+
+            // Mettre le contenus de home ici
+            Container(
+              child: Text("Contenus du home"),
             )
           ],
         ));
