@@ -3,7 +3,7 @@ class ProductModel {
   final String name;
   final String description;
   final double price;
-  List<String> images = [];
+  List<String> images = ["defaut.jpg"];
 
   ProductModel(
       {required this.id,
