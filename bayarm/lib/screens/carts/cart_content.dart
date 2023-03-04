@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/carts/cart_product_card.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/cupertino.dart';
->>>>>>> b921f4318c1355abce67b4892c218fa5aae38fd3
 import 'package:flutter/material.dart';
 
 class CartContent extends StatefulWidget {
@@ -44,7 +41,7 @@ class _CartContent extends State<CartContent> {
           appBar: AppBar(
             elevation: 0.0,
             backgroundColor: bgColor,
-            title:  Row(
+            title: Row(
               children: [
                 Container(
                   width: 30,
@@ -55,7 +52,8 @@ class _CartContent extends State<CartContent> {
               ],
             ),
             actions: [
-              IconButton(onPressed: (){}, icon: const Icon(Icons.search_rounded))
+              IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.search_rounded))
             ],
           ),
           body: Container(
