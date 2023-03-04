@@ -43,7 +43,11 @@ class _CartContent extends State<CartContent> {
             backgroundColor: bgColor,
             title:  Row(
               children: [
-                Image.asset("assets/images/png/logo.png"),
+                Container(
+                  width: 30,
+                  height: 30,
+                  child: Image.asset("assets/images/png/logo.png"),
+                ),
                 const CustumText(text: "My Cart", size: 20)
               ],
             ),
