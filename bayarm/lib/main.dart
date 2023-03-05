@@ -1,3 +1,4 @@
+import 'package:bayarm/screens/carts/cart_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
 
           backgroundColor: Colors.brown
       ),
-      home:  WelcomeScreen(),
+      home:  NavigationScreen(),
       color: secondaryColor,
     );
   }

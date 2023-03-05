@@ -21,12 +21,8 @@ class NavigationScreen extends StatelessWidget {
           Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: appPadding,
-            ),
-
-            const Expanded(
+          children: const [
+            Expanded(
               flex: 5,
               child: NavigationContent(),
             )
