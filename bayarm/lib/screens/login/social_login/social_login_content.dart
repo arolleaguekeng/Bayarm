@@ -1,6 +1,5 @@
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/login/password_login/password_login_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -29,7 +28,7 @@ class _LoginContent extends State<LoginContent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              "images/svg/drone.svg",
+              "assets/images/svg/drone.svg",
               height: size.height * 0.2,
             ),
             const SizedBox(
@@ -61,7 +60,7 @@ class _LoginContent extends State<LoginContent> {
             ),
             CustomButton(
                 text: "Continue with Faceboock",
-                width: size.width ,
+                width: size.width,
                 bgcolor: white,
                 textcolor: textColor,
                 onPressed: () {
@@ -83,7 +82,11 @@ class _LoginContent extends State<LoginContent> {
             const SizedBox(
               height: appPadding * 2,
             ),
-            const CustumText(text: "OR", size: 20,color: lightTextColor,),
+            const CustumText(
+              text: "OR",
+              size: 20,
+              color: lightTextColor,
+            ),
             const SizedBox(
               height: appPadding * 2,
             ),

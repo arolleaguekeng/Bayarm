@@ -1,10 +1,8 @@
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../constants/constants.dart';
 import '../../components/forms/custom_text.dart';
 
@@ -64,9 +62,12 @@ class _PasswordLoginContent extends State<PasswordLoginContent> {
               height: appPadding * 2,
             ),
             CustomButton(
-                text: "Sign in", width: size.width * 0.8, onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => NavigationScreen()));
-            })
+                text: "Sign in",
+                width: size.width * 0.8,
+                onPressed: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (_) => NavigationScreen()));
+                })
           ],
         ),
       ),
