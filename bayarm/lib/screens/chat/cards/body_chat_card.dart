@@ -1,6 +1,6 @@
+import 'package:bayarm/models/chat_model.dart';
+import 'package:bayarm/screens/chat/cards/chat_item_card.dart';
 import 'package:flutter/material.dart';
-import 'package:mojio_auto/components/screens/bot_chat_screen/cards/chat_item_card.dart';
-import 'package:mojio_auto/models/chat_model.dart';
 
 class BodyChatCard extends StatelessWidget {
   const BodyChatCard({

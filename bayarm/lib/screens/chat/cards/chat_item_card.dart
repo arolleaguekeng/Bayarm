@@ -1,6 +1,6 @@
+import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/models/chat_model.dart';
 import 'package:flutter/material.dart';
-import 'package:mojio_auto/constants/constants.dart';
-import 'package:mojio_auto/models/chat_model.dart';
 
 class ChatItemCard extends StatelessWidget {
   final ChatModel chatItem;

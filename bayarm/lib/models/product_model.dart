@@ -3,7 +3,7 @@ class ProductModel {
   final String name;
   final String description;
   final double price;
-  List<String> images = ["https://picsum.photos/id/237/200/300"];
+  List<String> images = ["assets/images/png/plant2.jpg"];
 
   ProductModel(
       {required this.id,

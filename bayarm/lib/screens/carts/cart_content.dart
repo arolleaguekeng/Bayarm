@@ -5,6 +5,7 @@ import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CartContent extends StatefulWidget {
   const CartContent({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class CartContent extends StatefulWidget {
         price: 2000),
     ProductModelCart(
         id: "1",
-        name: "Polets",
+        name: "Cabriol",
         description: "poulets de l'ouest",
         price: 2000),
     ProductModelCart(
@@ -117,7 +118,7 @@ class _CartContent extends State<CartContent> {
     productList = CartContent.productList;
     if (productList.isNotEmpty) {
       isLoading = false;
-
+      productList = [];
     }
 
   }
@@ -129,14 +130,17 @@ class _CartContent extends State<CartContent> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: bgLightColor,
+          backgroundColor: bgColor,
+          title: const CustumText(text: "My Cart", size: 20, weight: FontWeight.bold,),
           leading: Row(
             children: [
+              SizedBox(width: appPadding,),
               Container(
                 width: 30,
                 height: 30,
                 child: Image.asset("assets/images/png/logo.png"),
               ),
+
               // const CustumText(text: "My Cart", size: 20),
             ],
           ),
@@ -157,17 +161,18 @@ class _CartContent extends State<CartContent> {
             //Add more icon here
           ],
         ),
-        body: Container(
-            decoration: const BoxDecoration(color: bgLightColor),
+        body:productList.isNotEmpty ?  Container(
+            decoration: const BoxDecoration(color: white),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   Container(
+                    decoration: const BoxDecoration(color: bgLightColor),
                     padding: EdgeInsets.all(appPadding),
                     child: isLoading
                         ? const Center(child: CircularProgressIndicator())
                         : ListView.builder(
-                            scrollDirection: Axis.vertical,
+
                             shrinkWrap: true,
                             itemCount: productList.length,
                             itemBuilder: (context, index) => ProductCard(
@@ -181,28 +186,54 @@ class _CartContent extends State<CartContent> {
                   ),
                 ],
               ),
-            )),
-        bottomNavigationBar: BottomAppBar(
+            ))
+        :Container(
+          child:Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+
+                children: [
+                  SvgPicture.asset("assets/images/svg/emptylist.svg"),
+                  const SizedBox(height: appPadding,),
+                  const CustumText(text: "Your cart is Empty", size: 24, weight: FontWeight.bold,),
+                  const CustumText(text: "You don't have any items added", size: 14,),
+                ],
+              )
+            ],
+          )
+
+        ),
+
+        bottomNavigationBar: productList.isNotEmpty ? BottomAppBar(
+          color: white,
+          elevation: 10,
+          shape: AutomaticNotchedShape(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
           child: Container(
               padding: const EdgeInsets.all(appPadding),
               height: 120,
               width: double.maxFinite,
-              decoration: const BoxDecoration(
-                  color: white,
+              decoration:  BoxDecoration(
                   borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(20.0))),
+                      BorderRadius.circular(30)),
               child: Column(
                 children: [
                   const CustumText(
                     text: "25000 XAF",
                     size: 20,
-                    color: primaryColor,
+                    color: textColor,
+                    weight: FontWeight.bold,
                   ),
                   const SizedBox(height: appPadding,),
                   CustomButton(text: "Chechkout", onPressed: () {})
                 ],
               )),
-        ),
+        ):const Text(""),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/carts/cart_content.dart';
+import 'package:bayarm/screens/carts/cart_screen.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -33,21 +34,13 @@ class _ProductCard extends State<ProductCard> {
               Container(
                 height: 100,
                 width: 100,
+                child: Image.asset(productModel.images[0]),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: white,
-                  image: DecorationImage(
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.4),
-                      BlendMode.multiply,
-                    ),
-                    image: NetworkImage(productModel.images[0]),
-                    fit: BoxFit.cover,
-                  ),
                 ),
               ),
               Container(
-
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: appPadding),
                   child: Column(
@@ -67,9 +60,8 @@ class _ProductCard extends State<ProductCard> {
                         height: appPadding,
                       ),
                       Container(
-                        width: size.width *0.5,
+                        width: size.width * 0.5,
                         child: Row(
-
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
@@ -78,41 +70,53 @@ class _ProductCard extends State<ProductCard> {
                                   borderRadius: BorderRadius.circular(40)),
                               width: 100,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          if(productModel.quantity > 1){
-                                            var qty =  productModel.getquantity() -1;
+                                          if (productModel.quantity > 1) {
+                                            var qty =
+                                                productModel.getquantity() - 1;
                                             productModel.setquantity(qty);
                                           }
                                         });
                                       },
-                                      icon: const Icon(Icons.remove_rounded)),
-                                  Text(productModel.getquantity().toString()),
+                                      icon: const Icon(Icons.remove_rounded,
+                                          color: primaryColor, size: 15)),
+                                  Text(
+                                    productModel.getquantity().toString(),
+                                    style: const TextStyle(color: primaryColor),
+                                  ),
                                   IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          if(productModel.quantity > 0) {
+                                          if (productModel.quantity > 0) {
                                             var qty =
                                                 productModel.getquantity() + 1;
                                             productModel.setquantity(qty);
                                           }
                                         });
                                       },
-                                      icon: const Icon(Icons.add_rounded)),
+                                      icon: const Icon(Icons.add_rounded,
+                                          color: primaryColor, size: 15)),
                                 ],
                               ),
                             ),
                             Align(
                               alignment: Alignment.bottomRight,
-                              child: IconButton(onPressed: (){
-                                setState(() {
-                                  CartContent.productList.clear();
-                                  print(CartContent.productList.length);
-                                });
-                              }, icon: const Icon(Icons.delete_outline_rounded)),
+                              child: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      CartContent.productList.removeAt(
+                                          CartContent.productList
+                                              .indexOf(productModel));
+                                      print(CartContent.productList.length);
+                                    });
+                                  },
+                                  icon:
+                                      const Icon(Icons.delete_outline_rounded)),
                             )
                           ],
                         ),

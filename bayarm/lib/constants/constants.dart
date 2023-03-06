@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const primaryColor = Color.fromRGBO(1, 183, 99, 1.0);
 const secondaryColor = Color.fromRGBO(207, 24, 28, 1.0);
 const bgColor = Color.fromRGBO(255, 255, 255, 1.0);
-const bgLightColor = Color.fromRGBO(245, 245, 245, 1.0);
+const bgLightColor = Color.fromRGBO(239, 238, 238, 0.7294117647058823);
 const textFieldColor = Color.fromRGBO(245, 245, 245, 1.0);
 const textColor = Colors.black;
 const lightTextColor = Colors.black26;
