@@ -89,7 +89,7 @@ class _OrderContent extends State<OrderContent> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("../../../assets/images/png/plant.jpg"),
+                  image: AssetImage("assets/images/png/plant.jpg"),
                   height: 150,
                   width: 100,
                 ),
@@ -156,7 +156,7 @@ class _OrderContent extends State<OrderContent> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("../../../assets/images/png/plant.jpg"),
+                  image: AssetImage("assets/images/png/plant.jpg"),
                   height: 150,
                   width: 100,
                 ),
@@ -223,7 +223,7 @@ class _OrderContent extends State<OrderContent> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image(
-                  image: AssetImage("../../../assets/images/png/plant.jpg"),
+                  image: AssetImage("assets/images/png/plant.jpg"),
                   height: 150,
                   width: 100,
                 ),

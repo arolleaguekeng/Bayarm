@@ -1,4 +1,5 @@
 import 'package:bayarm/models/categories.dart';
+import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -127,7 +128,7 @@ class _HomeContent extends State<HomeContent> {
                   CustumText(text: 'Most Popular', size: 14),
                   TextButton(
                     onPressed: () {
-                      print('All');
+                      Navigator.pushNamed(context, popular_all);
                     },
                     child: CustumText(text: ' See All', size: 14, color: green),
                   ),
