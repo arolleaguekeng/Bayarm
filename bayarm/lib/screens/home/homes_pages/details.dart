@@ -1,8 +1,9 @@
-import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
+import 'package:bayarm/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailsCard extends StatefulWidget {
-  const DetailsCard({super.key});
+  final ProductModel product;
+  const DetailsCard({super.key, required this.product});
 
   @override
   State<DetailsCard> createState() => _DetailsCardState();

@@ -1,11 +1,12 @@
 import 'package:bayarm/models/categories.dart';
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
+import 'package:bayarm/screens/home/homes_pages/details.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 
-import '../../models/product.dart';
+import '../../models/product_model.dart';
 import '../components/forms/custom_text.dart';
 
 class HomeContent extends StatefulWidget {
@@ -103,7 +104,7 @@ class _HomeContent extends State<HomeContent> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return productWidget(
-                    product: products[index],
+                    product: products2[index],
                     likebtn: IconButton(
                       onPressed: () {},
                       icon: Icon(
@@ -114,7 +115,7 @@ class _HomeContent extends State<HomeContent> {
                     ),
                   );
                 },
-                itemCount: products.length,
+                itemCount: products2.length,
               ),
             ),
             Container(
@@ -161,7 +162,7 @@ class _HomeContent extends State<HomeContent> {
                     mainAxisExtent: 300),
                 itemBuilder: (_, index) {
                   return productWidget2(
-                    product: products[index],
+                    product: products2[index],
                     btnicon: IconButton(
                       icon: Icon(
                         Icons.heart_broken,
@@ -171,7 +172,7 @@ class _HomeContent extends State<HomeContent> {
                     ),
                   );
                 },
-                itemCount: products.length,
+                itemCount: products2.length,
               ),
             ),
           ],
@@ -181,9 +182,18 @@ class _HomeContent extends State<HomeContent> {
   }
 
   Widget productWidget(
-      {required Product product, required IconButton likebtn}) {
+      {required ProductModel product, required IconButton likebtn}) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) {
+              return DetailsCard(product: product);
+            },
+          ),
+        );
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -199,28 +209,24 @@ class _HomeContent extends State<HomeContent> {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   elevation: 5,
-                  child: InkWell(
-                    onTap: () {},
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      height: 210,
-                      width: MediaQuery.of(context).size.width * 0.50,
-                      child: Stack(
-                        children: [
-                          Image(
-                            image: AssetImage(
-                                "assets/images/png/" + product.imgUrl),
-                            fit: BoxFit.cover,
-                            height: 200,
-                            width: 200,
-                          ),
-                          Positioned(
-                            top: 20.0,
-                            left: 140.0,
-                            child: likebtn,
-                          ),
-                        ],
-                      ),
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    height: 210,
+                    width: MediaQuery.of(context).size.width * 0.50,
+                    child: Stack(
+                      children: [
+                        Image(
+                          image: AssetImage(product.images[0]),
+                          fit: BoxFit.cover,
+                          height: 200,
+                          width: 200,
+                        ),
+                        Positioned(
+                          top: 20.0,
+                          left: 140.0,
+                          child: likebtn,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -345,7 +351,7 @@ class _HomeContent extends State<HomeContent> {
 }
 
 class productWidget2 extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
   final IconButton btnicon;
   const productWidget2(
       {super.key, required this.product, required this.btnicon});
@@ -353,7 +359,16 @@ class productWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) {
+              return DetailsCard(product: product);
+            },
+          ),
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
@@ -374,8 +389,7 @@ class productWidget2 extends StatelessWidget {
                   child: Stack(
                     children: [
                       Image(
-                        image:
-                            AssetImage("assets/images/png/" + product.imgUrl),
+                        image: AssetImage(product.images[0]),
                         fit: BoxFit.cover,
                         height: 200,
                         width: double.infinity,

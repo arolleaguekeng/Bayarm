@@ -2,7 +2,7 @@ import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
-import '../../../models/product.dart';
+import '../../../models/product_model.dart';
 import '../home_content.dart';
 
 class SpecialApp extends StatefulWidget {
@@ -49,7 +49,7 @@ class _SpecialAppState extends State<SpecialApp> {
                       mainAxisExtent: 300),
                   itemBuilder: (_, index) {
                     return productWidget2(
-                      product: products[index],
+                      product: products2[index],
                       btnicon: IconButton(
                         icon: Icon(
                           Icons.heart_broken,
@@ -59,7 +59,7 @@ class _SpecialAppState extends State<SpecialApp> {
                       ),
                     );
                   },
-                  itemCount: products.length,
+                  itemCount: products2.length,
                 ),
               ),
             ],
