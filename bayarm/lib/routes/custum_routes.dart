@@ -1,6 +1,7 @@
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import '../notfoundPage.dart';
+import '../screens/home/homes_pages/details.dart';
 import '../screens/home/homes_pages/popular_allPage.dart';
 import '../screens/home/homes_pages/speacial_allPage.dart';
 
@@ -20,6 +21,10 @@ class CustomRoute {
           builder: (_) => SpecialApp(),
         );
         break;
+      case detail_page:
+        r = MaterialPageRoute(
+          builder: (_) => DetailsCard(),
+        );
     }
     return r;
   }
