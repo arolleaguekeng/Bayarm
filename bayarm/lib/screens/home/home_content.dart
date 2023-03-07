@@ -41,7 +41,7 @@ class _HomeContent extends State<HomeContent> {
                   children: [
                     const CircleAvatar(
                       backgroundImage:
-                          NetworkImage('https://picsum.photos/id/237/200/300'),
+                          AssetImage("assets/images/png/profile.png"),
                     ),
                     const SizedBox(
                       width: appPadding,
@@ -381,26 +381,23 @@ class productWidget2 extends StatelessWidget {
                 topLeft: Radius.circular(16.0),
                 topRight: Radius.circular(16),
               ),
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  height: 205,
-                  child: Stack(
-                    children: [
-                      Image(
-                        image: AssetImage(product.images[0]),
-                        fit: BoxFit.cover,
-                        height: 200,
-                        width: double.infinity,
-                      ),
-                      Positioned(
-                        top: 20.0,
-                        left: 100.0,
-                        child: btnicon,
-                      ),
-                    ],
-                  ),
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                height: 205,
+                child: Stack(
+                  children: [
+                    Image(
+                      image: AssetImage(product.images[0]),
+                      fit: BoxFit.cover,
+                      height: 200,
+                      width: double.infinity,
+                    ),
+                    Positioned(
+                      top: 20.0,
+                      left: 100.0,
+                      child: btnicon,
+                    ),
+                  ],
                 ),
               ),
             ),

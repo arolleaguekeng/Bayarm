@@ -3,6 +3,7 @@ import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/carts/cart_product_card.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:bayarm/screens/home/homes_pages/details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -135,7 +136,7 @@ class _CartContent extends State<CartContent> {
     productList = CartContent.productList;
     if (productList.isNotEmpty) {
       isLoading = false;
-      productList = [];
+      //productList = [];
     }
   }
 
@@ -199,7 +200,17 @@ class _CartContent extends State<CartContent> {
                                 itemCount: productList.length,
                                 itemBuilder: (context, index) => ProductCard(
                                   productModel: productList[index],
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) {
+                                          return DetailsCard(
+                                              product: productList[index]);
+                                        },
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                       ),
