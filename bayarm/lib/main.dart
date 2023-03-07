@@ -1,4 +1,5 @@
 import 'package:bayarm/routes/custum_routes.dart';
+import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
-      home: WelcomeScreen(),
+      home: NavigationScreen(),
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );

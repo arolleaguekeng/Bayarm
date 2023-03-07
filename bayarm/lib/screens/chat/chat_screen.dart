@@ -3,10 +3,8 @@ import 'dart:math';
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/chat_model.dart';
 import 'package:bayarm/screens/chat/cards/body_chat_card.dart';
-import 'package:bayarm/screens/chat/cards/bottom_chat_card.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
-
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -14,69 +12,199 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreen extends State<ChatScreen> {
+  bool isMessageEmpty = true;
   TextEditingController questionController = TextEditingController();
-List<ChatModel> chatList = [];
+  List<ChatModel> chatList = [];
   @override
   void initState() {
     chatList.add(ChatModel(
         chat: 1,
-        message: "Vous avez des difficulées ? \n je peux répondre à vos questions",
+        message: "How can I help you ?",
+        time: "${DateTime.now().hour}:${DateTime.now().second}"));
+
+    chatList.add(ChatModel(
+        chat: 0,
+        message: "I Need your product",
         time: "${DateTime.now().hour}:${DateTime.now().second}"));
   }
-
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: bgLightColor,
+      backgroundColor: primaryColor,
+      appBar: buildAppBar(),
       body: SafeArea(
         child: Stack(
           children: [
             Column(
               children: [
-                _topChat(),
                 BodyChatCard(chatList: chatList),
-                SizedBox(
-                  height: 120,
-                )
               ],
             ),
-            BoottomChartCard(questionController: questionController),
+            buildBottom(size),
           ],
         ),
       ),
     );
   }
 
-
-  Widget _topChat() {
-    var size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width,
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-      child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: 60,
-                width: 60,
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.black12,
-                ),
-                child: Image.asset("assets/images/png/plant.jpg"),
-              ),
-              Column(
-                children: const [
-                  CustumText(text: 'Devpea TM', size: 20, weight: FontWeight.bold,),
-                  CustumText(text: 'Online', size: 14,)
+  Positioned buildBottom(Size size) {
+    return Positioned(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+            color: transparent,
+            child: Container(
+              width: size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: size.width * 0.8,
+                    child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          if (questionController.value.text.isNotEmpty) {
+                            isMessageEmpty = false;
+                          } else {
+                            isMessageEmpty = true;
+                          }
+                        });
+                      },
+                      decoration: InputDecoration(
+                        hintText: 'Write message Here...',
+                        prefixIcon: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50)),
+                          padding: EdgeInsets.all(14),
+                          child: const Icon(
+                            Icons.emoji_emotions_outlined,
+                            color: lightTextColor,
+                            size: 20,
+                          ),
+                        ),
+                        suffixIcon: const Icon(
+                          Icons.camera_alt_rounded,
+                          color: lightTextColor,
+                          size: 20,
+                        ),
+                        filled: true,
+                        fillColor: Colors.blueGrey[50],
+                        labelStyle: const TextStyle(fontSize: 12),
+                        contentPadding: EdgeInsets.all(20),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: transparent),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                      ),
+                      controller: questionController,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: appPadding * 0.5,
+                  ),
+                  Container(
+                    decoration: const ShapeDecoration(
+                      color: primaryColor,
+                      shape: CircleBorder(),
+                    ),
+                    child: IconButton(
+                      icon: isMessageEmpty
+                          ? const Icon(Icons.mic)
+                          : const Icon(Icons.send_rounded),
+                      color: Colors.white,
+                      onPressed: () {
+                        setState(() {
+                          if (!isMessageEmpty) {
+                            chatList.add(ChatModel(
+                                chat: 0,
+                                message: questionController.value.text,
+                                time:
+                                    "${DateTime.now().hour}:${DateTime.now().minute}"));
+                            questionController.clear();
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
                 ],
               ),
-              IconButton(onPressed: (){}, icon: Icon(Icons.phone,size: 32,))
+            )),
+      ),
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
+      backgroundColor: primaryColor,
+      elevation: 0,
+      title: Row(
+        children: [
+          BackButton(),
+          const CircleAvatar(
+            backgroundImage: AssetImage("assets/images/png/plant.jpg"),
+          ),
+          const SizedBox(
+            width: appPadding,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              CustumText(
+                text: 'Devpea TM',
+                size: 16,
+                weight: FontWeight.bold,
+                color: white,
+              ),
+              CustumText(
+                text: 'Online',
+                size: 14,
+                color: white,
+              )
             ],
-          )
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.phone,
+              size: 24,
+              color: white,
+            )),
+        const SizedBox(
+          width: 5,
+        ),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.handshake_outlined,
+              size: 24,
+              color: white,
+            )),
+        const SizedBox(
+          width: 10,
+        ),
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.menu_rounded,
+              size: 24,
+              color: white,
+            )),
+      ],
     );
   }
 }
