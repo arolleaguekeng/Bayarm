@@ -3,8 +3,6 @@ import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import '../../carts/cart_content.dart';
-
 class DetailsCard extends StatefulWidget {
   final ProductModel product;
   const DetailsCard({super.key, required this.product});
