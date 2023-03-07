@@ -1,4 +1,5 @@
 import 'package:bayarm/screens/carts/cart_screen.dart';
+import 'package:bayarm/screens/chat/chat_screen.dart';
 import 'package:bayarm/screens/home/home_screen.dart';
 import 'package:bayarm/screens/orders/orders_screen.dart';
 import 'package:bayarm/screens/profiles/profiles_screen.dart';
@@ -48,7 +49,7 @@ class _NavigationContent extends State<NavigationContent> {
               appBarIcon("Home", Icons.home_filled, 0, HomeScreen()),
               appBarIcon("Cart", Icons.shopping_bag_rounded, 1, CartScreen()),
               appBarIcon("Orders", Icons.shopping_cart, 2, OrderScreen()),
-              appBarIcon("Wallet", Icons.wallet_rounded, 3, WalletScreen()),
+              appBarIcon("Messages", Icons.message_outlined, 3, ChatScreen()),
               appBarIcon("Profile", Icons.person_2_rounded, 4, ProfileScreen()),
             ],
           ),

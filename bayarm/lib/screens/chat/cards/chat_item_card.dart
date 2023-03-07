@@ -22,40 +22,41 @@ class ChatItemCard extends StatelessWidget {
               : MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
-              '${chatItem.time}',
-              style: TextStyle(color: Colors.grey.shade400),
-            ),
             Flexible(
               child: Container(
-                margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
-                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.only(left: 0, right: 10, top: 20),
+                padding: const EdgeInsets.all(appPadding),
                 decoration: BoxDecoration(
-                  color: chatItem.chat == 0 ? secondaryColor : primaryColor,
+                  color: chatItem.chat == 0 ? primaryColor : Colors.blueGrey,
                   borderRadius: chatItem.chat == 0
                       ? const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                          bottomLeft: Radius.circular(30),
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
                         )
                       : const BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30),
-                          bottomRight: Radius.circular(30),
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
                         ),
                 ),
-                child: Text(
-                  '${chatItem.message}',
-                  style: TextStyle(color: white, fontWeight: FontWeight.w300),
-                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${chatItem.message}',
+                      style: const TextStyle(color: white, fontWeight: FontWeight.w300),
+                    ),
+                    const SizedBox(height: appPadding*0.5,),
+                    Text(
+                      '${chatItem.time}',
+                      style: const TextStyle(color: white,fontSize: 10),
+                    )
+                  ],
+                )
               ),
             ),
-            chatItem.chat == 1
-                ? Text(
-                    '${chatItem.time}',
-                    style: const TextStyle(color: white),
-                  )
-                : const SizedBox(),
+
           ],
         ));
   }

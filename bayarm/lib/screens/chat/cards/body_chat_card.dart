@@ -1,3 +1,4 @@
+import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/chat_model.dart';
 import 'package:bayarm/screens/chat/cards/chat_item_card.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,12 @@ class BodyChatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: EdgeInsets.only(left: 25, right: 25, top: 25),
+        padding: EdgeInsets.only(left: appPadding*0.5, right: appPadding*0.3, top: 25),
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(45), topRight: Radius.circular(45)),
-          color: Colors.white,
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          color: white,
         ),
         child: ListView.builder(
           scrollDirection: Axis.vertical,
