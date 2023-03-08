@@ -1,13 +1,12 @@
 import 'package:bayarm/constants/constants.dart';
-import 'package:bayarm/screens/chat/contact_list/contact_content.dart';
 import 'package:bayarm/screens/components/component/tabbar_widget.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import 'conversation_content.dart';
+import 'contact_content.dart';
 
-class ConversationScreen extends StatelessWidget {
-  const ConversationScreen({Key? key}) : super(key: key);
+class ContactScreen extends StatelessWidget {
+  const ContactScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +50,16 @@ class ConversationScreen extends StatelessWidget {
       body: Container(
         child: TabBarWidget(
           tabs: const [
-            Tab(text: 'Chats',icon: Icon(Icons.chat_rounded),iconMargin: EdgeInsets.only(bottom: 1),),
-            Tab(text: 'Groups',icon: Icon(Icons.group_rounded),iconMargin: EdgeInsets.only(bottom: 1),),
-            Tab(text: 'Calls',icon: Icon(Icons.call),iconMargin: EdgeInsets.only(bottom: 1),),
+            Tab(text: 'Chats'),
+            Tab(text: 'Contact'),
+            Tab(text: 'Calls'),
           ],
           children: [
             // SortablePage(),
             Container(
-              child: ConversationContent(),
+              child: ContactContent(),
             ),
-            ContactContent(),
+            Container(),
             Container(),
           ],
         ),

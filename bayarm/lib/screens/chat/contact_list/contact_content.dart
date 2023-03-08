@@ -1,17 +1,17 @@
-import 'package:bayarm/screens/chat/convesations_list/cart_conversation.dart';
+import 'package:bayarm/screens/chat/contact_list/contact_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 
-class ConversationContent extends StatefulWidget {
-  const ConversationContent({Key? key}) : super(key: key);
+class ContactContent extends StatefulWidget {
+  const ContactContent({Key? key}) : super(key: key);
 
   @override
-  State<ConversationContent> createState() => _ConversationContent();
+  State<ContactContent> createState() => _ContactContent();
 }
 
-class _ConversationContent extends State<ConversationContent> {
+class _ContactContent extends State<ContactContent> {
   bool isLoading = true;
 
   void initState() {
@@ -25,7 +25,7 @@ class _ConversationContent extends State<ConversationContent> {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: 10,
-        itemBuilder: (context, index) => ConversationCard(
+        itemBuilder: (context, index) => ContactCard(
           onTap: () {},
         ),
       ),

@@ -2,6 +2,8 @@ import 'package:bayarm/routes/custum_routes.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 import 'constants/constants.dart';
 
@@ -11,6 +13,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   static Color appBarColor = primaryColor;
   // This widget is the root of your application.
   @override
