@@ -1,4 +1,5 @@
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
+import 'package:bayarm/screens/profiles/profiles_content.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: 'Imap',
       debugShowCheckedModeBanner: false,
@@ -22,17 +22,10 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Urbanist',
           primarySwatch: Colors.green,
           secondaryHeaderColor: Colors.white,
-          textTheme: const TextTheme(
-            bodyText2: TextStyle(color: textColor)
-          ),
-
-          backgroundColor: Colors.brown
-      ),
-      home:  WelcomeScreen(),
+          textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
+          backgroundColor: Colors.brown),
+      home: ProfileContent(),
       color: secondaryColor,
     );
   }
 }
-
-
-
