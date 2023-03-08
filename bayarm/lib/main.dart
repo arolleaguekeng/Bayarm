@@ -1,5 +1,6 @@
 import 'package:bayarm/routes/custum_routes.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
+import 'package:bayarm/screens/profiles/profiles_content.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
