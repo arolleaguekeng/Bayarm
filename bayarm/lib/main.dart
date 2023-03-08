@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
-      home: NavigationScreen(),
+      home: WelcomeScreen(),
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );

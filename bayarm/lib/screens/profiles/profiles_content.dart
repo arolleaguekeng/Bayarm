@@ -53,7 +53,7 @@ class _ProfileContent extends State<ProfileContent> {
                 height: 120,
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image.asset("assets/images/Alpha.jpg")),
+                    child: Image.asset("assets/images/png/Alpha.jpg")),
               ),
               Positioned(
                 bottom: 0,
