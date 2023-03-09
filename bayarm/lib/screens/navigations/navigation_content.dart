@@ -1,5 +1,4 @@
 import 'package:bayarm/screens/carts/cart_screen.dart';
-import 'package:bayarm/screens/chat/chat_screen.dart';
 import 'package:bayarm/screens/chat/convesations_list/conversation_screen.dart';
 import 'package:bayarm/screens/home/home_screen.dart';
 import 'package:bayarm/screens/orders/orders_screen.dart';

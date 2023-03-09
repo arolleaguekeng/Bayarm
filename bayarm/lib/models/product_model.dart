@@ -1,8 +1,11 @@
+import 'package:bayarm/models/product_tarrif_model.dart';
+
 class ProductModel {
   final String id;
   final String name;
   final String description;
   final String price;
+  final List<ProductTarrifModel> tarrifModel;
   List<String> images = ["assets/images/png/plant2.jpg"];
 
   ProductModel(
@@ -10,7 +13,8 @@ class ProductModel {
       required this.name,
       required this.description,
       required this.price,
-      required this.images});
+      required this.images,
+      required this.tarrifModel});
 }
 
 class ProductModelCart extends ProductModel {
@@ -30,6 +34,7 @@ class ProductModelCart extends ProductModel {
     required super.price,
     required super.images,
     this.quantity = 1,
+    required super.tarrifModel,
   });
 }
 
@@ -41,6 +46,9 @@ List<ProductModel> products2 = [
         'assets/images/png/plant3.jpg',
         'assets/images/png/plant4.jpg',
       ],
+      tarrifModel: [
+        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
+      ],
       name: 'Boston Ivy',
       description: 'Climbs their storied walls.',
       price: '\$13'),
@@ -51,6 +59,9 @@ List<ProductModel> products2 = [
         'assets/images/png/plant4.jpg',
         'assets/images/png/plant3.jpg'
       ],
+      tarrifModel: [
+        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
+      ],
       name: 'Green Succulent',
       price: '\$11',
       description: 'Store water in arid climates.'),
@@ -58,6 +69,9 @@ List<ProductModel> products2 = [
       id: '1',
       name: 'Dieffenbachia Bonsa',
       price: '\$10',
+      tarrifModel: [
+        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
+      ],
       images: [
         'assets/images/png/plant4.jpg',
         'assets/images/png/plant3.jpg',
@@ -66,6 +80,9 @@ List<ProductModel> products2 = [
       description: 'large group of beautiful tropical perennials'),
   ProductModel(
       id: '1',
+      tarrifModel: [
+        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
+      ],
       images: [
         'assets/images/png/plant3.jpg',
         'assets/images/png/plant4.jpg',

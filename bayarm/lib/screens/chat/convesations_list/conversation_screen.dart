@@ -14,6 +14,7 @@ class ConversationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
+
         elevation: 0,
         title: Row(
           children: const [
@@ -43,7 +44,7 @@ class ConversationScreen extends StatelessWidget {
           ),
           child: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.chat_rounded,
                 color: white,
               ))),

@@ -1,6 +1,6 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/chat_model.dart';
-import 'package:bayarm/screens/chat/cards/chat_item_card.dart';
+import 'package:bayarm/screens/chat/chat_screen/chat_item_card.dart';
 import 'package:flutter/material.dart';
 
 class BodyChatCard extends StatelessWidget {
@@ -20,7 +20,7 @@ class BodyChatCard extends StatelessWidget {
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          color: white,
+          color: bgLightColor,
         ),
         child: ListView.builder(
           scrollDirection: Axis.vertical,

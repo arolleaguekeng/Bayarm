@@ -1,4 +1,5 @@
 import 'package:bayarm/routes/custum_routes.dart';
+import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/profiles/profiles_content.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Imap',
+      title: 'Bayarm',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           fontFamily: 'Urbanist',

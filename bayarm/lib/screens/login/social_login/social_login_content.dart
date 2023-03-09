@@ -28,8 +28,8 @@ class _LoginContent extends State<LoginContent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              "assets/images/svg/drone.svg",
-              height: size.height * 0.2,
+              "assets/images/svg/login.svg",
+              height: size.height * 0.3,
             ),
             const SizedBox(
               height: appPadding,
