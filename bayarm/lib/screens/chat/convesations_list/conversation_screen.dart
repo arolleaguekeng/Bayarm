@@ -14,7 +14,7 @@ class ConversationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
-
+        automaticallyImplyLeading: false,
         elevation: 0,
         title: Row(
           children: const [
