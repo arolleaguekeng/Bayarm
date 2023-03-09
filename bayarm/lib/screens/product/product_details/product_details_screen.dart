@@ -1,11 +1,12 @@
+import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/product/product_details/product_details_content.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 
-
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({Key? key}) : super(key: key);
+  final ProductModel product;
+  ProductDetailsScreen({Key? key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,12 @@ class ProductDetailsScreen extends StatelessWidget {
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Expanded(
               flex: 5,
-              child: ProductDetailsContent(),
+              child: DetailsCard(
+                product: product,
+              ),
             )
           ],
         ),
