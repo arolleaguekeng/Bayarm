@@ -10,6 +10,8 @@ import 'firebase_options.dart';
 import 'constants/constants.dart';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();
+  //await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
-      home: NavigationScreen(),
+      home: LoginScreen(),
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );

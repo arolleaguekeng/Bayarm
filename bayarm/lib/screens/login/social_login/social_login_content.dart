@@ -47,6 +47,7 @@ class _LoginContent extends State<LoginContent> {
               height: appPadding,
             ),
             CustomButton(
+                iconImageurl: "assets/icons/ic_google.png",
                 text: "Continue with Google",
                 width: size.width * 0.8,
                 bgcolor: white,
@@ -59,6 +60,7 @@ class _LoginContent extends State<LoginContent> {
               height: appPadding,
             ),
             CustomButton(
+                iconImageurl: "assets/icons/ic_faceboock.png",
                 text: "Continue with Faceboock",
                 width: size.width,
                 bgcolor: white,
@@ -71,6 +73,7 @@ class _LoginContent extends State<LoginContent> {
               height: appPadding,
             ),
             CustomButton(
+                iconImageurl: "assets/icons/ic_apple.png",
                 text: "Continue with Apple",
                 width: size.width * 0.8,
                 bgcolor: white,
