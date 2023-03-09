@@ -1,7 +1,7 @@
 import 'package:bayarm/models/categories.dart';
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-import 'package:bayarm/screens/home/homes_pages/details.dart';
+import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -189,7 +189,7 @@ class _HomeContent extends State<HomeContent> {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return DetailsCard(product: product);
+              return ProductDetailsScreen(product: product);
             },
           ),
         );
@@ -364,7 +364,7 @@ class productWidget2 extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return DetailsCard(product: product);
+              return ProductDetailsScreen(product: product);
             },
           ),
         );
