@@ -27,7 +27,8 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final _auth = FirebaseAuth.instance;
+  static  var auth = FirebaseAuth.instance;
+
   static Color appBarColor = primaryColor;
   // This widget is the root of your application.
   @override
@@ -42,9 +43,9 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
       home: StreamBuilder<User?>(
-        stream: _auth.authStateChanges(),
+        stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.data == null ? const PhoneLoginScreen() : const NavigationScreen();
+          return snapshot.data == null ? const PhoneLoginScreen() :  NavigationScreen();
         },
       ),
       color: secondaryColor,
