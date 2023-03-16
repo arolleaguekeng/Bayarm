@@ -14,12 +14,12 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            SizedBox(width: appPadding,),
+            SizedBox(width: appPadding*0.7,),
             Expanded(
               flex: 5,
               child: HomeContent(),
             ),
-            SizedBox(width: appPadding,)
+            SizedBox(width: appPadding*0.7,)
           ],
         ),
       ),
