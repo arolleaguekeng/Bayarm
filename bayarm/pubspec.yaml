@@ -74,7 +74,6 @@ flutter:
     - assets/images/png/
     - assets/images/svg/
     - assets/icons/
-    - assets/flags/
 
   # Add Custom fonts
   fonts:
