@@ -40,6 +40,7 @@ dependencies:
   flutter_chat_ui: ^1.6.6
   firebase_core: ^2.7.1
   firebase_auth: ^4.2.10
+  bottom_dialog: ^1.0.3
 
 dev_dependencies:
   flutter_test:
