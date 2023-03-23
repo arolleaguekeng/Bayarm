@@ -1,7 +1,6 @@
 import 'package:bayarm/models/categories.dart';
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-import 'package:bayarm/screens/product/product_details/product.dart';
 import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -198,7 +197,7 @@ class _HomeContent extends State<HomeContent> {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return Detail(product: product);
+              return ProductDetailsScreen(product: product);
             },
           ),
         );
