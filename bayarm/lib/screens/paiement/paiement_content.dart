@@ -1,5 +1,6 @@
 import 'package:bayarm/notfoundPage.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:bayarm/screens/paiement/PinPages/pinPages.dart';
 import 'package:flutter/material.dart';
 
 enum Pet {
@@ -309,7 +310,16 @@ class _PaiementContentState extends State<PaiementContent> {
                 ),
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (__) {
+                        return PinPages();
+                      },
+                    ),
+                  );
+                },
                 height: 50,
                 elevation: 0,
                 splashColor: Colors.green,

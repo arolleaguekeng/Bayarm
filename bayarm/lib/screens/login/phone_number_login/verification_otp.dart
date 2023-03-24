@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:bayarm/screens/home/home_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +70,8 @@ class _VerificationOtpState extends State<VerificationOtp> {
     await validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> NavigationScreen()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (_) => NavigationScreen()));
     print("Vérification éfectué avec succès");
   }
 
@@ -132,12 +131,12 @@ class _VerificationOtpState extends State<VerificationOtp> {
                           : onVerifySmsCode,
                       child: loading
                           ? const CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation(Colors.white),
-                      )
+                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                            )
                           : const Text(
-                        'Verify',
-                        style: TextStyle(fontSize: 20),
-                      ),
+                              'Verify',
+                              style: TextStyle(fontSize: 20),
+                            ),
                     ),
                   ],
                 )
