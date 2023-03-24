@@ -2,7 +2,17 @@ import 'package:bayarm/notfoundPage.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
 
-enum Pet { wallet, paypal, googlePay, applePay, orangeM, momo }
+enum Pet {
+  wallet,
+  paypal,
+  googlePay,
+  applePay,
+  orangeM,
+  momo,
+  card,
+  titi,
+  tack
+}
 
 class PaiementContent extends StatefulWidget {
   const PaiementContent({super.key});
@@ -29,28 +39,22 @@ class _PaiementContentState extends State<PaiementContent> {
         backgroundColor: Colors.white,
         centerTitle: false,
         actions: [
-          Container(
-            padding: const EdgeInsets.all(1),
-            decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(20),
+          IconButton(
+            icon: Icon(
+              Icons.add_box,
+              color: Colors.black,
+              size: 20,
             ),
-            child: IconButton(
-              icon: Icon(
-                Icons.add_box,
-                color: Colors.grey.shade400,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (__) {
-                      return NotFoundPage();
-                    },
-                  ),
-                );
-              },
-            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (__) {
+                    return NotFoundPage();
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -70,7 +74,7 @@ class _PaiementContentState extends State<PaiementContent> {
                   horizontal: 10,
                   vertical: 15,
                 ),
-                height: 400,
+                height: 700,
                 child: ListView(
                   children: [
                     Column(
@@ -232,7 +236,63 @@ class _PaiementContentState extends State<PaiementContent> {
                                 weight: FontWeight.bold,
                               ),
                               trailing: Radio<Pet>(
-                                value: Pet.momo,
+                                value: Pet.card,
+                                groupValue: _pet,
+                                onChanged: (Pet? value) {
+                                  setState(() {
+                                    _pet = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            color: Colors.white,
+                            elevation: 1,
+                            child: ListTile(
+                              leading: Image.asset(
+                                "assets/images/png/online.png",
+                                height: 40,
+                              ),
+                              title: CustumText(
+                                text: 'Mobile Money',
+                                size: 18,
+                                weight: FontWeight.bold,
+                              ),
+                              trailing: Radio<Pet>(
+                                value: Pet.tack,
+                                groupValue: _pet,
+                                onChanged: (Pet? value) {
+                                  setState(() {
+                                    _pet = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            color: Colors.white,
+                            elevation: 1,
+                            child: ListTile(
+                              leading: Image.asset(
+                                "assets/images/png/online.png",
+                                height: 40,
+                              ),
+                              title: CustumText(
+                                text: 'Mobile Money',
+                                size: 18,
+                                weight: FontWeight.bold,
+                              ),
+                              trailing: Radio<Pet>(
+                                value: Pet.titi,
                                 groupValue: _pet,
                                 onChanged: (Pet? value) {
                                   setState(() {
