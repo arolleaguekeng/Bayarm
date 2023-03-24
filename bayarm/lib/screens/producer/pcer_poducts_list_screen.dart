@@ -1,5 +1,6 @@
 import 'package:bayarm/main.dart';
 import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
+import 'package:bayarm/screens/producer/add_products/add_product_screen.dart';
 import 'package:bayarm/screens/producer/products_list.dart';
 import 'package:bayarm/screens/producer/showCardDialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,7 +57,7 @@ class PcProductListScreen extends StatelessWidget {
                 this.user = MyApp.auth.currentUser;
                 print("********************************************************");
                 print(user!.phoneNumber);
-                showCardDialog(context, user!);
+                Navigator.push(context, MaterialPageRoute(builder: (_)=> AddProductScreen()));
               },
               icon: const Icon(
                 Icons.add_rounded,
@@ -64,7 +65,5 @@ class PcProductListScreen extends StatelessWidget {
               ))),
     );
   }
-  void showCardDialog(BuildContext context, User? user){
-    CardDialog(user: user!).showCardDialog(context, ImageSource.gallery);
-  }
+
 }

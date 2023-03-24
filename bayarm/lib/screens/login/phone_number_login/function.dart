@@ -8,7 +8,7 @@ void authWithPhoneNumber(String phone,
       required Function(String value) autoRetrieval}) async {
   _auth.verifyPhoneNumber(
     phoneNumber: phone,
-    timeout: const Duration(seconds: 90),
+    timeout: const Duration(seconds: 90), 
     verificationCompleted: onAutoVerify,
     verificationFailed: onFailed,
     codeSent: onCodeSend,

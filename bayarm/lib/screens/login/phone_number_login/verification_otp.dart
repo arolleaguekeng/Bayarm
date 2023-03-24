@@ -1,9 +1,14 @@
 import 'dart:async';
-import 'package:bayarm/screens/navigations/navigation_screen.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:bayarm/constants/responsive.dart';
+import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../../constants/constants.dart';
+import '../../home/home_screen.dart';
 import 'function.dart';
 
 class VerificationOtp extends StatefulWidget {
@@ -70,13 +75,13 @@ class _VerificationOtpState extends State<VerificationOtp> {
     await validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => NavigationScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? HomeScreen() : NavigationScreen()));
     print("Vérification éfectué avec succès");
   }
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: WillPopScope(
         onWillPop: () async {
@@ -85,62 +90,66 @@ class _VerificationOtpState extends State<VerificationOtp> {
         child: Center(
           child: SingleChildScrollView(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                const Text(
-                  "Verification Otp",
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.green,
-                  ),
-                ),
-                const Text(
-                  "Check your messages to validate",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.green,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Pinput(
-                  length: 6,
-                  onChanged: (value) {
-                    smsCode = value;
-                    setState(() {});
-                  },
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    onPressed: !resend ? null : onResendSmsCode,
-                    child: Text(!resend
-                        ? "00:${count.toString().padLeft(2, "0")}"
-                        : "resend code"),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 15)),
-                      onPressed: smsCode.length < 6 || loading
-                          ? null
-                          : onVerifySmsCode,
-                      child: loading
-                          ? const CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.white),
-                            )
-                          : const Text(
-                              'Verify',
-                              style: TextStyle(fontSize: 20),
-                            ),
+            child: Container(
+              width: Responsive.isMobile(context) ? size.width : 400,
+              child: Column(
+                children: [
+                  const Text(
+                    "Verification Otp",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: primaryColor,
                     ),
-                  ],
-                )
-              ],
+                  ),
+                  const Text(
+                    "Vérifiers vos messages pour valider",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: primaryColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Pinput(
+                    length: 6,
+                    onChanged: (value) {
+                      smsCode = value;
+                      setState(() {});
+                    },
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: !resend ? null : onResendSmsCode,
+                      child: Text(!resend
+                          ? "00:${count.toString().padLeft(2, "0")}"
+                          : "resend code"),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryColor,
+                            padding: const EdgeInsets.symmetric(vertical: 15)),
+                        onPressed: smsCode.length < 6 || loading
+                            ? null
+                            : onVerifySmsCode,
+                        child: loading
+                            ? const CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation(Colors.white),
+                        )
+                            : const Text(
+                          'Verifier',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

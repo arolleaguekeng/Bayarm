@@ -2,11 +2,13 @@ import 'package:bayarm/models/categories.dart';
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
 import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 
 import '../../models/product_model.dart';
+import '../../services/db_services.dart';
 import '../components/forms/custom_text.dart';
 
 class HomeContent extends StatefulWidget {
@@ -17,9 +19,22 @@ class HomeContent extends StatefulWidget {
 }
 
 class _HomeContent extends State<HomeContent> {
+  DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
-  void initState() {}
+  List<ProductModel> products = [];
+
+  Future<void> getMupesInsurees() async {
+    var liste = await db.getListeDesObjets();
+    products =  <ProductModel>[];
+    products = liste;
+    setState(() {
+      isLoading = false;
+    });
+  }
+  void initState() {
+    getMupesInsurees();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,23 +118,19 @@ class _HomeContent extends State<HomeContent> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return Hero(
-                    transitionOnUserGestures: true,
-                    tag: products2[index].name,
-                    child: productWidget(
-                      product: products2[index],
-                      likebtn: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.star,
-                          color: green,
-                          size: 30,
-                        ),
+                  return productWidget(
+                    product: products[index],
+                    likebtn: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.star,
+                        color: green,
+                        size: 30,
                       ),
                     ),
                   );
                 },
-                itemCount: products2.length,
+                itemCount: products.length,
               ),
             ),
             Container(
@@ -165,22 +176,18 @@ class _HomeContent extends State<HomeContent> {
                     mainAxisSpacing: 10,
                     mainAxisExtent: 300),
                 itemBuilder: (_, index) {
-                  return Hero(
-                    transitionOnUserGestures: true,
-                    tag: products2[index].name,
-                    child: productWidget2(
-                      product: products2[index],
-                      btnicon: IconButton(
-                        icon: Icon(
-                          Icons.heart_broken,
-                          color: green,
-                        ),
-                        onPressed: () {},
+                  return productWidget2(
+                    product: products[index],
+                    btnicon: IconButton(
+                      icon: Icon(
+                        Icons.heart_broken,
+                        color: green,
                       ),
+                      onPressed: () {},
                     ),
                   );
                 },
-                itemCount: products2.length,
+                itemCount: products.length,
               ),
             ),
           ],
@@ -223,11 +230,12 @@ class _HomeContent extends State<HomeContent> {
                     width: MediaQuery.of(context).size.width * 0.50,
                     child: Stack(
                       children: [
-                        Image(
-                          image: AssetImage(product.images[0]),
-                          fit: BoxFit.cover,
-                          height: 200,
-                          width: 200,
+                        Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(product.images[0].toString())
+                                )
+                            )
                         ),
                         Positioned(
                           top: 20.0,
@@ -394,11 +402,13 @@ class productWidget2 extends StatelessWidget {
                 height: 205,
                 child: Stack(
                   children: [
-                    Image(
-                      image: AssetImage(product.images[0]),
-                      fit: BoxFit.cover,
-                      height: 200,
-                      width: double.infinity,
+
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(product.images[0])
+                        )
+                      )
                     ),
                     Positioned(
                       top: 20.0,

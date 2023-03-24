@@ -19,3 +19,5 @@ const red = Colors.red;
 
 // Default App Padding
 const appPadding = 16.0;
+const webPadding = 90.0;
+const kMaxWidth = 1232.0;
