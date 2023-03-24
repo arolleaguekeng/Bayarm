@@ -1,4 +1,5 @@
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:bayarm/screens/orders/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -55,7 +56,13 @@ class _PinPagesState extends State<PinPages> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 color: Colors.green,
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context),
+                  );
+                },
                 child: Center(
                   child: CustumText(
                     text: "Continue",
@@ -68,6 +75,98 @@ class _PinPagesState extends State<PinPages> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildPopupDialog(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            20.0,
+          ),
+        ),
+      ),
+      scrollable: true,
+      title: Icon(
+        Icons.check,
+        size: 50,
+        color: Colors.green,
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: CustumText(
+                text: "Order Sucessfully",
+                size: 20,
+                color: Colors.black,
+                weight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            child: Expanded(
+              child: CustumText(
+                text: "You have successfully made order",
+                size: 18,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: MaterialButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (__) {
+                      return OrderScreen();
+                    },
+                  ),
+                );
+              },
+              height: 50,
+              elevation: 0,
+              splashColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Colors.green,
+              child: Center(
+                child: CustumText(
+                  text: "View Order",
+                  size: 18,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            height: 50,
+            elevation: 0,
+            splashColor: Colors.green.shade100,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: Colors.green.shade100,
+            child: Center(
+              child: CustumText(
+                text: "E-receipt",
+                size: 18,
+                color: Colors.green,
+              ),
+            ),
+          ),
+        ],
+      ),
+      actions: <Widget>[],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/screens/historique/historique_screen.dart';
 import 'package:bayarm/screens/login/phone_number_login/function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -116,17 +117,28 @@ class _ProfileContent extends State<ProfileContent> {
               icon: Icons.help_center_outlined,
               onPress: () {}),
           ProfileMenuWidget(
-              title: "Invite Friends",
-              icon: Icons.people_alt_outlined,
-              onPress: () {}),
+            title: "Historique",
+            icon: Icons.list_sharp,
+            onPress: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (__) {
+                    return HistoriqueScreen();
+                  },
+                ),
+              );
+            },
+          ),
           ProfileMenuWidget(
-              title: "Logout",
-              icon: Icons.logout_outlined,
-              textColor: Colors.red,
-              endIcon: false,
-              onPress: () async {
+            title: "Logout",
+            icon: Icons.logout_outlined,
+            textColor: Colors.red,
+            endIcon: false,
+            onPress: () async {
               await disconnect();
-            },),
+            },
+          ),
         ]),
       )),
     );
