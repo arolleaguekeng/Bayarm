@@ -44,13 +44,17 @@ class _HistoriquePageState extends State<HistoriquePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ListView.builder(
-                itemBuilder: ((context, index) {
-                  return cardHistorique(
-                    historique: historiques[index],
-                  );
-                }),
-                itemCount: historiques.length,
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                height: MediaQuery.of(context).size.height / 1.2,
+                child: ListView.builder(
+                  itemBuilder: ((context, index) {
+                    return cardHistorique(
+                      historique: historiques[index],
+                    );
+                  }),
+                  itemCount: historiques.length,
+                ),
               ),
             ],
           ),
@@ -64,11 +68,58 @@ class _HistoriquePageState extends State<HistoriquePage> {
   }) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: ListTile(
-        title: CustumText(
-          text: historique.transaction.nom,
-          size: 18,
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ListTile(
+            title: CustumText(
+              text: historique.transaction.nom,
+              size: 18,
+            ),
+            leading: CircleAvatar(
+              child: Image.asset(
+                historique.transaction.product.images[0],
+                height: 30,
+                fit: BoxFit.cover,
+              ),
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: CustumText(
+                    text: historique.transaction.date.toString(),
+                    size: 15,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+            trailing: Column(
+              children: [
+                CustumText(
+                  text: "\$" + historique.transaction.montant,
+                  size: 18,
+                ),
+                Row(
+                  children: [
+                    CustumText(
+                      text: historique.valSend.toString(),
+                      size: 18,
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.add_box,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
