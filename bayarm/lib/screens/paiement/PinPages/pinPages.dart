@@ -27,21 +27,45 @@ class _PinPagesState extends State<PinPages> {
       ),
       body: Center(
         child: Container(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            CustumText(
-              text: "Enter your Pin to Confirm payment",
-              size: 18,
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Pinput(
-              length: 4,
-              onChanged: (value) {
-                setState(() {});
-              },
-            ),
-          ]),
+          margin: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustumText(
+                text: "Enter your Pin to Confirm payment",
+                size: 18,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Pinput(
+                length: 4,
+                onChanged: (value) {
+                  setState(() {});
+                },
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              MaterialButton(
+                height: 50,
+                elevation: 0,
+                splashColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: Colors.green,
+                onPressed: () {},
+                child: Center(
+                  child: CustumText(
+                    text: "Continue",
+                    size: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -18,16 +18,14 @@ Future<void> main() async {
           apiKey: "AIzaSyCThibdQlziIE70rTXU8BhveRAHQWJeq_g",
           projectId: "bayarm",
           messagingSenderId: "856757854744",
-          appId: "1:856757854744:web:56dc778d210b57a5f0596d"
-      ));
+          appId: "1:856757854744:web:56dc778d210b57a5f0596d"));
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  static  var auth = FirebaseAuth.instance;
+  static var auth = FirebaseAuth.instance;
 
   static Color appBarColor = primaryColor;
   // This widget is the root of your application.
@@ -45,7 +43,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.data == null ? const PhoneLoginScreen() :  NavigationScreen();
+          return snapshot.data == null
+              ? NavigationScreen()
+              : NavigationScreen();
         },
       ),
       color: secondaryColor,
