@@ -1,4 +1,5 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/screens/login/phone_number_login/function.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -123,7 +124,9 @@ class _ProfileContent extends State<ProfileContent> {
               icon: Icons.logout_outlined,
               textColor: Colors.red,
               endIcon: false,
-              onPress: () {}),
+              onPress: () async {
+              await disconnect();
+            },),
         ]),
       )),
     );
