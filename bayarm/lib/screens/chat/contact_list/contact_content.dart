@@ -20,15 +20,18 @@ class _ContactContent extends State<ContactContent> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      child: ListView.builder(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: 10,
-        itemBuilder: (context, index) => ContactCard(
-          onTap: () {},
+    return SingleChildScrollView(
+      child: Container(
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: 10,
+          itemBuilder: (context, index) => ContactCard(
+            onTap: () {},
+          ),
         ),
       ),
-    );
+    )
+      ;
   }
 }

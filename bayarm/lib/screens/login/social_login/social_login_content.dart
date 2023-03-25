@@ -1,10 +1,10 @@
-import 'package:bayarm/screens/components/forms/custom_button.dart';
-import 'package:bayarm/screens/login/password_login/password_login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants/constants.dart';
+import '../../../constants/responsive.dart';
+import '../../components/forms/custom_button.dart';
 import '../../components/forms/custom_text.dart';
+import '../phone_number_login/phone_login_screen.dart';
 
 class LoginContent extends StatefulWidget {
   const LoginContent({Key? key}) : super(key: key);
@@ -22,87 +22,137 @@ class _LoginContent extends State<LoginContent> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(40),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              "assets/images/svg/login.svg",
-              height: size.height * 0.3,
-            ),
-            const SizedBox(
-              height: appPadding,
-            ),
-            const CustumText(
-              text: "Let's you in",
-              size: 35,
-              weight: FontWeight.bold,
-              color: primaryColor,
-            ),
-            const SizedBox(
-              height: appPadding,
-            ),
+      body: Center(
+        child: Container(
+          margin: Responsive.isDesktop(context)
+              ? EdgeInsets.only(top: size.height / 4)
+              : EdgeInsets.all(appPadding),
+          width: size.width,
+          height: size.height,
+          child: Responsive.isMobile(context)
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: loginContent(size, context),
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: loginContent(size, context),
+                ),
+        ),
+      ),
+    );
+  }
 
-            buildConatainerIcons("assets/icons/ic_google.png","Continue with Google"),
+  List<Widget> loginContent(Size size, BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return [
+      Container(
+        width: Responsive.isMobile(context) ? size.width : size.width / 3,
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/images/png/login.png",
+              width: size.width / 3,
+            ),
             const SizedBox(
               height: appPadding,
             ),
-            buildConatainerIcons("assets/icons/ic_faceboock.png","Continue with Faceboock"),
+            if (Responsive.isMobile(context))
+              const CustumText(
+                text: "S'inscrire maintenant",
+                size: 35,
+                weight: FontWeight.bold,
+                color: primaryColor,
+              ),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: appPadding,
+      ),
+      Container(
+        width: Responsive.isMobile(context) ? size.width : size.width / 2,
+        child: Column(
+          children: [
+            if (!Responsive.isMobile(context))
+              const CustumText(
+                text: "S'inscrire maintenant",
+                size: 35,
+                weight: FontWeight.bold,
+                color: primaryColor,
+              ),
+              SizedBox(height: appPadding*3,),
+            buildConatainerIcons(
+                "assets/icons/ic_google.png", "Continuer avec Google"),
             const SizedBox(
               height: appPadding,
             ),
-            buildConatainerIcons("assets/icons/ic_apple.png","Continue with Apple"),
+            buildConatainerIcons(
+                "assets/icons/ic_faceboock.png", "Continuer with Faceboock"),
+            const SizedBox(
+              height: appPadding,
+            ),
+            buildConatainerIcons(
+                "assets/icons/ic_apple.png", "Continuer avec Apple"),
             const SizedBox(
               height: appPadding,
             ),
             const CustumText(
-              text: "OR",
+              text: "OU",
               size: 16,
               color: lightTextColor,
             ),
             const SizedBox(
               height: appPadding * 2,
             ),
-            CustomButton(
-                text: "Sign in with password",
-                width: size.width * 0.8,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => PasswordLoginScreen()));
-                })
+            Container(
+              width: 400,
+              child: CustomButton(
+                  text: "S'inscrire avec le Téléphone",
+                  width: size.width * 0.8,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => PhoneLoginScreen()));
+                  }),
+            ),
           ],
         ),
-      ),
-    );
+      )
+    ];
   }
 
   GestureDetector buildConatainerIcons(String iconUrl, String text) {
     return GestureDetector(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [BoxShadow(
-                  color: bgLightColor.withOpacity(0.7),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),]
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: 32,
-                    height: 32,
-                    child: Image.asset(iconUrl),
-                  ),
-                  const SizedBox(width: appPadding,),
-                  CustumText(text: text, size: 16)
-                ],
-              ),
+      child: Container(
+        width: 400,
+        padding: EdgeInsets.all(8),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(30), boxShadow: [
+          BoxShadow(
+            color: bgLightColor.withOpacity(0.7),
+            spreadRadius: 1,
+            blurRadius: 2,
+            offset: Offset(0, 3), // changes position of shadow
+          ),
+        ]),
+        child: Row(
+          children: [
+            Container(
+              width: 32,
+              height: 32,
+              child: Image.asset(iconUrl),
             ),
-            onTap: (){},
-          );
+            const SizedBox(
+              width: appPadding,
+            ),
+            CustumText(text: text, size: 16)
+          ],
+        ),
+      ),
+      onTap: () {},
+    );
   }
 }

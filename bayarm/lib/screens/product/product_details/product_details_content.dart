@@ -152,19 +152,23 @@ class _DetailsCardState extends State<DetailsCard>
             Container(
               margin: const EdgeInsets.only(left: 5),
               height: 40,
-              child: IconButton(
-                icon: Icon(
-                  Icons.shop,
-                  color: Colors.green,
-                  size: 35,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+              child: Column(
+                children: [
+                  CustumText(
+                    text: "Price",
+                    size: 18,
+                    weight: FontWeight.bold,
+                  ),
+                  CustumText(
+                    text: "18FCFA",
+                    size: 15,
+                    color: Colors.grey,
+                  )
+                ],
               ),
             ),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 5),
               child: MaterialButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (__) {
@@ -333,69 +337,120 @@ class _DetailsCardState extends State<DetailsCard>
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: Column(
                           children: [
-                            ListTile(
-                              leading: const Icon(
-                                Icons.list,
-                                color: Colors.black,
-                              ),
-                              title: const CustumText(
-                                text: 'Les plus populaires...',
-                                size: 15,
-                              ),
-                              trailing: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.arrow_right_alt,
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.list,
                                   color: Colors.black,
-                                  size: 20,
                                 ),
-                              ),
-                            ),
-                            ListTile(
-                              leading: const Icon(
-                                Icons.details,
-                                color: Colors.black,
-                              ),
-                              title: const CustumText(
-                                text: 'Détails du produit.',
-                                size: 15,
-                              ),
-                              trailing: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.arrow_right_alt,
-                                  color: Colors.black,
-                                  size: 20,
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Les plus populaires...',
+                                      size: 20,
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ),
-                            ListTile(
-                              leading: const Icon(
-                                Icons.list,
-                                color: Colors.black,
-                              ),
-                              title: const CustumText(
-                                text: 'Paiements',
-                                size: 15,
-                              ),
-                              trailing: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.money,
-                                  color: Colors.black,
-                                  size: 20,
-                                ),
-                              ),
-                              subtitle: Column(
-                                children: [
-                                  CustumText(
-                                    text:
-                                        'Profiter des paiements sécurisés et crypté',
-                                    size: 17,
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.arrow_right_alt,
+                                    color: Colors.black,
+                                    size: 20,
                                   ),
-                                ],
+                                ),
                               ),
                             ),
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.details,
+                                  color: Colors.black,
+                                ),
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Détails du produit.',
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.arrow_right_alt,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.list,
+                                  color: Colors.black,
+                                ),
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Paiements',
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.money,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: CustumText(
+                                            text:
+                                                'Profiter des paiements sécurisés et crypté',
+                                            size: 15,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 5),
+                                      height: 30,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 5),
+                                            height: 25,
+                                            child: Image.asset(
+                                              "assets/images/png/ecommerce.png",
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        },
+                                        itemCount: 3,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -404,15 +459,17 @@ class _DetailsCardState extends State<DetailsCard>
                       ),
                       CustumText(
                         text: "Avis sur le produit",
-                        size: 18,
+                        size: 22,
                         color: Colors.black,
+                        weight: FontWeight.bold,
                       ),
                       Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
-                              margin: const EdgeInsets.only(left: 5),
+                              margin: const EdgeInsets.only(left: 8),
                               padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -420,20 +477,20 @@ class _DetailsCardState extends State<DetailsCard>
                               ),
                               child: CustumText(
                                 text: '3405 Sold',
-                                size: 15,
+                                size: 18,
                                 color: green,
                               ),
                             ),
                             Icon(
                               Icons.star,
                               color: green,
-                              size: 18,
+                              size: 20,
                             ),
                             Container(
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               child: CustumText(
                                 text: '4.8',
-                                size: 15,
+                                size: 20,
                                 weight: FontWeight.bold,
                               ),
                             ),
@@ -441,13 +498,64 @@ class _DetailsCardState extends State<DetailsCard>
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               child: CustumText(
                                 text: '(4.80000à reviews)',
-                                size: 15,
+                                size: 20,
                                 weight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
                       ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            child: CustumText(
+                              text: "Quantity",
+                              size: 18,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              ),
+                              color: Colors.grey.shade100,
+                            ),
+                            padding: const EdgeInsets.all(4),
+                            margin: const EdgeInsets.symmetric(vertical: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    print("object");
+                                  },
+                                  icon: Icon(
+                                    Icons.add,
+                                    size: 15,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                CustumText(
+                                  text: "1",
+                                  size: 10,
+                                  color: Colors.green,
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    print("object");
+                                  },
+                                  icon: Icon(
+                                    Icons.remove,
+                                    size: 15,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 ),

@@ -20,7 +20,7 @@ class NavigationContent extends StatefulWidget {
 
 class _NavigationContent extends State<NavigationContent> {
   int currentTab = 0;
-  bool isProducer = true;
+  bool isProducer = false;
   final List<Widget> screens = [
     HomeScreen(),
     CartScreen(),
