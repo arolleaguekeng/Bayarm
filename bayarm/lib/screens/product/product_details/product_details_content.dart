@@ -2,6 +2,7 @@ import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
+import '../../paiement/paiement_screen.dart';
 
 class DetailsCard extends StatefulWidget {
   final ProductModel product;
@@ -117,8 +118,9 @@ class _DetailsCardState extends State<DetailsCard>
 
   @override
   Widget build(BuildContext context) {
+    String imagePicture = widget.product.images[0];
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      /*floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -139,155 +141,440 @@ class _DetailsCardState extends State<DetailsCard>
           ),
           buttonToggle(),
         ],
-      ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 350,
-                color: Colors.transparent,
-                child: Stack(
-                  children: [
-                    Image(
-                      image: AssetImage(widget.product.images[0]),
-                      fit: BoxFit.cover,
-                      width: double.infinity,
+      ),*/
+      bottomNavigationBar: Container(
+        color: Colors.transparent,
+        margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
+        height: 50,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 5),
+              height: 40,
+              child: Column(
+                children: [
+                  CustumText(
+                    text: "Price",
+                    size: 18,
+                    weight: FontWeight.bold,
+                  ),
+                  CustumText(
+                    text: "18FCFA",
+                    size: 15,
+                    color: Colors.grey,
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 5),
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (__) {
+                    return PaiementScreen();
+                  }));
+                },
+                height: 40,
+                elevation: 0,
+                textColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                color: green,
+                child: Center(
+                  child: Expanded(
+                    child: CustumText(
+                      size: 18,
+                      text: "Discuter maintenant",
+                      color: Colors.white,
                     ),
-                    const Positioned(
-                      top: 10.0,
-                      left: 10.0,
-                      child: BackButton(color: Colors.black),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-              Container(
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustumText(
-                      text: widget.product.name,
-                      size: 28,
-                      weight: FontWeight.bold,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.heart_broken_sharp,
-                        color: green,
-                        size: 20,
-                      ),
-                    ),
-                  ],
+            ),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (__) {
+                  return PaiementScreen();
+                }));
+              },
+              height: 40,
+              elevation: 0,
+              splashColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              color: green,
+              child: Center(
+                child: CustumText(
+                  size: 18,
+                  text: "Add to Card",
+                  color: Colors.white,
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(left: 5),
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: green),
-                      ),
-                      child: CustumText(
-                        text: '3405 Sold',
-                        size: 20,
-                        color: green,
-                      ),
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: green,
-                      size: 20,
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 5),
-                      child: CustumText(
-                        text: '4.8',
-                        size: 18,
-                        weight: FontWeight.bold,
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 5),
-                      child: CustumText(
-                        text: '(4.80000à reviews)',
-                        size: 18,
-                        weight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                ),
-                height: 0.5,
-                color: Colors.grey,
-                width: MediaQuery.of(context).size.width / 1.2,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CustumText(
-                          text: 'Description',
-                          size: 20,
-                          weight: FontWeight.bold,
-                        ),
-                      ],
-                    ),
-                    CustumText(
-                      text: widget.product.description,
-                      size: 15,
-                      weight: FontWeight.normal,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 10,
-                ),
-                height: 0.5,
-                color: Colors.grey,
-                width: MediaQuery.of(context).size.width / 1.2,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 5),
-                child: Column(
-                  children: [
-                    CustumText(
-                      text: 'Total price',
-                      size: 20,
-                      weight: FontWeight.bold,
-                    ),
-                    CustumText(
-                      text: widget.product.price,
-                      size: 15,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: MediaQuery.of(context).size.height * 0.6,
+            elevation: 0,
+            snap: true,
+            floating: true,
+            stretch: true,
+            backgroundColor: Colors.grey.shade50,
+            foregroundColor: Colors.black,
+            flexibleSpace: FlexibleSpaceBar(
+              stretchModes: [
+                StretchMode.zoomBackground,
+              ],
+              background: Hero(
+                transitionOnUserGestures: true,
+                tag: widget.product.name,
+                child: Image.asset(
+                  imagePicture,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(45),
+              child: Container(
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                child: Center(
+                  child: Container(
+                    width: 50,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.85,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 30,
+                  ),
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustumText(
+                        text: "Orders pictures",
+                        size: 18,
+                        color: Colors.black,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        height: 150,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                setState(() {
+                                  imagePicture = widget.product.images[index];
+                                });
+                              },
+                              child: CardImage(
+                                image: widget.product.images[index],
+                              ),
+                            );
+                          },
+                          itemCount: widget.product.images.length,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustumText(
+                                text: widget.product.name,
+                                size: 22,
+                                color: Colors.black,
+                                weight: FontWeight.bold,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              CustumText(
+                                text: widget.product.description,
+                                size: 20,
+                                color: Colors.blueGrey.shade900,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Column(
+                          children: [
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.list,
+                                  color: Colors.black,
+                                ),
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Les plus populaires...',
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.arrow_right_alt,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.details,
+                                  color: Colors.black,
+                                ),
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Détails du produit.',
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.arrow_right_alt,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Card(
+                              elevation: 0.5,
+                              child: ListTile(
+                                leading: const Icon(
+                                  Icons.list,
+                                  color: Colors.black,
+                                ),
+                                title: Row(
+                                  children: [
+                                    const CustumText(
+                                      text: 'Paiements',
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                trailing: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.money,
+                                    color: Colors.black,
+                                    size: 20,
+                                  ),
+                                ),
+                                subtitle: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: CustumText(
+                                            text:
+                                                'Profiter des paiements sécurisés et crypté',
+                                            size: 15,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Container(
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 5),
+                                      height: 30,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          return Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 5),
+                                            height: 25,
+                                            child: Image.asset(
+                                              "assets/images/png/ecommerce.png",
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        },
+                                        itemCount: 3,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      CustumText(
+                        text: "Avis sur le produit",
+                        size: 22,
+                        color: Colors.black,
+                        weight: FontWeight.bold,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 8),
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: green),
+                              ),
+                              child: CustumText(
+                                text: '3405 Sold',
+                                size: 18,
+                                color: green,
+                              ),
+                            ),
+                            Icon(
+                              Icons.star,
+                              color: green,
+                              size: 20,
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              child: CustumText(
+                                text: '4.8',
+                                size: 20,
+                                weight: FontWeight.bold,
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 5),
+                              child: CustumText(
+                                text: '(4.80000à reviews)',
+                                size: 20,
+                                weight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 20),
+                            child: CustumText(
+                              text: "Quantity",
+                              size: 18,
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              ),
+                              color: Colors.grey.shade100,
+                            ),
+                            padding: const EdgeInsets.all(4),
+                            margin: const EdgeInsets.symmetric(vertical: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    print("object");
+                                  },
+                                  icon: Icon(
+                                    Icons.add,
+                                    size: 15,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                CustumText(
+                                  text: "1",
+                                  size: 10,
+                                  color: Colors.green,
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    print("object");
+                                  },
+                                  icon: Icon(
+                                    Icons.remove,
+                                    size: 15,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget CardImage({required String image}) {
+    return Card(
+      margin: const EdgeInsets.only(left: 10),
+      child: Image.asset(
+        image,
+        fit: BoxFit.cover,
+      ),
+      elevation: 0.5,
     );
   }
 }

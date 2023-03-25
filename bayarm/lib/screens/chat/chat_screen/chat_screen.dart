@@ -29,7 +29,8 @@ class _ChatScreen extends State<ChatScreen> {
       backgroundColor: primaryColor,
       appBar: buildAppBar(),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child:
+        Container(
             color: transparent,
             child: Container(
               width: size.width,
@@ -119,14 +120,12 @@ class _ChatScreen extends State<ChatScreen> {
             )),
       ),
       body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                BodyChatCard(chatList: this.conversation.chatModels),
-              ],
-            ),
-          ],
+        child: Container(
+          child: Column(
+            children: [
+              BodyChatCard(conversation: this.conversation),
+            ],
+          ),
         ),
       ),
     );

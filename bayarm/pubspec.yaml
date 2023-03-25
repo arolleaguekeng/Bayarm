@@ -32,6 +32,12 @@ dependencies:
     sdk: flutter
   # For Use Svg pitures
   flutter_svg: ^1.1.6
+  # To Use DateTimePicker
+  flutter_datetime_picker: 1.2.5
+  # To Use Dark And Ligth Theme
+  # adaptive_theme: ^1.1.0
+  # To Use Country Code Picker
+  intl_phone_field: ^3.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,13 +46,15 @@ dependencies:
   flutter_chat_ui: ^1.6.6
   country_picker: ^2.0.20
   firebase_core: ^2.7.1
+  flutter_switch: ^0.3.2
   firebase_auth: ^4.2.10
   bottom_dialog: ^1.0.3
   firebase_storage: ^11.0.15
   cloud_firestore: ^4.4.4
-  intl_phone_field: ^3.1.0
+  auto_size_text: ^3.0.0
   pinput: ^2.2.7
   image_picker: ^0.8.7
+  image_picker_web: ^3.0.0+1
 
 dev_dependencies:
   flutter_test:

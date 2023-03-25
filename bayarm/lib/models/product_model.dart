@@ -1,20 +1,41 @@
 import 'package:bayarm/models/product_tarrif_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProductModel {
   final String id;
   final String name;
   final String description;
   final String price;
-  final List<ProductTarrifModel> tarrifModel;
-  List<String> images = ["assets/images/png/plant2.jpg"];
+  final String userId;
+  final Timestamp created_at;
+  List<dynamic> images = ["assets/images/png/plant2.jpg"];
+
+  factory ProductModel.fromFirestore(DocumentSnapshot documentSnapshot) {
+    Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
+
+
+    return ProductModel(
+      id: documentSnapshot.id,
+      name: data['name'] as String,
+      description: data['description'] as String,
+      price: data['price'] as String,
+      userId: data['userId'] as String,
+      created_at: data['pCreatedAt'] as Timestamp,
+      images: data['images'] as List<dynamic>,
+    );
+  }
 
   ProductModel(
-      {required this.id,
+      {this.id='',
+      required this.userId ,
       required this.name,
       required this.description,
       required this.price,
       required this.images,
-      required this.tarrifModel});
+      required this.created_at, });
+
+
 }
 
 class ProductModelCart extends ProductModel {
@@ -29,66 +50,17 @@ class ProductModelCart extends ProductModel {
 
   ProductModelCart({
     required super.id,
+    required super.userId,
     required super.name,
     required super.description,
     required super.price,
     required super.images,
     this.quantity = 1,
-    required super.tarrifModel,
+    required super.created_at,
   });
 }
 
-List<ProductModel> products2 = [
-  ProductModel(
-      id: '1',
-      images: [
-        'assets/images/png/plant2.jpg',
-        'assets/images/png/plant3.jpg',
-        'assets/images/png/plant4.jpg',
-      ],
-      tarrifModel: [
-        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
-      ],
-      name: 'Boston Ivy',
-      description: 'Climbs their storied walls.',
-      price: '\$13'),
-  ProductModel(
-      id: '1',
-      images: [
-        'assets/images/png/plant3.jpg',
-        'assets/images/png/plant4.jpg',
-        'assets/images/png/plant3.jpg'
-      ],
-      tarrifModel: [
-        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
-      ],
-      name: 'Green Succulent',
-      price: '\$11',
-      description: 'Store water in arid climates.'),
-  ProductModel(
-      id: '1',
-      name: 'Dieffenbachia Bonsa',
-      price: '\$10',
-      tarrifModel: [
-        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
-      ],
-      images: [
-        'assets/images/png/plant4.jpg',
-        'assets/images/png/plant3.jpg',
-        'assets/images/png/plant4.jpg',
-      ],
-      description: 'large group of beautiful tropical perennials'),
-  ProductModel(
-      id: '1',
-      tarrifModel: [
-        ProductTarrifModel(initialQuantity: 10, finalQuantity: 30, price: 5000)
-      ],
-      images: [
-        'assets/images/png/plant3.jpg',
-        'assets/images/png/plant4.jpg',
-        'assets/images/png/plant.jpg'
-      ],
-      name: 'Plantagenia',
-      description: 'Grown for their foliage rather than blooms',
-      price: '\$9')
-];
+DocumentReference<Map<String, dynamic>> _products =
+FirebaseFirestore.instance.doc('products');
+
+

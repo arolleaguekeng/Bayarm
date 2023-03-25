@@ -1,7 +1,13 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/screens/historique/historique_screen.dart';
 import 'package:bayarm/screens/login/phone_number_login/function.dart';
+import 'package:bayarm/screens/profiles/update_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
+//import 'package:adaptive_theme/adaptive_theme.dart';
+
+import 'widgets/profile_menu.dart';
 
 class ProfileContent extends StatefulWidget {
   const ProfileContent({Key? key}) : super(key: key);
@@ -13,13 +19,16 @@ class ProfileContent extends StatefulWidget {
 class _ProfileContent extends State<ProfileContent> {
   bool isLoading = true;
 
-  void initState() {}
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     var textBright = "Dark Mode";
-    var iconBright = Icons.dark_mode_outlined;
+    var iconBright;
     if (!isDark) {
       textBright = "Light Mode";
       iconBright = Icons.light_mode_outlined;
@@ -32,17 +41,20 @@ class _ProfileContent extends State<ProfileContent> {
       appBar: AppBar(
         backgroundColor: white,
         leading: const Icon(Icons.android, size: 20, color: Colors.black),
-        title: Text(
-          "Profil",
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
+        title: Text("Profil",
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall
+                ?.apply(color: Colors.black, fontWeightDelta: 5)),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Icon(Icons.menu_outlined),
           )
         ],
+        elevation: 0,
       ),
+      backgroundColor: white,
       body: SingleChildScrollView(
           child: Container(
         padding: const EdgeInsets.all(8.0),
@@ -66,8 +78,8 @@ class _ProfileContent extends State<ProfileContent> {
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.green,
                   ),
-                  child:
-                      const Icon(Icons.android, size: 20, color: Colors.white),
+                  child: const Icon(Icons.camera_alt_outlined,
+                      size: 20, color: Colors.white),
                 ),
               )
             ],
@@ -88,9 +100,12 @@ class _ProfileContent extends State<ProfileContent> {
 
           /***************** MENU ****************/
           ProfileMenuWidget(
-              title: "Edite Profile",
+              title: "Edit Profile",
               icon: Icons.person_2_outlined,
-              onPress: () {}),
+              onPress: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (_) => UpdateProfileContent()));
+              }),
           ProfileMenuWidget(
               title: "Address",
               icon: Icons.person_pin_circle_outlined,
@@ -104,9 +119,16 @@ class _ProfileContent extends State<ProfileContent> {
           ProfileMenuWidget(
               title: "Security", icon: Icons.security_outlined, onPress: () {}),
           ProfileMenuWidget(
-              title: "Language", icon: Icons.language_outlined, onPress: () {}),
+              title: "Language",
+              icon: Icons.language_outlined,
+              endText: "English (US)",
+              onPress: () {}),
           ProfileMenuWidget(
-              title: textBright, icon: iconBright, onPress: () {}),
+            title: textBright,
+            icon: iconBright,
+            onPress: () {},
+            endIcon: false,
+          ),
           ProfileMenuWidget(
               title: "Privacy Polyce",
               icon: Icons.lock_outline,
@@ -116,62 +138,30 @@ class _ProfileContent extends State<ProfileContent> {
               icon: Icons.help_center_outlined,
               onPress: () {}),
           ProfileMenuWidget(
-              title: "Invite Friends",
-              icon: Icons.people_alt_outlined,
-              onPress: () {}),
+            title: "Historique",
+            icon: Icons.list_sharp,
+            onPress: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (__) {
+                    return HistoriqueScreen();
+                  },
+                ),
+              );
+            },
+          ),
           ProfileMenuWidget(
-              title: "Logout",
-              icon: Icons.logout_outlined,
-              textColor: Colors.red,
-              endIcon: false,
-              onPress: () async {
+            title: "Logout",
+            icon: Icons.logout_outlined,
+            textColor: Colors.red,
+            endIcon: false,
+            onPress: () async {
               await disconnect();
-            },),
+            },
+          ),
         ]),
       )),
-    );
-  }
-}
-
-class ProfileMenuWidget extends StatelessWidget {
-  const ProfileMenuWidget({
-    super.key,
-    required this.title,
-    required this.icon,
-    required this.onPress,
-    this.endIcon = true,
-    this.textColor,
-  });
-
-  final String title;
-  final IconData icon;
-  final VoidCallback onPress;
-  final bool endIcon;
-  final Color? textColor;
-
-  @override
-  Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    var iconColor = isDark ? Colors.white : Colors.black;
-
-    return ListTile(
-      onTap: onPress,
-      leading: Container(
-        width: 30,
-        height: 30,
-        child: Icon(icon, color: Colors.black),
-      ),
-      title: Text(title,
-          style:
-              Theme.of(context).textTheme.bodyText2?.apply(color: textColor)),
-      trailing: endIcon
-          ? Container(
-              width: 30,
-              height: 30,
-              child: const Icon(Icons.navigate_next_outlined,
-                  size: 18.0, color: Colors.black),
-            )
-          : null,
     );
   }
 }

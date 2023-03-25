@@ -1,9 +1,11 @@
 import 'package:bayarm/screens/home/home_content.dart';
 import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
+import 'package:bayarm/services/db_services.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../models/product_model.dart';
+import '../../models/categories.dart';
 
 
 class PcProductListContent extends StatefulWidget {
@@ -14,6 +16,22 @@ class PcProductListContent extends StatefulWidget {
 }
 
 class _PcProductListContent extends State<PcProductListContent> {
+  DataBaseService db = DataBaseService();
+  bool isLoading = true;
+  List<Categorie> selectedCategorie = [];
+  List<ProductModel> products = [];
+
+  Future<void> getMupesInsurees() async {
+    var liste = await db.getListeDesObjets();
+    products =  <ProductModel>[];
+    products = liste;
+    setState(() {
+      isLoading = false;
+    });
+  }
+  void initState() {
+    getMupesInsurees();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +53,7 @@ class _PcProductListContent extends State<PcProductListContent> {
                       mainAxisExtent: 300),
                   itemBuilder: (_, index) {
                     return productWidget2(
-                      product: products2[index],
+                      product: products[index],
                       btnicon: IconButton(
                         icon: Icon(
                           Icons.heart_broken,
@@ -45,7 +63,7 @@ class _PcProductListContent extends State<PcProductListContent> {
                       ),
                     );
                   },
-                  itemCount: products2.length,
+                  itemCount: products.length,
                 ),
               ),
             ],
