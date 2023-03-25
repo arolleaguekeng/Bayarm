@@ -55,6 +55,7 @@ class DataBaseService {
       ProductModel objet = ProductModel.fromFirestore(documentSnapshot);
       listeDesObjets.add(objet);
     }
+    print("************************ Liste of products********************");
     print(listeDesObjets);
     return listeDesObjets;
   }

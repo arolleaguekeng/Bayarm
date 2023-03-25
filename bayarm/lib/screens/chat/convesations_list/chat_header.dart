@@ -19,23 +19,25 @@ class _ChatHeaderState extends State<ChatHeader> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: menuItems(context),
-          ),
-          Container(
-            height: size.height *0.8,
-            decoration: BoxDecoration(
-              color: white,
-              borderRadius: BorderRadius.circular(20)
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: menuItems(context),
             ),
-            child:body,
-          ),
-        ],
+            Container(
+              height: size.height *0.8,
+              decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child:body,
+            ),
+          ],
+        ),
       ),
     );
 
@@ -50,6 +52,7 @@ class _ChatHeaderState extends State<ChatHeader> {
           });
         },
         title: "Chat",
+        icon: Icons.chat_rounded,
       ),
       SizedBox(
         width: appPadding,
@@ -61,6 +64,7 @@ class _ChatHeaderState extends State<ChatHeader> {
           });
         },
         title: "Group",
+        icon: Icons.group,
       ),
       SizedBox(
         width: appPadding,
@@ -68,6 +72,7 @@ class _ChatHeaderState extends State<ChatHeader> {
       ChatHeaderMenu(
         press: () {},
         title: "Calls",
+        icon: Icons.phone_missed,
       ),
     ];
   }
@@ -80,22 +85,29 @@ class ChatHeaderMenu extends StatelessWidget {
   const ChatHeaderMenu({
     Key? key,
     required this.title,
-    required this.press,
+    required this.press, required this.icon,
   }) : super(key: key);
   final String title;
   final VoidCallback press;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: press,
-      child: Container(
-        child: Text(
-          title,
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            fontSize: 20,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(icon),
+          Container(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 20,
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

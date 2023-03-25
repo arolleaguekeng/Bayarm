@@ -4,6 +4,7 @@ import 'package:bayarm/models/conversation_model.dart';
 import 'package:bayarm/models/user_model.dart';
 import 'package:bayarm/screens/chat/chat_screen/chat_screen.dart';
 import 'package:bayarm/screens/chat/convesations_list/cart_conversation.dart';
+import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -104,50 +105,93 @@ class _ConversationContent extends State<ConversationContent> {
               child: chatBody,
             ),
           ),
-          Expanded(flex: 2,child: Container(
-            child: Column(
-              children: [
-                Stack(
+          Expanded(
+              flex: 2,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 120,
-                      height: 120,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.asset("assets/images/png/profile.png")),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.green,
+                    Stack(
+                      children: [
+                        SizedBox(
+                          width: 120,
+                          height: 120,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child:
+                                  Image.asset("assets/images/png/profile.png")),
                         ),
-                        child:
-                        const Icon(Icons.phone, size: 20, color: Colors.white),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.green,
+                            ),
+                            child: const Icon(Icons.phone,
+                                size: 20, color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text("Producer",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.apply(color: Colors.black, fontWeightDelta: 5)),
+                    Text("+237 02332132",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2
+                            ?.apply(color: Colors.black)),
+                    const Divider(),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children:  [
+                              Row(
+                                children: const [
+                                  CustumText(text: "Medias,docs,Links:  ", size: 14, color: lightTextColor,),
+                                  CustumText(text: "40", size: 14, color: lightTextColor),
+                                ],
+                              ),
+                              CustumText(text: "See All", size: 14, color: lightTextColor),
+
+                            ],
+                          ),
+                          const SizedBox(height: appPadding),
+                          Container(
+                            width: size.width*0.3,
+                            height: 70,
+                            child: ListView.builder(
+                                itemCount: 5,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) => Container(
+                                    height: 60,
+                                    width: 60,
+                                    child:
+                                        Image.asset("assets/images/png/plant$index.jpg"))),
+                          ),
+                          const Divider(),
+                          const SizedBox(height: 20),
+                          const CustumText(
+                              text: "New produts of Producer  ",size: 14, color: lightTextColor,),
+
+                        ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-                const SizedBox(height: 10),
-                Text("Producer",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium
-                        ?.apply(color: Colors.black, fontWeightDelta: 5)),
-                Text("+237 02332132",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyText2
-                        ?.apply(color: Colors.black)),
-                const Divider(),
-                const SizedBox(height: 20),
-              ],
-            ),
-          ))
+              ))
         ],
       ),
     );

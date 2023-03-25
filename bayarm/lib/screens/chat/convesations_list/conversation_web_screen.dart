@@ -59,7 +59,7 @@ class ConversationWebScreen extends StatelessWidget {
           children: [
             Header(),
             const SizedBox(height: appPadding,),
-            ChatHeader(),
+            SingleChildScrollView(child: ChatHeader()),
           ],
         ),
       ),
