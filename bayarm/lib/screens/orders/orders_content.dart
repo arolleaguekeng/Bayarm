@@ -61,9 +61,11 @@ class _OrderContent extends State<OrderContent> {
         child: TabBarWidget(
           tabs: const [
             Tab(
+              icon: Icon(Icons.notifications_active),
               text: 'Active',
             ),
             Tab(
+              icon: Icon(Icons.content_paste_outlined),
               text: 'Complete',
             ),
           ],

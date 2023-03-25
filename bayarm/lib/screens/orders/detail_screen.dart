@@ -100,7 +100,7 @@ class _DetailActive extends State<DetailActive> {
                                   '29',
                                   style: TextStyle(
                                       fontSize: 16,
-                                      color: green,
+                                      color: primaryColor,
                                       fontWeight: FontWeight.bold),
                                 )
                               ],
@@ -127,14 +127,14 @@ class _DetailActive extends State<DetailActive> {
                   children: [
                     IconButton(
                         onPressed: () {},
-                        color: Colors.green,
+                        color: primaryColor,
                         icon: Icon(Icons.card_travel_sharp)),
                     SizedBox(
                       width: appPadding,
                     ),
                     IconButton(
                         onPressed: () {},
-                        color: Colors.green,
+                        color: primaryColor,
                         icon: Icon(Icons.fire_truck)),
                     SizedBox(
                       width: appPadding,
@@ -160,14 +160,14 @@ class _DetailActive extends State<DetailActive> {
                   children: [
                     IconButton(
                         onPressed: () {},
-                        color: Colors.green,
+                        color: primaryColor,
                         icon: Icon(Icons.task_alt_rounded)),
                     SizedBox(
                       width: appPadding,
                     ),
                     IconButton(
                         onPressed: () {},
-                        color: Colors.green,
+                        color: primaryColor,
                         icon: Icon(Icons.task_alt_rounded)),
                     SizedBox(
                       width: appPadding,
@@ -217,7 +217,7 @@ class _DetailActive extends State<DetailActive> {
                     const Icon(
                       Icons.adjust_rounded,
                       size: 30,
-                      color: Colors.green,
+                      color: primaryColor,
                     ),
                     const SizedBox(
                       width: appPadding,
@@ -257,7 +257,7 @@ class _DetailActive extends State<DetailActive> {
                     const Icon(
                       Icons.adjust_rounded,
                       size: 30,
-                      color: Colors.green,
+                      color: primaryColor,
                     ),
                     const SizedBox(
                       width: appPadding,
@@ -272,7 +272,7 @@ class _DetailActive extends State<DetailActive> {
                               size: 20,
                               align: TextAlign.center),
                           CustumText(
-                              text: "4 Evergreen Street Lake Zurish IL 60047",
+                              text: "4 EverprimaryColor Street Lake Zurish IL 60047",
                               size: 14)
                         ],
                       ),
@@ -297,7 +297,7 @@ class _DetailActive extends State<DetailActive> {
                     const Icon(
                       Icons.adjust_rounded,
                       size: 30,
-                      color: Colors.green,
+                      color: primaryColor,
                     ),
                     const SizedBox(
                       width: appPadding,
@@ -337,7 +337,7 @@ class _DetailActive extends State<DetailActive> {
                     const Icon(
                       Icons.adjust_rounded,
                       size: 30,
-                      color: Colors.green,
+                      color: primaryColor,
                     ),
                     const SizedBox(
                       width: appPadding,

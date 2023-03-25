@@ -61,13 +61,13 @@ class CompleteItemCard extends StatelessWidget {
                         CustumText(
                           text: "Complete",
                           size: 12,
-                          color: green,
+                          color: primaryColor,
                         ),
                         Text(
                           '${ActiveItem.price}',
                           style: TextStyle(
                               fontSize: 16,
-                              color: green,
+                              color: primaryColor,
                               fontWeight: FontWeight.bold),
                         )
                       ],
@@ -133,13 +133,13 @@ class CompleteItemCard extends StatelessWidget {
                                             CustumText(
                                               text: "Complete",
                                               size: 12,
-                                              color: green,
+                                              color: primaryColor,
                                             ),
                                             Text(
                                               '${ActiveItem.price}',
                                               style: TextStyle(
                                                   fontSize: 16,
-                                                  color: green,
+                                                  color: primaryColor,
                                                   fontWeight: FontWeight.bold),
                                             )
                                           ],
@@ -182,22 +182,22 @@ class CompleteItemCard extends StatelessWidget {
                                     IconButton(
                                       onPressed: () {},
                                       icon: const Icon(Icons.star),
-                                      color: Colors.green,
+                                      color: primaryColor,
                                     ),
                                     IconButton(
                                       onPressed: () {},
                                       icon: const Icon(Icons.star),
-                                      color: Colors.green,
+                                      color: primaryColor,
                                     ),
                                     IconButton(
                                       onPressed: () {},
                                       icon: const Icon(Icons.star),
-                                      color: Colors.green,
+                                      color: primaryColor,
                                     ),
                                     IconButton(
                                       onPressed: () {},
                                       icon: const Icon(Icons.star),
-                                      color: Colors.green,
+                                      color: primaryColor,
                                     ),
                                     IconButton(
                                       onPressed: () {},
@@ -206,7 +206,6 @@ class CompleteItemCard extends StatelessWidget {
                                   ],
                                 ),
                                 Container(
-                                  
                                   child: Row(
                                     children: [
                                       Text(
@@ -236,7 +235,7 @@ class CompleteItemCard extends StatelessWidget {
                                         style: TextStyle(fontSize: 18),
                                       ),
                                       style: TextButton.styleFrom(
-                                        primary: Colors.green,
+                                        primary: primaryColor,
                                         backgroundColor:
                                             Color.fromARGB(255, 184, 187, 185),
                                       ),
@@ -252,7 +251,7 @@ class CompleteItemCard extends StatelessWidget {
                                       ),
                                       style: TextButton.styleFrom(
                                         primary: Colors.white,
-                                        backgroundColor: Colors.green,
+                                        backgroundColor: primaryColor,
                                       ),
                                     ),
                                   ],
@@ -263,7 +262,7 @@ class CompleteItemCard extends StatelessWidget {
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.white,
-                      backgroundColor: Colors.green, // Background Color
+                      backgroundColor: primaryColor, // Background Color
                     ),
                     child: const Text(
                       'Leave a Review',
@@ -322,13 +321,13 @@ class CompleteItemCard extends StatelessWidget {
                                       CustumText(
                                         text: "Complete",
                                         size: 12,
-                                        color: green,
+                                        color: primaryColor,
                                       ),
                                       Text(
                                         '&79',
                                         style: TextStyle(
                                             fontSize: 16,
-                                            color: green,
+                                            color: primaryColor,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],

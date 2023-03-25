@@ -3,7 +3,6 @@ import 'package:bayarm/screens/login/phone_number_login/function.dart';
 import 'package:bayarm/screens/login/phone_number_login/verification_otp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class PhoneLoginContent extends StatefulWidget {
   const PhoneLoginContent({Key? key}) : super(key: key);

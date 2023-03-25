@@ -62,13 +62,13 @@ class ActiveItemCard extends StatelessWidget {
                         CustumText(
                           text: "In  Delivery",
                           size: 12,
-                          color: green,
+                          color: primaryColor,
                         ),
                         Text(
                           '${ActiveItem.price}',
                           style: TextStyle(
                               fontSize: 16,
-                              color: green,
+                              color: primaryColor,
                               fontWeight: FontWeight.bold),
                         )
                       ],
@@ -87,7 +87,7 @@ class ActiveItemCard extends StatelessWidget {
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.white,
-                      backgroundColor: Colors.green, // Background Color
+                      backgroundColor: primaryColor, // Background Color
                     ),
                     child: const Text(
                       'Track Order ',
