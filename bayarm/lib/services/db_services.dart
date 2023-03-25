@@ -12,7 +12,8 @@ import 'package:image_picker_web/image_picker_web.dart';
 class DataBaseService {
   CollectionReference _products =
       FirebaseFirestore.instance.collection('products');
-  FirebaseStorage _storage = FirebaseStorage.instanceFor(bucket: "bayarm.appspot.com");
+  FirebaseStorage _storage =
+      FirebaseStorage.instanceFor(bucket: "bayarm.appspot.com");
 
   // //upload image to Firebase Storage Mobile
   // Future<String> uploadFile() async {
@@ -29,9 +30,10 @@ class DataBaseService {
     final FirebaseStorage storage = FirebaseStorage.instance;
     final Reference ref = storage.ref().child('products/${DateTime.now()}.png');
     final UploadTask uploadTask = ref.putData(imageBytes!);
-    final snapshot = await uploadTask.whenComplete(() => print('Upload complete'));
-    final downloadUrl =  snapshot.ref.getDownloadURL();
-    return  downloadUrl;
+    final snapshot =
+        await uploadTask.whenComplete(() => print('Upload complete'));
+    final downloadUrl = snapshot.ref.getDownloadURL();
+    return downloadUrl;
   }
 
   // Add products in FireStore Database
@@ -49,7 +51,8 @@ class DataBaseService {
   Future<List<ProductModel>> getListeDesObjets() async {
     List<ProductModel> listeDesObjets = [];
 
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('products').get();
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('products').get();
 
     for (DocumentSnapshot documentSnapshot in querySnapshot.docs) {
       ProductModel objet = ProductModel.fromFirestore(documentSnapshot);

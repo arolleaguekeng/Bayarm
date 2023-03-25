@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  bottom_dialog:
+    dependency: "direct main"
+    description:
+      name: bottom_dialog
+      sha256: "81051e7bf9c7d0cf340d6b37751fb5d7b89125b2ea23352d4187ce6e897a58a3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   characters:
     dependency: transitive
     description:
@@ -230,6 +238,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.6.6"
+  flutter_datetime_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_datetime_picker
+      sha256: ae15b8b2c8c4b91c056fd8b2d38513cfe299d779f91e68bc9e8068a40507f5c6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.5"
   flutter_link_previewer:
     dependency: transitive
     description:
@@ -278,6 +294,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.6"
+  flutter_switch:
+    dependency: "direct main"
+    description:
+      name: flutter_switch
+      sha256: b91477f926bba135d2d203d7b24367492662d8d9c3aa6adb960b14c1087d3c41
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter

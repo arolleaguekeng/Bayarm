@@ -38,7 +38,7 @@ class _AddProductContent extends State<AddProductContent> {
     String _pName = '';
     String _pDescription = '';
     String _price = '';
-    _user_id = _user_id ?? "";
+    _user_id = _user_id ?? " ";
     _user_id = user!.uid;
     String _formError = "Please Enter Produtc name";
     print("***********************************");
@@ -107,12 +107,14 @@ class _AddProductContent extends State<AddProductContent> {
                 text: "Validate",
                 onPressed: () {
                   onSubmit(
-                      context: context,
-                      price: _price,
-                      pDescription: _pDescription,
-                      keyForm1: _keyForm1,
-                      keyForm2: _keyForm2,
-                      keyForm3: _keyForm3, pName: _pName,);
+                    context: context,
+                    price: _price,
+                    pDescription: _pDescription,
+                    keyForm1: _keyForm1,
+                    keyForm2: _keyForm2,
+                    keyForm3: _keyForm3,
+                    pName: _pName,
+                  );
                 })
           ],
         ),
