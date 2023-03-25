@@ -9,16 +9,16 @@ class Welcome {
 
 var welcomeDatas = [
   Welcome(
-      title: "Bienvenue Sur Bayarm",
+      title: "Welcome to Bayarm",
       description:
-          "Ici, Vous pouvez acheter et vendre des produits agros alimentaire",
-      image: "assets/images/svg/performance.svg"),
+          "Your online food product market",
+      image: "assets/images/png/ecommerce.png"),
   Welcome(
-      title: "Vous êtes un Producteur ?",
-      description: "Cette application est faite pour vous",
-      image: "assets/images/svg/drone.svg"),
+      title: "Quick and easy purchase",
+      description: "Buy your Agri-food products wholesale directly from the producer",
+      image: "assets/images/png/poultry.png"),
   Welcome(
-      title: "Vous êtes clients ?",
-      description: "Vous pourer parcourrir un large choix de produits",
-      image: "assets/images/svg/quality.svg"),
+      title: "Are you a reseller?",
+      description: "Create a large network of farmers and breeders",
+      image: "assets/images/png/online.png"),
 ];

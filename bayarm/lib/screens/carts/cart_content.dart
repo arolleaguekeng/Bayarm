@@ -1,9 +1,10 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
+import 'package:bayarm/models/product_tarrif_model.dart';
 import 'package:bayarm/screens/carts/cart_product_card.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
-import 'package:bayarm/screens/home/homes_pages/details.dart';
+import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,115 +16,73 @@ class CartContent extends StatefulWidget {
         name: "Polets",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
     ProductModelCart(
         id: "1",
         name: "Cabriol",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
     ProductModelCart(
         id: "1",
         name: "Polets",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
     ProductModelCart(
         id: "1",
         name: "Polets",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
     ProductModelCart(
         id: "1",
         name: "Polets",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
     ProductModelCart(
         id: "1",
         name: "Polets",
         description: "poulets de l'ouest",
         price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: []),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
-    ProductModelCart(
-        id: "1",
-        name: "Polets",
-        description: "poulets de l'ouest",
-        price: "2000",
-        images: ['assets/images/png/plant2.jpg']),
+        tarrifModel: [
+          ProductTarrifModel(
+              initialQuantity: 10, finalQuantity: 30, price: 5000)
+        ],
+        images: [
+          'assets/images/png/plant2.jpg'
+        ]),
   ];
   @override
   State<CartContent> createState() => _CartContent();
@@ -205,7 +164,7 @@ class _CartContent extends State<CartContent> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (_) {
-                                          return DetailsCard(
+                                          return ProductDetailsScreen(
                                               product: productList[index]);
                                         },
                                       ),

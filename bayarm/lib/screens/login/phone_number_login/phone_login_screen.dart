@@ -1,12 +1,10 @@
-import 'package:bayarm/models/product_model.dart';
-import 'package:bayarm/screens/product/product_details/product_details_content.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
+import 'phone_login_content.dart';
 
-class ProductDetailsScreen extends StatelessWidget {
-  final ProductModel product;
-  ProductDetailsScreen({Key? key, required this.product});
+class PhoneLoginScreen extends StatelessWidget {
+  const PhoneLoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +13,10 @@ class ProductDetailsScreen extends StatelessWidget {
       body: SafeArea(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Expanded(
               flex: 5,
-              child: DetailsCard(
-                product: product,
-              ),
+              child: PhoneLoginContent(),
             )
           ],
         ),

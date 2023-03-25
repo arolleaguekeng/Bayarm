@@ -45,10 +45,11 @@ class _WelcomeContent extends State<WelcomeContent> {
           itemCount: welcomeDatas.length,
           itemBuilder: (_, i) {
             return Padding(
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.all(20),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
+                  Image.asset(
                     data[i].image,
                     height: size.height * 0.5,
                   ),
@@ -110,7 +111,7 @@ class _WelcomeContent extends State<WelcomeContent> {
       width: currentIndex == index ? 20 : 10,
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: primaryColor),
+          borderRadius: BorderRadius.circular(20), color:currentIndex == index ? primaryColor:grey),
     );
   }
 }

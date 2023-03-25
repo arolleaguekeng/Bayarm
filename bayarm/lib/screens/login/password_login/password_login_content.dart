@@ -29,9 +29,9 @@ class _PasswordLoginContent extends State<PasswordLoginContent> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              "assets/images/svg/login.svg",
-              height: size.height * 0.2,
+            Image.asset(
+              "assets/images/png/login.png",
+              height: size.height * 0.4,
             ),
             const SizedBox(
               height: appPadding,

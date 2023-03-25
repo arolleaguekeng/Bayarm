@@ -1,4 +1,5 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/screens/login/phone_number_login/function.dart';
 import 'package:bayarm/screens/profiles/update_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -140,11 +141,14 @@ class _ProfileContent extends State<ProfileContent> {
               icon: Icons.people_alt_outlined,
               onPress: () {}),
           ProfileMenuWidget(
-              title: "Logout",
-              icon: Icons.logout_outlined,
-              textColor: Colors.red,
-              endIcon: false,
-              onPress: () {}),
+            title: "Logout",
+            icon: Icons.logout_outlined,
+            textColor: Colors.red,
+            endIcon: false,
+            onPress: () async {
+              await disconnect();
+            },
+          ),
         ]),
       )),
     );

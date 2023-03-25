@@ -1,7 +1,7 @@
 import 'package:bayarm/models/categories.dart';
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-import 'package:bayarm/screens/home/homes_pages/details.dart';
+import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -103,14 +103,18 @@ class _HomeContent extends State<HomeContent> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return productWidget(
-                    product: products2[index],
-                    likebtn: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.star,
-                        color: green,
-                        size: 30,
+                  return Hero(
+                    transitionOnUserGestures: true,
+                    tag: products2[index].name,
+                    child: productWidget(
+                      product: products2[index],
+                      likebtn: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.star,
+                          color: green,
+                          size: 30,
+                        ),
                       ),
                     ),
                   );
@@ -161,14 +165,18 @@ class _HomeContent extends State<HomeContent> {
                     mainAxisSpacing: 10,
                     mainAxisExtent: 300),
                 itemBuilder: (_, index) {
-                  return productWidget2(
-                    product: products2[index],
-                    btnicon: IconButton(
-                      icon: Icon(
-                        Icons.heart_broken,
-                        color: green,
+                  return Hero(
+                    transitionOnUserGestures: true,
+                    tag: products2[index].name,
+                    child: productWidget2(
+                      product: products2[index],
+                      btnicon: IconButton(
+                        icon: Icon(
+                          Icons.heart_broken,
+                          color: green,
+                        ),
+                        onPressed: () {},
                       ),
-                      onPressed: () {},
                     ),
                   );
                 },
@@ -189,7 +197,7 @@ class _HomeContent extends State<HomeContent> {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return DetailsCard(product: product);
+              return ProductDetailsScreen(product: product);
             },
           ),
         );
@@ -364,7 +372,7 @@ class productWidget2 extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (_) {
-              return DetailsCard(product: product);
+              return ProductDetailsScreen(product: product);
             },
           ),
         );

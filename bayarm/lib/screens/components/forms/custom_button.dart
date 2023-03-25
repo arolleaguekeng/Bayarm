@@ -25,10 +25,15 @@ class CustomButton extends StatelessWidget {
             shape: StadiumBorder(),
             onPrimary: this.textcolor,
             primary: this.bgcolor,
-            padding: EdgeInsets.symmetric(horizontal: appPadding, vertical: 20),
+            padding: const EdgeInsets.symmetric(
+                horizontal: appPadding, vertical: 20),
             minimumSize: Size(this.width, this.height),
             maximumSize: Size(this.width, this.height)),
         child: Text(text),
+
         onPressed: onPressed,
+
       );
 }
+
+

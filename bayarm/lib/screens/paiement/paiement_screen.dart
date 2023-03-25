@@ -1,10 +1,10 @@
+import 'package:bayarm/screens/paiement/paiement_content.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
-import 'home_content.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class PaiementScreen extends StatelessWidget {
+  const PaiementScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,16 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: const [
-            SizedBox(width: appPadding*0.7,),
+            SizedBox(
+              width: appPadding,
+            ),
             Expanded(
               flex: 5,
-              child: HomeContent(),
+              child: PaiementContent(),
             ),
-            SizedBox(width: appPadding*0.7,)
+            SizedBox(
+              width: appPadding,
+            )
           ],
         ),
       ),

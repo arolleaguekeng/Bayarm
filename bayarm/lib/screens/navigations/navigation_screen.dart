@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 import 'navigation_content.dart';
 
 class NavigationScreen extends StatelessWidget {
-  const NavigationScreen({Key? key}) : super(key: key);
+   NavigationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

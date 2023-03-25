@@ -28,8 +28,8 @@ class _LoginContent extends State<LoginContent> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              "assets/images/svg/drone.svg",
-              height: size.height * 0.2,
+              "assets/images/svg/login.svg",
+              height: size.height * 0.3,
             ),
             const SizedBox(
               height: appPadding,
@@ -43,48 +43,22 @@ class _LoginContent extends State<LoginContent> {
             const SizedBox(
               height: appPadding,
             ),
+
+            buildConatainerIcons("assets/icons/ic_google.png","Continue with Google"),
             const SizedBox(
               height: appPadding,
             ),
-            CustomButton(
-                text: "Continue with Google",
-                width: size.width * 0.8,
-                bgcolor: white,
-                textcolor: textColor,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => PasswordLoginScreen()));
-                }),
+            buildConatainerIcons("assets/icons/ic_faceboock.png","Continue with Faceboock"),
             const SizedBox(
               height: appPadding,
             ),
-            CustomButton(
-                text: "Continue with Faceboock",
-                width: size.width,
-                bgcolor: white,
-                textcolor: textColor,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => PasswordLoginScreen()));
-                }),
+            buildConatainerIcons("assets/icons/ic_apple.png","Continue with Apple"),
             const SizedBox(
               height: appPadding,
-            ),
-            CustomButton(
-                text: "Continue with Apple",
-                width: size.width * 0.8,
-                bgcolor: white,
-                textcolor: textColor,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => PasswordLoginScreen()));
-                }),
-            const SizedBox(
-              height: appPadding * 2,
             ),
             const CustumText(
               text: "OR",
-              size: 20,
+              size: 16,
               color: lightTextColor,
             ),
             const SizedBox(
@@ -101,5 +75,34 @@ class _LoginContent extends State<LoginContent> {
         ),
       ),
     );
+  }
+
+  GestureDetector buildConatainerIcons(String iconUrl, String text) {
+    return GestureDetector(
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [BoxShadow(
+                  color: bgLightColor.withOpacity(0.7),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),]
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 32,
+                    height: 32,
+                    child: Image.asset(iconUrl),
+                  ),
+                  const SizedBox(width: appPadding,),
+                  CustumText(text: text, size: 16)
+                ],
+              ),
+            ),
+            onTap: (){},
+          );
   }
 }
