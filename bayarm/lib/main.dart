@@ -3,12 +3,7 @@ import 'package:bayarm/screens/login/phone_number_login/phone_login_screen.dart'
 import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/profiles/profiles_content.dart';
-<<<<<<< HEAD
-import 'package:bayarm/screens/profiles/profiles_screen.dart';
-import 'package:bayarm/screens/profiles/update_profile_screen.dart';
-=======
 import 'package:bayarm/screens/web_design/home/home_screen.dart';
->>>>>>> fb5a24087c9eb522298d38afb721e39d9e3964b1
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
