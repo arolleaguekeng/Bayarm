@@ -95,28 +95,9 @@ class _HistoriquePageState extends State<HistoriquePage> {
                 ),
               ],
             ),
-            trailing: Column(
-              children: [
-                CustumText(
-                  text: "\$" + historique.transaction.montant,
-                  size: 18,
-                ),
-                Row(
-                  children: [
-                    CustumText(
-                      text: historique.valSend.toString(),
-                      size: 18,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.add_box,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            trailing: CustumText(
+              text: "\$" + historique.transaction.montant,
+              size: 18,
             ),
           ),
         ],

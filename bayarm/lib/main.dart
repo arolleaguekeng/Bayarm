@@ -22,16 +22,14 @@ Future<void> main() async {
           projectId: "bayarm",
           storageBucket: "bayarm.appspot.com",
           messagingSenderId: "856757854744",
-          appId: "1:856757854744:web:56dc778d210b57a5f0596d"
-      ));
+          appId: "1:856757854744:web:56dc778d210b57a5f0596d"));
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  static  var auth = FirebaseAuth.instance;
+  static var auth = FirebaseAuth.instance;
 
   static Color appBarColor = primaryColor;
   // This widget is the root of your application.
@@ -47,7 +45,6 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
       home: kIsWeb ? HomeWebScreen() : NavigationScreen(),
-
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );
