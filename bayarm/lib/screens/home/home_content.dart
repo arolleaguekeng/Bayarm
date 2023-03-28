@@ -230,12 +230,7 @@ class _HomeContent extends State<HomeContent> {
                     width: MediaQuery.of(context).size.width * 0.50,
                     child: Stack(
                       children: [
-                        Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage(product.images[0].toString())
-                                )
-                            )
+                        Image.network(product.images[0].toString(), 
                         ),
                         Positioned(
                           top: 20.0,

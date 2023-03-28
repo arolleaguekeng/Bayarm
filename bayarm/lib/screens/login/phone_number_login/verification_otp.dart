@@ -75,7 +75,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
     await validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? HomeScreen() : NavigationScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? NavigationScreen() : NavigationScreen()));
     print("Vérification éfectué avec succès");
   }
 

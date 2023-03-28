@@ -32,6 +32,7 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
   }
   void initState() {
     getMupesInsurees();
+
   }
   @override
   Widget build(BuildContext context) {
@@ -76,6 +77,8 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
       ],
     );
   }
+
+
   Widget SpecialOfferItem(
       {required ProductModel product, required IconButton likebtn}) {
     return GestureDetector(

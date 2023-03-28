@@ -56,7 +56,7 @@ class PcProductListScreen extends StatelessWidget {
               onPressed: () {
                 this.user = MyApp.auth.currentUser;
                 print("********************************************************");
-                print(user!.phoneNumber);
+                //print(user!.phoneNumber);
                 Navigator.push(context, MaterialPageRoute(builder: (_)=> AddProductScreen()));
               },
               icon: const Icon(
