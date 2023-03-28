@@ -1,8 +1,8 @@
 import 'package:bayarm/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import '../notfoundPage.dart';
-import '../screens/home/homes_pages/popular_allPage.dart';
-import '../screens/home/homes_pages/speacial_allPage.dart';
+import '../screens/home/most_popular/most_popular_screen.dart';
+import '../screens/home/special_offers/speacial_offers_screen.dart';
 
 class CustomRoute {
   static Route<dynamic> allRoutes(RouteSettings settings) {

@@ -1,20 +1,21 @@
+import 'package:bayarm/screens/home/most_popular/most_popular_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../models/categories.dart';
 import '../../../models/product_model.dart';
 import '../../../services/db_services.dart';
-import '../../components/forms/custom_text.dart';
 import '../home_content.dart';
+import 'special_offer_product_item.dart';
 
-class PopularAllPage extends StatefulWidget {
-  const PopularAllPage({super.key});
+class SpecialApp extends StatefulWidget {
+  const SpecialApp({super.key});
 
   @override
-  State<PopularAllPage> createState() => _PopularAllPageState();
+  State<SpecialApp> createState() => _SpecialAppState();
 }
 
-class _PopularAllPageState extends State<PopularAllPage> {
+class _SpecialAppState extends State<SpecialApp> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
@@ -35,7 +36,7 @@ class _PopularAllPageState extends State<PopularAllPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: custumAppBar(
-        title: 'Most Popular',
+        title: 'Special Popular',
         action: [
           IconButton(
             onPressed: () {},
@@ -66,9 +67,9 @@ class _PopularAllPageState extends State<PopularAllPage> {
                       mainAxisSpacing: 10,
                       mainAxisExtent: 300),
                   itemBuilder: (_, index) {
-                    return productWidget2(
+                    return SoProductCard(
                       product: products[index],
-                      btnicon: IconButton(
+                      likebtn: IconButton(
                         icon: Icon(
                           Icons.heart_broken,
                           color: green,
@@ -86,27 +87,4 @@ class _PopularAllPageState extends State<PopularAllPage> {
       ),
     );
   }
-}
-
-AppBar custumAppBar({required String title, required List<Widget>? action}) {
-  return AppBar(
-    elevation: 0.1,
-    backgroundColor: Colors.white,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        CustumText(
-          text: title,
-          size: 20,
-          color: Colors.black,
-          weight: FontWeight.bold,
-        ),
-      ],
-    ),
-    centerTitle: true,
-    leading: BackButton(
-      color: Colors.black,
-    ),
-    actions: action,
-  );
 }

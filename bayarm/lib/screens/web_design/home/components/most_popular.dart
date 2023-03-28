@@ -6,7 +6,7 @@ import '../../../../models/categories.dart';
 import '../../../../models/product_model.dart';
 import '../../../../services/db_services.dart';
 import '../../../components/forms/custom_text.dart';
-import '../../../home/homes_pages/popular_allPage.dart';
+import '../../../home/most_popular/most_popular_screen.dart';
 import '../../../product/product_details/product_details_screen.dart';
 import 'product.dart';
 
