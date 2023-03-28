@@ -26,7 +26,7 @@ class _MostPopular extends State<MostPopular> {
   List<ProductModel> products = [];
 
   Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
+    var liste = await db.getAllProducts();
     products =  <ProductModel>[];
     products = liste;
     setState(() {

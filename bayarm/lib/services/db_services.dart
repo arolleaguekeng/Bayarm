@@ -8,15 +8,24 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
+
+/// Data operations manager.
+///
+/// You can upload image on firebase by calling [uploadFile].
+/// For example:
+///
+/// ```dart
+/// DataBaseService database =DataBaseService();
+/// database.uploadFile(file, fileWeb);
+///
+/// database.addProduct(productModel);
+/// ```
 class DataBaseService {
-  CollectionReference _products =
+  final CollectionReference _products =
       FirebaseFirestore.instance.collection('products');
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
-
-  CollectionReference _cars = FirebaseFirestore.instance.collection('cars');
-  FirebaseStorage _storage = FirebaseStorage.instance;
-
-  // upload de l'image vers Firebase Storage
+  /// Upload a [File] to Firebase Starage.
   Future<String> uploadFile(File file, XFile fileWeb) async {
     Reference reference = _storage.ref().child('products/${DateTime.now()}.png');
     Uint8List imageTosave = await fileWeb.readAsBytes();
@@ -29,6 +38,7 @@ class DataBaseService {
   }
 
   // Add products in FireStore Database
+  /// Write a [ProductModel] to Firebase Firestore.
   void addProduct(ProductModel productModel) {
     _products.add({
       "userId": productModel.userId,
@@ -40,7 +50,8 @@ class DataBaseService {
     });
   }
 
-  Future<List<ProductModel>> getListeDesObjets() async {
+  /// Get all products in Firestore and map to  [ProductModel] to Firebase Firestore.
+  Future<List<ProductModel>> getAllProducts() async {
     List<ProductModel> listeDesObjets = [];
 
     QuerySnapshot querySnapshot =
@@ -50,7 +61,7 @@ class DataBaseService {
       ProductModel objet = ProductModel.fromFirestore(documentSnapshot);
       listeDesObjets.add(objet);
     }
-    print("************************ Liste of products********************");
+    print("************************ products list********************");
     print(listeDesObjets);
     return listeDesObjets;
   }
