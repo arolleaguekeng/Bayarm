@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../constants/responsive.dart';
+import '../../../services/auth_services.dart';
 import '../../components/forms/custom_button.dart';
 import '../../components/forms/custom_text.dart';
 import '../phone_number_login/phone_login_screen.dart';
@@ -82,24 +83,34 @@ class _LoginContent extends State<LoginContent> {
                 weight: FontWeight.bold,
                 color: primaryColor,
               ),
-              SizedBox(height: appPadding*3,),
+            SizedBox(
+              height: appPadding * 3,
+            ),
             buildConatainerIcons(
-                "assets/icons/ic_google.png", "Continuer avec Google"),
+                iconUrl: "assets/icons/ic_google.png",
+                text: "Continuer avec Google",
+                ontap: () {
+                  AuthService.signInWithGoogle();
+                }),
             const SizedBox(
               height: appPadding,
             ),
             buildConatainerIcons(
-                "assets/icons/ic_faceboock.png", "Continuer with Faceboock"),
+                iconUrl: "assets/icons/ic_faceboock.png",
+                text: "Continuer with Faceboock",
+                ontap: () {}),
             const SizedBox(
               height: appPadding,
             ),
             buildConatainerIcons(
-                "assets/icons/ic_apple.png", "Continuer avec Apple"),
+                iconUrl: "assets/icons/ic_apple.png",
+                text: "Continuer avec Apple",
+                ontap: () {}),
             const SizedBox(
               height: appPadding,
             ),
             const CustumText(
-              text: "OU",
+              text: "OR",
               size: 16,
               color: lightTextColor,
             ),
@@ -112,10 +123,8 @@ class _LoginContent extends State<LoginContent> {
                   text: "S'inscrire avec le Téléphone",
                   width: size.width * 0.8,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => PhoneLoginScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => PhoneLoginScreen()));
                   }),
             ),
           ],
@@ -124,7 +133,10 @@ class _LoginContent extends State<LoginContent> {
     ];
   }
 
-  GestureDetector buildConatainerIcons(String iconUrl, String text) {
+  GestureDetector buildConatainerIcons(
+      {required String iconUrl,
+      required String text,
+      required Function() ontap}) {
     return GestureDetector(
       child: Container(
         width: 400,
@@ -152,7 +164,7 @@ class _LoginContent extends State<LoginContent> {
           ],
         ),
       ),
-      onTap: () {},
+      onTap: ontap,
     );
   }
 }

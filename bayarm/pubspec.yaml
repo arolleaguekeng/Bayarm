@@ -33,12 +33,12 @@ dependencies:
   # For Use Svg pitures
   flutter_svg: ^1.1.6
 
-  # To Use DateTimePicker
+  # To Use DateTimePicker.
   flutter_datetime_picker: 1.2.5
 
   # To Use Dark And Ligth Theme
   # adaptive_theme: ^1.1.0
-  # To Use Country Code Picker
+  # To Use Country Code Picker.
   intl_phone_field: ^3.1.0
 
 
@@ -46,38 +46,41 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  # To get country codes, flag for Phone number OTP verification
+  # To get country codes, flag for Phone number OTP verification.
   country_picker: ^2.0.20
 
-  # Firebase section
+  # Firebase section.
   firebase_core: ^2.7.1
 
-  # To manage firebase authentification
+  # To manage firebase authentification.
   firebase_auth: ^4.2.10
 
-  # To upload and dowload datas from firebase stockage
+  # To upload and dowload datas from firebase stockage.
   firebase_storage: ^11.0.15
 
-  # To write and red datas from Firebase Firestore
+  # To write and red datas from Firebase Firestore.
   cloud_firestore: ^4.4.4
 
   #
   flutter_switch: ^0.3.2
 
-  # To show and hide bottom sheet dialogs
+  # To show and hide bottom sheet dialogs.
   bottom_dialog: ^1.0.3
 
   # To create adaptive text
   auto_size_text: ^3.0.0
 
-  # To create custom input for OTP verifications
+  # To create custom input for OTP verifications.
   pinput: ^2.2.7
 
-  # To upload image from devices
+  # To upload image from devices.
   image_picker: ^0.8.7
-  
-  # To upload image from devices using web plateform
+
+  # To upload image from devices using web plateform.
   image_picker_web: ^3.0.0+1
+
+  # To manage login with google.http:
+  google_sign_in: ^5.0.7
 
 dev_dependencies:
   flutter_test:
