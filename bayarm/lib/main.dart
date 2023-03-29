@@ -1,4 +1,5 @@
 import 'package:bayarm/routes/custum_routes.dart';
+import 'package:bayarm/screens/login/phone_number_login/phone_login_screen.dart';
 import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:bayarm/screens/orders/orders_screen.dart';
@@ -48,7 +49,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.data == null ? const PhoneLoginScreen() :  NavigationScreen();
+          return snapshot.data == null
+              ? const PhoneLoginScreen()
+              : NavigationScreen();
         },
       ),
       color: secondaryColor,

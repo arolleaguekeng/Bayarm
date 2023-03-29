@@ -38,7 +38,7 @@ class _AddProductContent extends State<AddProductContent> {
     String _pName = '';
     String _pDescription = '';
     String _price = '';
-    _user_id = _user_id ?? " ";
+    _user_id = _user_id;
     _user_id = user!.uid;
     String _formError = "Please Enter Produtc name";
     print("***********************************");
