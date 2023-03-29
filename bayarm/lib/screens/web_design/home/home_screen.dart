@@ -27,7 +27,7 @@ class _HomeWebScreenState extends State<HomeWebScreen> {
             DrawerHeader(
               child: Center(
                 child: Text(
-                  "Imobilier",
+                  "Bayarm",
                   style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.w900,

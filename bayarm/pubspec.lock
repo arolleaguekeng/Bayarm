@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  bottom_dialog:
+    dependency: "direct main"
+    description:
+      name: bottom_dialog
+      sha256: "81051e7bf9c7d0cf340d6b37751fb5d7b89125b2ea23352d4187ce6e897a58a3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
   characters:
     dependency: transitive
     description:

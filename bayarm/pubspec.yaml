@@ -48,6 +48,7 @@ dependencies:
   firebase_core: ^2.7.1
   flutter_switch: ^0.3.2
   firebase_auth: ^4.2.10
+  bottom_dialog: ^1.0.3
   firebase_storage: ^11.0.15
   cloud_firestore: ^4.4.4
   auto_size_text: ^3.0.0

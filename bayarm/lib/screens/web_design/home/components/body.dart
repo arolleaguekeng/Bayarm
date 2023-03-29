@@ -33,6 +33,8 @@ class _BodyContainerState extends State<BodyContainer> {
   }
   void initState() {
     getMupesInsurees();
+    print("############################# Liste of products ############################");
+    // print(products[0]);
   }
   @override
   Widget build(BuildContext context) {
