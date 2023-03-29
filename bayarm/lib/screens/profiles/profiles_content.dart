@@ -1,12 +1,10 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/historique/historique_screen.dart';
-import 'package:bayarm/screens/login/phone_number_login/function.dart';
 import 'package:bayarm/screens/profiles/update_profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
-//import 'package:adaptive_theme/adaptive_theme.dart';
 
+import '../../services/auth_services.dart';
 import 'widgets/profile_menu.dart';
 
 class ProfileContent extends StatefulWidget {
@@ -157,7 +155,7 @@ class _ProfileContent extends State<ProfileContent> {
             textColor: Colors.red,
             endIcon: false,
             onPress: () async {
-              await disconnect();
+              await AuthService.disconnect();
             },
           ),
         ]),

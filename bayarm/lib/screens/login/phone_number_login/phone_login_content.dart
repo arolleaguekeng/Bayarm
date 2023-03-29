@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-
-import 'function.dart';
+import '../../../services/auth_services.dart';
 import 'verification_otp.dart';
 
 class PhoneLoginContent extends StatefulWidget {
@@ -21,7 +20,7 @@ class _PhoneLoginContentState extends State<PhoneLoginContent> {
     setState(() {});
     final _auth = FirebaseAuth.instance;
     if (phoneNumber.isNotEmpty) {
-      authWithPhoneNumber(phoneNumber, onCodeSend: (verificationId, v) {
+      AuthService.authWithPhoneNumber(phoneNumber, onCodeSend: (verificationId, v) {
         loading = false;
         setState(() {});
         Navigator.of(context).push(MaterialPageRoute(

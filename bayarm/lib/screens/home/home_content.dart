@@ -1,8 +1,5 @@
 import 'package:bayarm/models/categories.dart';
-import 'package:bayarm/routes/routes_name.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -10,6 +7,7 @@ import '../../constants/constants.dart';
 import '../../models/product_model.dart';
 import '../../services/db_services.dart';
 import '../components/forms/custom_text.dart';
+import 'most_popular/most_popular.dart';
 import 'special_offers/special_offers.dart';
 
 class HomeContent extends StatefulWidget {
@@ -99,6 +97,7 @@ class _HomeContent extends State<HomeContent> {
               icon: Icons.search_rounded,
             ),
             SpecialOfferCard(),
+            MostPopularCard(),
 
           ],
         ),

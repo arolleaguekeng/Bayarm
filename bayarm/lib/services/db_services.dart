@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -7,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
-
 
 /// Data operations manager.
 ///
@@ -27,7 +25,8 @@ class DataBaseService {
 
   /// Upload a [File] to Firebase Starage.
   Future<String> uploadFile(File file, XFile fileWeb) async {
-    Reference reference = _storage.ref().child('products/${DateTime.now()}.png');
+    Reference reference =
+        _storage.ref().child('products/${DateTime.now()}.png');
     Uint8List imageTosave = await fileWeb.readAsBytes();
     SettableMetadata metaData = SettableMetadata(contentType: 'image/jpeg');
     UploadTask uploadTask = kIsWeb
@@ -66,4 +65,3 @@ class DataBaseService {
     return listeDesObjets;
   }
 }
-

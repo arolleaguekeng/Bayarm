@@ -5,7 +5,6 @@ import '../../../constants/constants.dart';
 import '../../../models/categories.dart';
 import '../../../models/product_model.dart';
 import '../../../services/db_services.dart';
-import '../home_content.dart';
 import 'special_offer_product_item.dart';
 
 class SpecialApp extends StatefulWidget {

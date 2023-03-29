@@ -3,10 +3,11 @@ import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'data_welcome.dart';
 
+/// Display cart Page full screen
+/// You can display it into one container
 class WelcomeContent extends StatefulWidget {
   const WelcomeContent({Key? key}) : super(key: key);
 
@@ -35,6 +36,7 @@ class _WelcomeContent extends State<WelcomeContent> {
     var size = MediaQuery.of(context).size;
     var data = welcomeDatas;
     return Scaffold(
+      // [PageView.builder] is use to manage Pagination page
       body: PageView.builder(
           controller: _controller,
           onPageChanged: (int index) {
@@ -105,6 +107,7 @@ class _WelcomeContent extends State<WelcomeContent> {
     );
   }
 
+  /// Create carousel Dot navigator
   Container buildDot(int index) {
     return Container(
       height: 10,

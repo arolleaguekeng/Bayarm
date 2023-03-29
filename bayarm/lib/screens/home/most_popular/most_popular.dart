@@ -10,14 +10,14 @@ import '../../components/forms/custom_text.dart';
 import '../../product/product_details/product_details_screen.dart';
 import 'most_popular_product_card.dart';
 
-class SpecialOfferCard extends StatefulWidget {
-  const SpecialOfferCard({Key? key}) : super(key: key);
+class MostPopularCard extends StatefulWidget {
+  const MostPopularCard({Key? key}) : super(key: key);
 
   @override
-  State<SpecialOfferCard> createState() => _SpecialOfferCardState();
+  State<MostPopularCard> createState() => _MostPopularCardState();
 }
 
-class _SpecialOfferCardState extends State<SpecialOfferCard> {
+class _MostPopularCardState extends State<MostPopularCard> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];

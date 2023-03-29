@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
-import '../../../constants/responsive.dart';
 import '../../../models/categories.dart';
 import '../../../models/product_model.dart';
 import '../../../routes/routes_name.dart';
 import '../../../services/db_services.dart';
 import '../../components/forms/custom_text.dart';
-import '../../product/product_details/product_details_screen.dart';
 import 'special_offer_product_item.dart';
 
 class SpecialOfferCard extends StatefulWidget {

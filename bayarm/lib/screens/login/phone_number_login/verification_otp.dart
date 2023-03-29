@@ -8,8 +8,7 @@ import 'package:bayarm/screens/navigations/navigation_screen.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../../constants/constants.dart';
-import '../../home/home_screen.dart';
-import 'function.dart';
+import '../../../services/auth_services.dart';
 
 class VerificationOtp extends StatefulWidget {
   const VerificationOtp(
@@ -55,7 +54,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
   void onResendSmsCode() {
     resend = false;
     setState(() {});
-    authWithPhoneNumber(widget.phoneNumber, onCodeSend: (verificationId, v) {
+    AuthService.authWithPhoneNumber(widget.phoneNumber, onCodeSend: (verificationId, v) {
       loading = false;
       decompte();
       setState(() {});
@@ -72,7 +71,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
   void onVerifySmsCode() async {
     loading = true;
     setState(() {});
-    await validateOtp(smsCode, widget.verificationId);
+    await AuthService.validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? NavigationScreen() : NavigationScreen()));
