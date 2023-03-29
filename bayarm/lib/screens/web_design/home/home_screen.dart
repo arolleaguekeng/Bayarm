@@ -26,12 +26,22 @@ class _HomeWebScreenState extends State<HomeWebScreen> {
           children: [
             DrawerHeader(
               child: Center(
-                child: Text(
-                  "Bayarm",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w900,
-                      color: primaryColor),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 80,
+                      height: 80,
+                      child: Image.asset("assets/images/png/logo.png"),
+                    ),
+                    const SizedBox(height: appPadding,),
+                    Text(
+                      "Bayarm",
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w900,
+                          color: primaryColor),
+                    ),
+                  ],
                 ),
               ),
             ),

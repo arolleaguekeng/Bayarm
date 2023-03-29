@@ -49,7 +49,7 @@ class _SoProductCardState extends State<SoProductCard> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
-                          product.images[0],height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
+                          "https://firebasestorage.googleapis.com/v0/b/bayarm/o/door.png?alt=media&token=fbce71aa-8704-4bd1-a829-f19ba373ec27",height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
                         ),
                       ),
                     ),

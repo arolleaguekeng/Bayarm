@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
@@ -5,6 +8,9 @@ import '../../../constants/responsive.dart';
 import '../../../services/auth_services.dart';
 import '../../components/forms/custom_button.dart';
 import '../../components/forms/custom_text.dart';
+import '../../home/home_screen.dart';
+import '../../shared_ui/showSnackBar.dart';
+import '../../web_design/home/home_screen.dart';
 import '../phone_number_login/phone_login_screen.dart';
 
 class LoginContent extends StatefulWidget {
@@ -16,7 +22,7 @@ class LoginContent extends StatefulWidget {
 
 class _LoginContent extends State<LoginContent> {
   bool isLoading = true;
-
+  bool inLoginProcess = false;
   void initState() {}
 
   @override
@@ -166,5 +172,27 @@ class _LoginContent extends State<LoginContent> {
         ),
       ),
     );
+  }
+  Future signIn(BuildContext context) async {
+    if (kIsWeb) {
+      setState(() {
+        inLoginProcess = true;
+        AuthService.signInWithGoogle();
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>HomeWebScreen()));
+      });
+    } else {
+      try {
+        final result = await InternetAddress.lookup('google.com');
+        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+          setState(() async {
+            inLoginProcess = true;
+            AuthService.signInWithGoogle();
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>HomeScreen()));
+          });
+        }
+      } on SocketException catch (_) {
+        showNotification(context, 'No Network Access...');
+      }
+    }
   }
 }
