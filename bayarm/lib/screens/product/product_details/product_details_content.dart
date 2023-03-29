@@ -146,30 +146,55 @@ class _DetailsCardState extends State<DetailsCard>
         color: Colors.transparent,
         margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
         height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(left: 5),
-              height: 40,
-              child: Column(
-                children: [
-                  CustumText(
-                    text: "Price",
-                    size: 18,
-                    weight: FontWeight.bold,
-                  ),
-                  CustumText(
-                    text: "18FCFA",
-                    size: 15,
-                    color: Colors.grey,
-                  )
-                ],
+        child: Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 5),
+                height: 40,
+                child: Column(
+                  children: [
+                    CustumText(
+                      text: "Price",
+                      size: 18,
+                      weight: FontWeight.bold,
+                    ),
+                    CustumText(
+                      text: "18FCFA",
+                      size: 15,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              child: MaterialButton(
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (__) {
+                      return PaiementScreen();
+                    }));
+                  },
+                  height: 40,
+                  elevation: 0,
+                  textColor: Colors.green,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: green,
+                  child: Center(
+                    child: Expanded(
+                      child: CustumText(
+                        size: 18,
+                        text: "Discuter maintenant",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              MaterialButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (__) {
                     return PaiementScreen();
@@ -177,44 +202,21 @@ class _DetailsCardState extends State<DetailsCard>
                 },
                 height: 40,
                 elevation: 0,
-                textColor: Colors.green,
+                splashColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 color: green,
                 child: Center(
-                  child: Expanded(
-                    child: CustumText(
-                      size: 18,
-                      text: "Discuter maintenant",
-                      color: Colors.white,
-                    ),
+                  child: CustumText(
+                    size: 18,
+                    text: "Add to Card",
+                    color: Colors.white,
                   ),
                 ),
               ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (__) {
-                  return PaiementScreen();
-                }));
-              },
-              height: 40,
-              elevation: 0,
-              splashColor: Colors.green,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              color: green,
-              child: Center(
-                child: CustumText(
-                  size: 18,
-                  text: "Add to Card",
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: CustomScrollView(
