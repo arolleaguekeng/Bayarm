@@ -61,7 +61,7 @@ class _LoginContent extends State<LoginContent> {
             ),
             if (Responsive.isMobile(context))
               const CustumText(
-                text: "S'inscrire maintenant",
+                text: "Let's Login",
                 size: 35,
                 weight: FontWeight.bold,
                 color: primaryColor,
@@ -78,7 +78,7 @@ class _LoginContent extends State<LoginContent> {
           children: [
             if (!Responsive.isMobile(context))
               const CustumText(
-                text: "S'inscrire maintenant",
+                text: "Let's Login",
                 size: 35,
                 weight: FontWeight.bold,
                 color: primaryColor,
@@ -88,7 +88,7 @@ class _LoginContent extends State<LoginContent> {
             ),
             buildConatainerIcons(
                 iconUrl: "assets/icons/ic_google.png",
-                text: "Continuer avec Google",
+                text: "Continue with Google",
                 ontap: () {
                   AuthService.signInWithGoogle();
                 }),
@@ -97,14 +97,14 @@ class _LoginContent extends State<LoginContent> {
             ),
             buildConatainerIcons(
                 iconUrl: "assets/icons/ic_faceboock.png",
-                text: "Continuer with Faceboock",
+                text: "Continue with Faceboock",
                 ontap: () {}),
             const SizedBox(
               height: appPadding,
             ),
             buildConatainerIcons(
                 iconUrl: "assets/icons/ic_apple.png",
-                text: "Continuer avec Apple",
+                text: "Continue with Apple",
                 ontap: () {}),
             const SizedBox(
               height: appPadding,
@@ -120,7 +120,7 @@ class _LoginContent extends State<LoginContent> {
             Container(
               width: 400,
               child: CustomButton(
-                  text: "S'inscrire avec le Téléphone",
+                  text: "Login with Phonenumber",
                   width: size.width * 0.8,
                   onPressed: () {
                     Navigator.push(context,
@@ -138,6 +138,7 @@ class _LoginContent extends State<LoginContent> {
       required String text,
       required Function() ontap}) {
     return GestureDetector(
+      onTap: ontap,
       child: Container(
         width: 400,
         padding: EdgeInsets.all(8),
@@ -164,7 +165,6 @@ class _LoginContent extends State<LoginContent> {
           ],
         ),
       ),
-      onTap: ontap,
     );
   }
 }
