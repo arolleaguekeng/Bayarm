@@ -19,11 +19,11 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
-  List<ProductModel> products = [];
+  List<ProductModel> products = productsData;
 
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();
-    products =  <ProductModel>[];
+    // products =  <ProductModel>[];
     products = liste;
     setState(() {
       isLoading = false;

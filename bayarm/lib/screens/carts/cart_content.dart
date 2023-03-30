@@ -10,7 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// Display cart Content page
 class CartContent extends StatefulWidget {
   const CartContent({Key? key}) : super(key: key);
-  static List<ProductModelCart> productList = [];
+  static List<ProductModel> productList = productsData;
   @override
   State<CartContent> createState() => _CartContent();
 }
