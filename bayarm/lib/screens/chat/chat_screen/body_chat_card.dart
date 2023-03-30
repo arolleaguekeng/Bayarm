@@ -1,4 +1,5 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/constants/responsive.dart';
 import 'package:bayarm/models/chat_model.dart';
 import 'package:bayarm/screens/chat/chat_screen/chat_item_card.dart';
 import 'package:flutter/material.dart';
@@ -22,35 +23,36 @@ class _BodyChatCardState extends State<BodyChatCard> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: appPadding*0.5, right: appPadding*0.3, top: 25),
-              width: double.infinity,
-              height: size.height*0.64,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-                color: bgLightColor,
-              ),
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                itemCount: conversation.chatModels.length,
-                itemBuilder: (context, index) => ChatItemCard(
-                  chatItem: conversation.chatModels[index],
-                  onTap: () {},
+    return  Expanded(
+        child: Container(
+          height: size.height * 0.85,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                padding: EdgeInsets.only(left: appPadding*0.5, right: appPadding*0.3, top: 25),
+                width: double.infinity,
+                height: size.height*0.64,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                  color: bgLightColor,
+                ),
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  itemCount: conversation.chatModels.length,
+                  itemBuilder: (context, index) => ChatItemCard(
+                    chatItem: conversation.chatModels[index],
+                    onTap: () {},
+                  ),
                 ),
               ),
-            ),
-            buildBottom(size)
-          ],
+              buildBottom(size)
+            ],
+          ),
         ),
-      ),
-    );
+      );
   }
   Positioned buildBottom(Size size) {
     return Positioned(
@@ -68,7 +70,7 @@ class _BodyChatCardState extends State<BodyChatCard> {
                     width: 10,
                   ),
                   Container(
-                    width: size.width * 0.2,
+                    width: Responsive.isDesktop(context) ? size.width * 0.2 :size.width *0.8,
                     height: 60,
                     child: TextField(
                       onChanged: (value) {

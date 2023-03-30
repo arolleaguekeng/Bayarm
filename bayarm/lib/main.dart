@@ -1,5 +1,6 @@
 import 'package:bayarm/routes/custum_routes.dart';
 import 'package:bayarm/screens/navigations/navigation_screen.dart';
+import 'package:bayarm/screens/web_design/home/home_screen.dart';
 import 'package:bayarm/screens/welcome/welcom_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.data == null ?  WelcomeScreen() :  NavigationScreen();
+          return snapshot.data == null ?  WelcomeScreen() :  HomeWebScreen();
         },
       ),
       color: secondaryColor,

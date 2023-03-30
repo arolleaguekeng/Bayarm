@@ -27,13 +27,8 @@ class _ChatScreen extends State<ChatScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: bgLightColor,
       appBar: buildAppBar(),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-            color: transparent,
-            child: buildBottom(size)),
-      ),
       body: SafeArea(
         child: Container(
           child: Column(

@@ -27,12 +27,22 @@ class Footer extends StatelessWidget {
                   flex: 2,
                   child: Column(
                     children: [
-                      Text(
-                        "Bayarm",
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.w900,
-                            color: kSecondaryColor),
+                      Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            child: Image.asset("assets/images/png/logo.png"),
+                          ),
+                          const SizedBox(width: appPadding,),
+                          Text(
+                            "Bayarm",
+                            style: TextStyle(
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.w900,
+                                color: kSecondaryColor),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: 20,
