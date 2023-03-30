@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/components/forms/costum_text_field.dart';
-
-import 'function.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import '../../../services/auth_services.dart';
 import 'verification_otp.dart';
 
 class PhoneLoginContent extends StatefulWidget {
@@ -15,13 +15,13 @@ class PhoneLoginContent extends StatefulWidget {
 
 class _PhoneLoginContentState extends State<PhoneLoginContent> {
   bool loading = false;
-  String phoneNumber = '+237695404527';
+  String phoneNumber = '';
   void sendOtpCode() {
     loading = true;
     setState(() {});
     final _auth = FirebaseAuth.instance;
     if (phoneNumber.isNotEmpty) {
-      authWithPhoneNumber(phoneNumber, onCodeSend: (verificationId, v) {
+      AuthService.authWithPhoneNumber(phoneNumber, onCodeSend: (verificationId, v) {
         loading = false;
         setState(() {});
         Navigator.of(context).push(MaterialPageRoute(
@@ -52,7 +52,7 @@ class _PhoneLoginContentState extends State<PhoneLoginContent> {
               child: Column(
                 children: [
                   const Text(
-                    "Inscription",
+                    "Sign up",
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -62,10 +62,30 @@ class _PhoneLoginContentState extends State<PhoneLoginContent> {
                   const SizedBox(
                     height: 40,
                   ),
-                  CustomTextField(
-                    onChanged: (value) {
-                      phoneNumber = value;
-                    }, hintText: '+237xxxxxxxxx', controller: TextEditingController(),icon: Icons.phone,
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0xffd9d9d9),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3),
+                          )
+                        ]),
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: IntlPhoneField(
+                        decoration: const InputDecoration(
+                          labelText: 'Phone Number',
+                        ),
+                        initialCountryCode: 'CM',
+                        onChanged: (phoneNumber){
+                          this.phoneNumber = phoneNumber.countryCode + phoneNumber.number;
+                        },
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
@@ -83,7 +103,7 @@ class _PhoneLoginContentState extends State<PhoneLoginContent> {
                           valueColor: AlwaysStoppedAnimation(Colors.pink),
                         )
                             : const Text(
-                          'Envoyer le code',
+                          'Send Code',
                           style: TextStyle(fontSize: 20),
 
                         ),

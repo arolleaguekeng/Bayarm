@@ -1,27 +1,27 @@
-import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../models/categories.dart';
 import '../../../models/product_model.dart';
 import '../../../services/db_services.dart';
-import '../home_content.dart';
+import '../../components/forms/custom_text.dart';
+import 'most_popular_product_card.dart';
 
-class SpecialApp extends StatefulWidget {
-  const SpecialApp({super.key});
+class PopularAllPage extends StatefulWidget {
+  const PopularAllPage({super.key});
 
   @override
-  State<SpecialApp> createState() => _SpecialAppState();
+  State<PopularAllPage> createState() => _PopularAllPageState();
 }
 
-class _SpecialAppState extends State<SpecialApp> {
+class _PopularAllPageState extends State<PopularAllPage> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
   List<ProductModel> products = [];
 
   Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
+    var liste = await db.getAllProducts();
     products =  <ProductModel>[];
     products = liste;
     setState(() {
@@ -35,7 +35,7 @@ class _SpecialAppState extends State<SpecialApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: custumAppBar(
-        title: 'Special Popular',
+        title: 'Most Popular',
         action: [
           IconButton(
             onPressed: () {},
@@ -66,7 +66,7 @@ class _SpecialAppState extends State<SpecialApp> {
                       mainAxisSpacing: 10,
                       mainAxisExtent: 300),
                   itemBuilder: (_, index) {
-                    return productWidget2(
+                    return MpProductCard(
                       product: products[index],
                       btnicon: IconButton(
                         icon: Icon(
@@ -86,4 +86,27 @@ class _SpecialAppState extends State<SpecialApp> {
       ),
     );
   }
+}
+
+AppBar custumAppBar({required String title, required List<Widget>? action}) {
+  return AppBar(
+    elevation: 0.1,
+    backgroundColor: Colors.white,
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        CustumText(
+          text: title,
+          size: 20,
+          color: Colors.black,
+          weight: FontWeight.bold,
+        ),
+      ],
+    ),
+    centerTitle: true,
+    leading: BackButton(
+      color: Colors.black,
+    ),
+    actions: action,
+  );
 }

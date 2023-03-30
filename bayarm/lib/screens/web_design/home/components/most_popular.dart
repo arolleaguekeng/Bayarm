@@ -6,7 +6,7 @@ import '../../../../models/categories.dart';
 import '../../../../models/product_model.dart';
 import '../../../../services/db_services.dart';
 import '../../../components/forms/custom_text.dart';
-import '../../../home/homes_pages/popular_allPage.dart';
+import '../../../home/most_popular/most_popular_screen.dart';
 import '../../../product/product_details/product_details_screen.dart';
 import 'product.dart';
 
@@ -26,7 +26,7 @@ class _MostPopular extends State<MostPopular> {
   List<ProductModel> products = [];
 
   Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
+    var liste = await db.getAllProducts();
     products =  <ProductModel>[];
     products = liste;
     setState(() {
@@ -52,12 +52,12 @@ class _MostPopular extends State<MostPopular> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustumText(text: 'Plus populaires', size: 24,weight: FontWeight.bold,),
+              CustumText(text: 'Most Popular', size: 24,weight: FontWeight.bold,),
               TextButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (_)=> PopularAllPage()));
                 },
-                child: CustumText(text: 'Voir tout', size: 14, color: primaryColor),
+                child: CustumText(text: 'See all', size: 14, color: primaryColor),
               ),
             ],
           ),

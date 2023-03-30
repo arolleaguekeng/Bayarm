@@ -1,18 +1,16 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
-import 'package:bayarm/models/product_tarrif_model.dart';
 import 'package:bayarm/screens/carts/cart_product_card.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/product/product_details/product_details_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// Display cart Content page
 class CartContent extends StatefulWidget {
   const CartContent({Key? key}) : super(key: key);
-  static List<ProductModelCart> productList = [
-  ];
+  static List<ProductModelCart> productList = [];
   @override
   State<CartContent> createState() => _CartContent();
 }
@@ -51,8 +49,6 @@ class _CartContent extends State<CartContent> {
                 height: 30,
                 child: Image.asset("assets/images/png/logo.png"),
               ),
-
-              // const CustumText(text: "My Cart", size: 20),
             ],
           ),
           actions: <Widget>[

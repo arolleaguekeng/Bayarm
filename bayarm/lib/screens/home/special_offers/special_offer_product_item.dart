@@ -1,83 +1,28 @@
+import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/models/product_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants/constants.dart';
-import '../../constants/responsive.dart';
-import '../../models/categories.dart';
-import '../../models/product_model.dart';
-import '../../routes/routes_name.dart';
-import '../../services/db_services.dart';
-import '../components/forms/custom_text.dart';
-import '../product/product_details/product_details_screen.dart';
+import '../../../constants/responsive.dart';
+import '../../components/forms/custom_text.dart';
+import '../../product/product_details/product_details_screen.dart';
 
-class SpecialOfferCard extends StatefulWidget {
-  const SpecialOfferCard({Key? key}) : super(key: key);
+class SoProductCard extends StatefulWidget {
+  const SoProductCard({Key? key, required this.product, required this.likebtn}) : super(key: key);
+
+  final ProductModel product;
+  final IconButton likebtn;
 
   @override
-  State<SpecialOfferCard> createState() => _SpecialOfferCardState();
+  State<SoProductCard> createState() => _SoProductCardState(product, likebtn);
 }
 
-class _SpecialOfferCardState extends State<SpecialOfferCard> {
-  DataBaseService db = DataBaseService();
-  bool isLoading = true;
-  List<Categorie> selectedCategorie = [];
-  List<ProductModel> products = [];
+class _SoProductCardState extends State<SoProductCard> {
+  final ProductModel product;
+  final IconButton likebtn;
 
-  Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
-    products =  <ProductModel>[];
-    products = liste;
-    setState(() {
-      isLoading = false;
-    });
-  }
-  void initState() {
-    getMupesInsurees();
-  }
+  _SoProductCardState(this.product, this.likebtn);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustumText(text: 'Offres Spéciales', size: 24,weight: FontWeight.bold,),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, special_all);
-                },
-                child: CustumText(text: 'Voir tout', size: 14, color: green),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 5),
-          height: 320,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return SpecialOfferItem(
-                product: products[index],
-                likebtn: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.star,
-                    color: green,
-                    size: 30,
-                  ),
-                ),
-              );
-            },
-            itemCount: products.length,
-          ),
-        ),
-      ],
-    );
-  }
-  Widget SpecialOfferItem(
-      {required ProductModel product, required IconButton likebtn}) {
     return GestureDetector(
         onTap: () {
           Navigator.push(
@@ -104,7 +49,7 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
-                          product.images[0],height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
+                          "https://firebasestorage.googleapis.com/v0/b/bayarm/o/door.png?alt=media&token=fbce71aa-8704-4bd1-a829-f19ba373ec27",height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -130,7 +75,7 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
                             children: [
                               Icon(
                                 Icons.star,
-                                color: green,
+                                color: primaryColor,
                                 size: 12,
                               ),
                               Container(
@@ -181,5 +126,6 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
           ),
         )
     );
+
   }
 }

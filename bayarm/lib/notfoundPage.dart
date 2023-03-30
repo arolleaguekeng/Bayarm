@@ -8,16 +8,16 @@ class NotFoundPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
+        leading: const BackButton(
           color: Colors.black,
         ),
-        title: CustumText(
+        title: const CustumText(
           text: "Not found",
           size: 20,
           weight: FontWeight.normal,
         ),
       ),
-      body: Center(
+      body: const Center(
         child: CustumText(
           text: "Not Found Page",
           size: 25,
