@@ -63,4 +63,7 @@ class ProductModelCart extends ProductModel {
 DocumentReference<Map<String, dynamic>> _products =
 FirebaseFirestore.instance.doc('products');
 
+var products =  <ProductModel>[
+  
+];
 

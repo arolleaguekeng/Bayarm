@@ -1,7 +1,10 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../../main.dart';
+import '../../login/social_login/social_login_screen.dart';
 import '../../paiement/paiement_screen.dart';
 
 class DetailsCard extends StatefulWidget {
@@ -161,7 +164,7 @@ class _DetailsCardState extends State<DetailsCard>
                       weight: FontWeight.bold,
                     ),
                     CustumText(
-                      text: "18FCFA",
+                      text: "18 FCFA",
                       size: 15,
                       color: Colors.grey,
                     )
@@ -173,7 +176,15 @@ class _DetailsCardState extends State<DetailsCard>
                 child: MaterialButton(
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (__) {
-                      return PaiementScreen();
+                      return StreamBuilder<User?>(
+                      stream: MyApp.auth.authStateChanges(),
+                      builder: (context, snapshot) {
+                        return snapshot.data == null
+                            ? LoginScreen()
+                            : PaiementScreen();
+                      },
+                    )
+                      ;
                     }));
                   },
                   height: 40,
@@ -349,7 +360,7 @@ class _DetailsCardState extends State<DetailsCard>
                                 title: Row(
                                   children: [
                                     const CustumText(
-                                      text: 'Les plus populaires...',
+                                      text: 'Most Popular...',
                                       size: 20,
                                     ),
                                   ],
@@ -374,7 +385,7 @@ class _DetailsCardState extends State<DetailsCard>
                                 title: Row(
                                   children: [
                                     const CustumText(
-                                      text: 'Détails du produit.',
+                                      text: 'Product Details.',
                                       size: 20,
                                     ),
                                   ],
@@ -499,7 +510,7 @@ class _DetailsCardState extends State<DetailsCard>
                             Container(
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               child: CustumText(
-                                text: '(4.80000à reviews)',
+                                text: '(4.80000 à reviews)',
                                 size: 20,
                                 weight: FontWeight.bold,
                               ),

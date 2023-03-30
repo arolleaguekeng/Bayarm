@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bayarm/screens/web_design/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
   String smsCode = "";
   bool loading = false;
   bool resend = false;
-  int count = 20;
+  int count = 90;
 
   final _auth = FirebaseAuth.instance;
 
@@ -74,7 +75,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
     await AuthService.validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? NavigationScreen() : NavigationScreen()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? HomeWebScreen() : NavigationScreen()));
     print("Vérification éfectué avec succès");
   }
 
@@ -101,7 +102,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
                     ),
                   ),
                   const Text(
-                    "Vérifiers vos messages pour valider",
+                    "Check your messages to validate",
                     style: TextStyle(
                       fontSize: 14,
                       color: primaryColor,
@@ -141,7 +142,7 @@ class _VerificationOtpState extends State<VerificationOtp> {
                           valueColor: AlwaysStoppedAnimation(Colors.white),
                         )
                             : const Text(
-                          'Verifier',
+                          'Check',
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
