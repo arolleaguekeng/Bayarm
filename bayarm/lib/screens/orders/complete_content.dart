@@ -18,19 +18,19 @@ class _CompleteContent extends State<CompleteContent> {
   List<CompleteItemCard> ActiveList = [
     CompleteItemCard(
       ActiveItem: ActiveModel(
-          name: "Prayer Plant", quantity: 1, status: "", price: "39"),
+          name: "Prayer Plant", quantity: '1', status: "", price: "39",image:"../../../assets/images/svg/drone.svg"),
     ),
     CompleteItemCard(
       ActiveItem: ActiveModel(
-          name: "Prayer Plant", quantity: 1, status: "", price: "39"),
+          name: "Prayer Plant", quantity: '1', status: "", price: "39",image:"../../../assets/images/svg/drone.svg"),
     ),
     CompleteItemCard(
       ActiveItem: ActiveModel(
-          name: "Prayer Plant", quantity: 1, status: "", price: "39"),
+          name: "Prayer Plant", quantity: '1', status: "", price: "39",image:"../../../assets/images/svg/drone.svg"),
     ),
     CompleteItemCard(
       ActiveItem: ActiveModel(
-          name: "Prayer Plant", quantity: 1, status: "", price: "39"),
+          name: "Prayer Plant", quantity: '1', status: "", price: "39",image:"../../../assets/images/svg/drone.svg"),
     ),
   ];
 

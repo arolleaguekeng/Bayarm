@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder<User?>(
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
-          return snapshot.data == null ? const PhoneLoginScreen() :  NavigationScreen();
+          return NavigationScreen();
         },
       ),
       color: secondaryColor,
