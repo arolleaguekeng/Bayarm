@@ -1,4 +1,5 @@
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/main.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/carts/cart_product_card.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 /// Display cart Content page
 class CartContent extends StatefulWidget {
   const CartContent({Key? key}) : super(key: key);
-  static List<ProductModel> productList = productsData;
+  static List<ProductModel> productList = MyApp.CARD;
   @override
   State<CartContent> createState() => _CartContent();
 }

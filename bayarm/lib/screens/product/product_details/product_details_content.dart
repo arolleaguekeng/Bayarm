@@ -12,11 +12,12 @@ class DetailsCard extends StatefulWidget {
   const DetailsCard({super.key, required this.product});
 
   @override
-  State<DetailsCard> createState() => _DetailsCardState();
+  State<DetailsCard> createState() => _DetailsCardState(product);
 }
 
 class _DetailsCardState extends State<DetailsCard>
     with SingleTickerProviderStateMixin {
+  final ProductModel product;
   bool isOpenened = false;
   AnimationController? _animationController;
   Animation<Color?>? _buttonColor;
@@ -24,6 +25,8 @@ class _DetailsCardState extends State<DetailsCard>
   Animation<double>? _translateButton;
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
+
+  _DetailsCardState(this.product);
   @override
   void initState() {
     _animationController = AnimationController(
@@ -62,7 +65,16 @@ class _DetailsCardState extends State<DetailsCard>
   Widget buttonAsk() {
     return Container(
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          MyApp.CARD.add(ProductModelCart(
+              id: product.id,
+              userId: product.userId,
+              name: product.name,
+              description: product.description,
+              price: product.price,
+              images: product.images,
+              created_at: product.created_at));
+        },
         tooltip: "Ask",
         child: Icon(
           Icons.add,
@@ -164,7 +176,7 @@ class _DetailsCardState extends State<DetailsCard>
                       weight: FontWeight.bold,
                     ),
                     CustumText(
-                      text: "18 FCFA",
+                      text: "18 000 FCFA",
                       size: 15,
                       color: Colors.grey,
                     )
@@ -177,14 +189,13 @@ class _DetailsCardState extends State<DetailsCard>
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (__) {
                       return StreamBuilder<User?>(
-                      stream: MyApp.auth.authStateChanges(),
-                      builder: (context, snapshot) {
-                        return snapshot.data == null
-                            ? LoginScreen()
-                            : PaiementScreen();
-                      },
-                    )
-                      ;
+                        stream: MyApp.auth.authStateChanges(),
+                        builder: (context, snapshot) {
+                          return snapshot.data == null
+                              ? LoginScreen()
+                              : PaiementScreen();
+                        },
+                      );
                     }));
                   },
                   height: 40,
