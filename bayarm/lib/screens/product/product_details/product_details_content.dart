@@ -7,6 +7,7 @@ import '../../../main.dart';
 import '../../chat/chat_screen/chat_screen.dart';
 import '../../chat/convesations_list/conversation_screen.dart';
 import '../../login/social_login/social_login_screen.dart';
+import '../../navigations/navigation_screen.dart';
 import '../../paiement/paiement_screen.dart';
 import '../../shared_ui/showSnackBar.dart';
 
@@ -181,20 +182,20 @@ class _DetailsCardState extends State<DetailsCard>
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (__) {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (__) {
                       return StreamBuilder<User?>(
                         stream: MyApp.auth.authStateChanges(),
                         builder: (context, snapshot) {
                           return snapshot.data == null
                               ? LoginScreen()
-                              : ConversationScreen();
+                              : NavigationScreen(screen: ConversationScreen(),);
                         },
                       );
                     }));
                   },
                   height: 40,
                   elevation: 0,
-                  textColor: Colors.green,
+                  textColor: primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -224,7 +225,7 @@ class _DetailsCardState extends State<DetailsCard>
                 },
                 height: 40,
                 elevation: 0,
-                splashColor: Colors.green,
+                splashColor: primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -557,13 +558,13 @@ class _DetailsCardState extends State<DetailsCard>
                                   icon: Icon(
                                     Icons.add,
                                     size: 15,
-                                    color: Colors.green,
+                                    color: primaryColor,
                                   ),
                                 ),
                                 CustumText(
                                   text: "1",
                                   size: 10,
-                                  color: Colors.green,
+                                  color: primaryColor,
                                 ),
                                 IconButton(
                                   onPressed: () {
@@ -572,7 +573,7 @@ class _DetailsCardState extends State<DetailsCard>
                                   icon: Icon(
                                     Icons.remove,
                                     size: 15,
-                                    color: Colors.green,
+                                    color: primaryColor,
                                   ),
                                 ),
                               ],
