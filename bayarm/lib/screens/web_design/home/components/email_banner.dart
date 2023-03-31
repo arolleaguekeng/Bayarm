@@ -44,6 +44,7 @@ class EmailBanner extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         height: 50,
+                        width: 1230,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border:

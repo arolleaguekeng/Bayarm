@@ -14,7 +14,6 @@ class ProductModel {
   factory ProductModel.fromFirestore(DocumentSnapshot documentSnapshot) {
     Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
 
-
     return ProductModel(
       id: documentSnapshot.id,
       name: data['name'] as String,
@@ -26,16 +25,15 @@ class ProductModel {
     );
   }
 
-  ProductModel(
-      {this.id='',
-      required this.userId ,
-      required this.name,
-      required this.description,
-      required this.price,
-      required this.images,
-      required this.created_at, });
-
-
+  ProductModel({
+    this.id = '',
+    required this.userId,
+    required this.name,
+    required this.description,
+    required this.price,
+    required this.images,
+    required this.created_at,
+  });
 }
 
 class ProductModelCart extends ProductModel {
@@ -61,9 +59,67 @@ class ProductModelCart extends ProductModel {
 }
 
 DocumentReference<Map<String, dynamic>> _products =
-FirebaseFirestore.instance.doc('products');
+    FirebaseFirestore.instance.doc('products');
 
-var productsData =  <ProductModel>[
+var productsData = <ProductModel>[
+  ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "this tomato comes directly from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
 
+      ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "this tomato comes directly from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
+
+      ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "this tomato comes directly from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
+
+      ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "this tomato comes directly from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
+
+
+      ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "this tomato comes directly from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
 ];
-

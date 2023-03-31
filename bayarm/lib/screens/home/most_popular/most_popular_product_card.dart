@@ -1,6 +1,7 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constants/responsive.dart';
 import '../../../models/product_model.dart';
 import '../../components/forms/custom_text.dart';
 import '../../product/product_details/product_details_screen.dart';
@@ -43,12 +44,14 @@ class MpProductCard extends StatelessWidget {
                 child: Stack(
                   children: [
 
-                    Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(product.images[0])
-                            )
-                        )
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          product.images[0],height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                     Positioned(
                       top: 20.0,

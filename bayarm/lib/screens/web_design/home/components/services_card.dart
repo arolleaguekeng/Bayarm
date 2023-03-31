@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 
-
 class ServicesCard extends StatelessWidget {
   const ServicesCard({
     Key? key,
@@ -9,20 +8,19 @@ class ServicesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // now we make service section attractive and good
     return Wrap(
       // ignore: prefer_const_literals_to_create_immutables
       children: [
         const Services(
-          image: 'assets/images/png/plant4.jpg',
+          image: 'assets/images/png/s_market.png',
           title: "B to B marquet",
         ),
         const Services(
-          image: 'assets/images/png/plant2.jpg',
+          image: 'assets/images/png/s_delivery.png',
           title: "Products delivery",
         ),
         const Services(
-          image: 'assets/images/png/plant3.jpg',
+          image: 'assets/images/png/s_chat.png',
           title: "Chat directly with the producer",
         ),
       ],

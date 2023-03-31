@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 
 import '../../../../screens/home/home_screen.dart';
+import '../../../carts/cart_screen.dart';
 import '../../../chat/convesations_list/conversation_screen.dart';
+import '../../../orders/orders_screen.dart';
 
 class HeaderWebMenu extends StatelessWidget {
   const HeaderWebMenu({
@@ -91,7 +93,7 @@ List<Widget> menuItems(BuildContext context) {
     HeaderMenu(
       press: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => HomeScreen()));
+            context, MaterialPageRoute(builder: (_) => CartScreen()));
       },
       title: "Cart",
     ),
@@ -102,7 +104,7 @@ List<Widget> menuItems(BuildContext context) {
     HeaderMenu(
       press: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (_) => HomeScreen()));
+            context, MaterialPageRoute(builder: (_) => OrderScreen()));
       },
       title: "Orders",
     ),
