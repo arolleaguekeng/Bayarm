@@ -21,12 +21,12 @@ class _BodyContainerState extends State<BodyContainer> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
-  List<ProductModel> products = [];
+  List<ProductModel> products = productsData;
 
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();
-    products =  <ProductModel>[];
-    products = liste;
+    // products =  <ProductModel>[];
+    // products = liste;
     setState(() {
       isLoading = false;
     });
@@ -41,6 +41,7 @@ class _BodyContainerState extends State<BodyContainer> {
     final Size _size = MediaQuery.of(context).size;
     return Container(
       padding: EdgeInsets.all(appPadding*2),
+      width: kMaxWidth,
       child: Column(
         children: [
           ServicesCard(),

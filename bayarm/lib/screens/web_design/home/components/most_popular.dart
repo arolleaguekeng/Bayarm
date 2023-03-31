@@ -11,7 +11,9 @@ import '../../../product/product_details/product_details_screen.dart';
 import 'product.dart';
 
 class MostPopular extends StatefulWidget {
-  const MostPopular({Key? key, required this.crossAxiscount, required this.aspectRatio}) : super(key: key);
+  const MostPopular(
+      {Key? key, required this.crossAxiscount, required this.aspectRatio})
+      : super(key: key);
   final int crossAxiscount;
   final double aspectRatio;
 
@@ -23,24 +25,26 @@ class _MostPopular extends State<MostPopular> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
-  List<ProductModel> products = [];
+  List<ProductModel> products = productsData;
 
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();
-    products =  <ProductModel>[];
-    products = liste;
+    // products =  <ProductModel>[];
+    // products = liste;
     setState(() {
       isLoading = false;
     });
   }
+
   void initState() {
     getMupesInsurees();
   }
-   _MostPopular({
+
+  _MostPopular({
     Key? key,
     this.crossAxiscount = 3,
     this.aspectRatio = 1.1,
-  }) ;
+  });
   final int crossAxiscount;
   final double aspectRatio;
   @override
@@ -52,12 +56,18 @@ class _MostPopular extends State<MostPopular> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustumText(text: 'Most Popular', size: 24,weight: FontWeight.bold,),
+              CustumText(
+                text: 'Most Popular',
+                size: 24,
+                weight: FontWeight.bold,
+              ),
               TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=> PopularAllPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => PopularAllPage()));
                 },
-                child: CustumText(text: 'See all', size: 14, color: primaryColor),
+                child:
+                    CustumText(text: 'See all', size: 14, color: primaryColor),
               ),
             ],
           ),
@@ -66,11 +76,16 @@ class _MostPopular extends State<MostPopular> {
           shrinkWrap: true,
           physics: ScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: Responsive.isMobile(context) ? 1 : 3,
-          ),
+              crossAxisCount: Responsive.isMobile(context) ? 1 : 3,
+              childAspectRatio: aspectRatio,
+              mainAxisSpacing: 1),
           itemBuilder: (context, index) => Products(
             press: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => ProductDetailsScreen(product: products[index])));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) =>
+                          ProductDetailsScreen(product: products[index])));
             },
             product: products[index],
           ),

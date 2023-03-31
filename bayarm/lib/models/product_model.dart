@@ -73,53 +73,45 @@ var productsData = <ProductModel>[
         "assets/images/png/tomate3.jpg",
       ],
       created_at: Timestamp.now()),
-
-      ProductModel(
-      userId: "devpea",
-      name: "Bafoussam tomato",
-      description: "this tomato comes directly from the western lands",
-      price: "45000",
+  ProductModel(
+      userId: "ss",
+      name: "Douala laying hen",
+      description: "30 month old laying chickens",
+      price: "56 999",
       images: [
-        "assets/images/png/tomate1.jpg",
-        "assets/images/png/tomate2.jpg",
-        "assets/images/png/tomate3.jpg",
+        "assets/images/png/poulet1.jpg",
+        "assets/images/png/poulet2.jpg",
+        "assets/images/png/poulet3.jpg",
       ],
       created_at: Timestamp.now()),
-
-      ProductModel(
+  ProductModel(
       userId: "devpea",
-      name: "Bafoussam tomato",
-      description: "this tomato comes directly from the western lands",
-      price: "45000",
+      name: "Kumba Banana",
+      description: "good quality banana straight out of Kumba",
+      price: "435 100",
       images: [
-        "assets/images/png/tomate1.jpg",
-        "assets/images/png/tomate2.jpg",
-        "assets/images/png/tomate3.jpg",
+        "assets/images/png/banane1.jpg",
+        "assets/images/png/banane2.jpg",
       ],
       created_at: Timestamp.now()),
-
-      ProductModel(
+  ProductModel(
       userId: "devpea",
-      name: "Bafoussam tomato",
-      description: "this tomato comes directly from the western lands",
-      price: "45000",
+      name: "Village papaya",
+      description: "natural papayas straight from the plantations",
+      price: "104 500",
       images: [
-        "assets/images/png/tomate1.jpg",
-        "assets/images/png/tomate2.jpg",
-        "assets/images/png/tomate3.jpg",
+        "assets/images/png/papaye1.jpg",
+        "assets/images/png/papaye2.jpg",
       ],
       created_at: Timestamp.now()),
-
-
-      ProductModel(
+  ProductModel(
       userId: "devpea",
-      name: "Bafoussam tomato",
-      description: "this tomato comes directly from the western lands",
+      name: "Garoua beef",
+      description: "Beef straight from farms",
       price: "45000",
       images: [
-        "assets/images/png/tomate1.jpg",
-        "assets/images/png/tomate2.jpg",
-        "assets/images/png/tomate3.jpg",
+        "assets/images/png/boeuf1.jpg",
+        "assets/images/png/boeuf2.jpg",
       ],
       created_at: Timestamp.now()),
 ];

@@ -17,9 +17,12 @@ class Footer extends StatelessWidget {
       width: double.infinity,
       color: bgLightColor,
       child: Container(
-        padding: EdgeInsets.all(appPadding),
+        width: kMaxWidth,
+        padding: EdgeInsets.all(webPadding),
         constraints: BoxConstraints(maxWidth: kMaxWidth),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -34,7 +37,9 @@ class Footer extends StatelessWidget {
                             height: 50,
                             child: Image.asset("assets/images/png/logo.png"),
                           ),
-                          const SizedBox(width: appPadding,),
+                          const SizedBox(
+                            width: appPadding,
+                          ),
                           Text(
                             "Bayarm",
                             style: TextStyle(

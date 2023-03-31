@@ -7,7 +7,8 @@ import '../../components/forms/custom_text.dart';
 import '../../product/product_details/product_details_screen.dart';
 
 class SoProductCard extends StatefulWidget {
-  const SoProductCard({Key? key, required this.product, required this.likebtn}) : super(key: key);
+  const SoProductCard({Key? key, required this.product, required this.likebtn})
+      : super(key: key);
 
   final ProductModel product;
   final IconButton likebtn;
@@ -49,7 +50,7 @@ class _SoProductCardState extends State<SoProductCard> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.asset(
-                          "https://firebasestorage.googleapis.com/v0/b/bayarm/o/door.png?alt=media&token=fbce71aa-8704-4bd1-a829-f19ba373ec27",height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
+                          product.images[0],height: Responsive.isMobile(context)? 190: 200 ,width: 260,fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -79,7 +80,8 @@ class _SoProductCardState extends State<SoProductCard> {
                                 size: 12,
                               ),
                               Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 5),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
                                 child: CustumText(
                                   text: '4.8',
                                   size: 12,
@@ -87,7 +89,8 @@ class _SoProductCardState extends State<SoProductCard> {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.symmetric(horizontal: 5),
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
                                 height: 10,
                                 width: 2,
                                 color: Colors.black,
@@ -124,8 +127,6 @@ class _SoProductCardState extends State<SoProductCard> {
               ],
             ),
           ),
-        )
-    );
-
+        ));
   }
 }

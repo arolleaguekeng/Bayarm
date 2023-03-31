@@ -25,14 +25,14 @@ class _MostPopularCardState extends State<MostPopularCard> {
 
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();
-    products = liste;
+    // products = liste;
     setState(() {
       isLoading = false;
     });
   }
-  void initState() {
-    getMupesInsurees();
 
+  void initState() {
+    // getMupesInsurees();
   }
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,6 @@ class _MostPopularCardState extends State<MostPopularCard> {
     );
   }
 
-
   Widget buildCard({
     required Categorie cplant,
     required bool isSelected,
@@ -119,7 +118,7 @@ class _MostPopularCardState extends State<MostPopularCard> {
             );
           } else if (categories[index].isSelected == false) {
             selectedCategorie.removeWhere(
-                    (element) => element.name == categories[index].name);
+                (element) => element.name == categories[index].name);
           }
         });
       },

@@ -24,15 +24,16 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();
     // products =  <ProductModel>[];
-    products = liste;
+    // products = liste;
     setState(() {
       isLoading = false;
     });
   }
+
   void initState() {
     getMupesInsurees();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +43,11 @@ class _SpecialOfferCardState extends State<SpecialOfferCard> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustumText(text: 'SPecial Offers', size: 24,weight: FontWeight.bold,),
+              CustumText(
+                text: 'SPecial Offers',
+                size: 24,
+                weight: FontWeight.bold,
+              ),
               TextButton(
                 onPressed: () {
                   Navigator.pushNamed(context, special_all);
