@@ -182,13 +182,16 @@ class _DetailsCardState extends State<DetailsCard>
                 margin: const EdgeInsets.symmetric(horizontal: 5),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (__) {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (__) {
                       return StreamBuilder<User?>(
                         stream: MyApp.auth.authStateChanges(),
                         builder: (context, snapshot) {
                           return snapshot.data == null
                               ? LoginScreen()
-                              : NavigationScreen(screen: ConversationScreen(),);
+                              : NavigationScreen(
+                                  screen: ConversationScreen(),
+                                );
                         },
                       );
                     }));
@@ -292,296 +295,304 @@ class _DetailsCardState extends State<DetailsCard>
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.85,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 30,
-                  ),
-                  color: Colors.white,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustumText(
-                        text: "Orders pictures",
-                        size: 18,
-                        color: Colors.black,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(bottom: 5),
-                        height: 150,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () {
-                                setState(() {
-                                  imagePicture = widget.product.images[index];
-                                });
-                              },
-                              child: CardImage(
-                                image: widget.product.images[index],
-                              ),
-                            );
-                          },
-                          itemCount: widget.product.images.length,
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height ,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 30,
+                    ),
+                    color: Colors.white,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustumText(
+                          text: "Orders pictures",
+                          size: 18,
+                          color: Colors.black,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustumText(
-                                text: widget.product.name,
-                                size: 22,
-                                color: Colors.black,
-                                weight: FontWeight.bold,
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              CustumText(
-                                text: widget.product.description,
-                                size: 20,
-                                color: Colors.blueGrey.shade900,
-                              ),
-                            ],
+                        Container(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          height: 150,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    imagePicture = widget.product.images[index];
+                                  });
+                                },
+                                child: CardImage(
+                                  image: widget.product.images[index],
+                                ),
+                              );
+                            },
+                            itemCount: widget.product.images.length,
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Column(
-                          children: [
-                            Card(
-                              elevation: 0.5,
-                              child: ListTile(
-                                leading: const Icon(
-                                  Icons.list,
-                                  color: Colors.black,
-                                ),
-                                title: Row(
-                                  children: [
-                                    const CustumText(
-                                      text: 'Most Popular...',
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
-                                trailing: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.arrow_right_alt,
-                                    color: Colors.black,
-                                    size: 20,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              elevation: 0.5,
-                              child: ListTile(
-                                leading: const Icon(
-                                  Icons.details,
-                                  color: Colors.black,
-                                ),
-                                title: Row(
-                                  children: [
-                                    const CustumText(
-                                      text: 'Product Details.',
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
-                                trailing: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.arrow_right_alt,
-                                    color: Colors.black,
-                                    size: 20,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Card(
-                              elevation: 0.5,
-                              child: ListTile(
-                                leading: const Icon(
-                                  Icons.list,
-                                  color: Colors.black,
-                                ),
-                                title: Row(
-                                  children: [
-                                    const CustumText(
-                                      text: 'Paiements',
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
-                                trailing: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.money,
-                                    color: Colors.black,
-                                    size: 20,
-                                  ),
-                                ),
-                                subtitle: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: CustumText(
-                                            text:
-                                                'Profiter des paiements sécurisés et crypté',
-                                            size: 15,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          vertical: 5),
-                                      height: 30,
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemBuilder: (context, index) {
-                                          return Container(
-                                            margin: const EdgeInsets.symmetric(
-                                                horizontal: 5),
-                                            height: 25,
-                                            child: Image.asset(
-                                              "assets/images/png/ecommerce.png",
-                                              fit: BoxFit.cover,
-                                            ),
-                                          );
-                                        },
-                                        itemCount: 3,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      CustumText(
-                        text: "Avis sur le produit",
-                        size: 22,
-                        color: Colors.black,
-                        weight: FontWeight.bold,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(left: 8),
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: green),
-                              ),
-                              child: CustumText(
-                                text: '3405 Sold',
-                                size: 18,
-                                color: green,
-                              ),
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: green,
-                              size: 20,
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 5),
-                              child: CustumText(
-                                text: '4.8',
-                                size: 20,
-                                weight: FontWeight.bold,
-                              ),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 5),
-                              child: CustumText(
-                                text: '(4.80000 à reviews)',
-                                size: 20,
-                                weight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 20),
-                            child: CustumText(
-                              text: "Quantity",
-                              size: 18,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              ),
-                              color: Colors.grey.shade100,
-                            ),
-                            padding: const EdgeInsets.all(4),
-                            margin: const EdgeInsets.symmetric(vertical: 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                IconButton(
-                                  onPressed: () {
-                                    print("object");
-                                  },
-                                  icon: Icon(
-                                    Icons.add,
-                                    size: 15,
-                                    color: primaryColor,
-                                  ),
+                                CustumText(
+                                  text: widget.product.name,
+                                  size: 22,
+                                  color: Colors.black,
+                                  weight: FontWeight.bold,
+                                ),
+                                const SizedBox(
+                                  height: 10,
                                 ),
                                 CustumText(
-                                  text: "1",
-                                  size: 10,
-                                  color: primaryColor,
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    print("object");
-                                  },
-                                  icon: Icon(
-                                    Icons.remove,
-                                    size: 15,
-                                    color: primaryColor,
-                                  ),
+                                  text: widget.product.description,
+                                  size: 20,
+                                  color: Colors.blueGrey.shade900,
                                 ),
                               ],
                             ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(vertical: 5),
+                          child: Column(
+                            children: [
+                              Card(
+                                elevation: 0.5,
+                                child: ListTile(
+                                  leading: const Icon(
+                                    Icons.list,
+                                    color: Colors.black,
+                                  ),
+                                  title: Row(
+                                    children: [
+                                      const CustumText(
+                                        text: 'Most Popular...',
+                                        size: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.arrow_right_alt,
+                                      color: Colors.black,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                elevation: 0.5,
+                                child: ListTile(
+                                  leading: const Icon(
+                                    Icons.details,
+                                    color: Colors.black,
+                                  ),
+                                  title: Row(
+                                    children: [
+                                      const CustumText(
+                                        text: 'Product Details.',
+                                        size: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.arrow_right_alt,
+                                      color: Colors.black,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Card(
+                                elevation: 0.5,
+                                child: ListTile(
+                                  leading: const Icon(
+                                    Icons.list,
+                                    color: Colors.black,
+                                  ),
+                                  title: Row(
+                                    children: [
+                                      const CustumText(
+                                        text: 'Paiements',
+                                        size: 20,
+                                      ),
+                                    ],
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.money,
+                                      color: Colors.black,
+                                      size: 20,
+                                    ),
+                                  ),
+                                  subtitle: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: CustumText(
+                                              text:
+                                                  'Profiter des paiements sécurisés et crypté',
+                                              size: 15,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            vertical: 5),
+                                        height: 30,
+                                        child: ListView.builder(
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (context, index) {
+                                            return Container(
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5),
+                                              height: 25,
+                                              child: Image.asset(
+                                                "assets/images/png/ecommerce.png",
+                                                fit: BoxFit.cover,
+                                              ),
+                                            );
+                                          },
+                                          itemCount: 3,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
-                        ],
-                      )
-                    ],
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        CustumText(
+                          text: "Avis sur le produit",
+                          size: 22,
+                          color: Colors.black,
+                          weight: FontWeight.bold,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(left: 8),
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: green),
+                                ),
+                                child: CustumText(
+                                  text: '3405 Sold',
+                                  size: 18,
+                                  color: green,
+                                ),
+                              ),
+                              Icon(
+                                Icons.star,
+                                color: green,
+                                size: 20,
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: CustumText(
+                                  text: '4.8',
+                                  size: 20,
+                                  weight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                margin:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                child: CustumText(
+                                  text: '(4.80000  reviews)',
+                                  size: 20,
+                                  weight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: CustumText(
+                                text: "Quantity",
+                                size: 18,
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                  20,
+                                ),
+                                color: Colors.grey.shade100,
+                              ),
+                              padding: const EdgeInsets.all(4),
+                              margin: const EdgeInsets.symmetric(vertical: 5),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconButton(
+                                    onPressed: () {
+                                      print("object");
+                                    },
+                                    icon: Icon(
+                                      Icons.add,
+                                      size: 15,
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                  CustumText(
+                                    text: "1",
+                                    size: 10,
+                                    color: primaryColor,
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      print("object");
+                                    },
+                                    icon: Icon(
+                                      Icons.remove,
+                                      size: 15,
+                                      color: primaryColor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -22,7 +22,7 @@ class PaiementScreen extends StatelessWidget {
               child: PaiementContent(),
             ),
             SizedBox(
-              width: appPadding,
+              width: appPadding, 
             )
           ],
         ),
