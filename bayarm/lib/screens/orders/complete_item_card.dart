@@ -32,7 +32,7 @@ class CompleteItemCard extends StatelessWidget {
               Row(
                 children: [
                   Image(
-                    image: AssetImage("assets/images/png/plant.jpg"),
+                    image: AssetImage(this.ActiveItem.image),
                     fit: BoxFit.cover,
                     height: 100,
                     width: 100,
@@ -42,7 +42,7 @@ class CompleteItemCard extends StatelessWidget {
                   ),
                   Container(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           '${ActiveItem.name}',
@@ -84,14 +84,16 @@ class CompleteItemCard extends StatelessWidget {
                           builder: (context) {
                             return Column(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 SizedBox(
                                   height: appPadding,
                                 ),
                                 Text(
-                                  'Leave a Review',
+                                  'Leave review',
                                   style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 14,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.black),
                                 ),
@@ -102,8 +104,8 @@ class CompleteItemCard extends StatelessWidget {
                                     margin: EdgeInsets.all(5.0),
                                     child: Row(children: [
                                       Image(
-                                        image: AssetImage(
-                                            "assets/images/png/plant.jpg"),
+                                        image:
+                                            AssetImage(this.ActiveItem.image),
                                         fit: BoxFit.cover,
                                         height: 100,
                                         width: 100,
@@ -114,7 +116,7 @@ class CompleteItemCard extends StatelessWidget {
                                       Container(
                                         child: Column(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                              MainAxisAlignment.center,
                                           children: [
                                             Text(
                                               '${ActiveItem.name}',
@@ -177,84 +179,101 @@ class CompleteItemCard extends StatelessWidget {
                                       fontWeight: FontWeight.w200,
                                       color: lightTextColor),
                                 ),
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.star),
-                                      color: primaryColor,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.star),
-                                      color: primaryColor,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.star),
-                                      color: primaryColor,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.star),
-                                      color: primaryColor,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.star),
-                                    ),
-                                  ],
-                                ),
-                                Container(
+                                Center(
                                   child: Row(
                                     children: [
-                                      Text(
-                                        "Amazing Plant & Fast delivery",
-                                        style: TextStyle(
-                                            fontSize: 13, color: Colors.black),
-                                      ),
-                                      SizedBox(
-                                        width: appPadding,
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.star),
+                                        color: primaryColor,
                                       ),
                                       IconButton(
                                         onPressed: () {},
-                                        icon: const Icon(Icons.image),
+                                        icon: const Icon(Icons.star),
+                                        color: primaryColor,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.star),
+                                        color: primaryColor,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.star),
+                                        color: primaryColor,
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(Icons.star),
                                       ),
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  height: appPadding,
-                                ),
-                                Row(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Cancel',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      style: TextButton.styleFrom(
-                                        primary: primaryColor,
-                                        backgroundColor:
-                                            Color.fromARGB(255, 184, 187, 185),
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.all(17),
+                                  child: Container(
+                                    width: size.width,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Amazing Plant & Fast delivery",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.black),
+                                              ),
+                                              SizedBox(
+                                                width: appPadding,
+                                              ),
+                                              IconButton(
+                                                onPressed: () {},
+                                                icon: const Icon(Icons.image),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: appPadding,
+                                        ),
+                                        Row(
+                                          children: [
+                                            TextButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Cancel',
+                                                style: TextStyle(fontSize: 18),
+                                              ),
+                                              style: TextButton.styleFrom(
+                                                primary: primaryColor,
+                                                backgroundColor: Color.fromARGB(
+                                                    255, 184, 187, 185),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: appPadding,
+                                            ),
+                                            TextButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Submit',
+                                                style: TextStyle(fontSize: 18),
+                                              ),
+                                              style: TextButton.styleFrom(
+                                                primary: Colors.white,
+                                                backgroundColor: primaryColor,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: appPadding,
-                                    ),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Submit',
-                                        style: TextStyle(fontSize: 18),
-                                      ),
-                                      style: TextButton.styleFrom(
-                                        primary: Colors.white,
-                                        backgroundColor: primaryColor,
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 )
                               ],
                             );
@@ -265,8 +284,8 @@ class CompleteItemCard extends StatelessWidget {
                       backgroundColor: primaryColor, // Background Color
                     ),
                     child: const Text(
-                      'Leave a Review',
-                      style: TextStyle(fontSize: 18),
+                      'Leave review',
+                      style: TextStyle(fontSize: 14),
                     ),
                   )
                 ],

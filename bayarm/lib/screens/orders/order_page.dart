@@ -129,7 +129,7 @@ class _OrderPage extends State<OrderPage> {
                       ),
                       child: const Text(
                         'Track Order ',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 14),
                       ),
                     )
                   ],
@@ -196,7 +196,7 @@ class _OrderPage extends State<OrderPage> {
                       ),
                       child: const Text(
                         'Track Order ',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 14),
                       ),
                     )
                   ],
@@ -263,7 +263,7 @@ class _OrderPage extends State<OrderPage> {
                       ),
                       child: const Text(
                         'Track Order ',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 14),
                       ),
                     )
                   ],

@@ -4,6 +4,8 @@ import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/login/social_login/social_login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../home/home_screen.dart';
+import '../navigations/navigation_screen.dart';
 import 'data_welcome.dart';
 
 /// Display cart Page full screen
@@ -93,7 +95,7 @@ class _WelcomeContent extends State<WelcomeContent> {
                       onPressed: () {
                         if (currentIndex == welcomeDatas.length - 1) {
                           Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => LoginScreen()));
+                              MaterialPageRoute(builder: (_) => NavigationScreen(screen: HomeScreen(),)));
                         }
                         _controller.nextPage(
                           duration: Duration(milliseconds: 900),

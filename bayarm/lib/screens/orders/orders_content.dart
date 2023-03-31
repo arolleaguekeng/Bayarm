@@ -29,9 +29,8 @@ class _OrderContent extends State<OrderContent> {
         elevation: 0,
         title: Row(
           children: [
-            const CircleAvatar(
-              backgroundImage:
-                  NetworkImage('https://picsum.photos/id/237/200/300'),
+             CircleAvatar(
+              child: Image.asset('assets/images/png/logo.png'),
             ),
             SizedBox(
               width: appPadding * 0.5,

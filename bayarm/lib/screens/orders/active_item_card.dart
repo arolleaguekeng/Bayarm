@@ -33,7 +33,7 @@ class ActiveItemCard extends StatelessWidget {
               Row(
                 children: [
                   Image(
-                    image: AssetImage("assets/images/png/plant.jpg"),
+                    image: AssetImage(this.ActiveItem.image),
                     fit: BoxFit.cover,
                     height: 100,
                     width: 100,
@@ -91,7 +91,7 @@ class ActiveItemCard extends StatelessWidget {
                     ),
                     child: const Text(
                       'Track Order ',
-                      style: TextStyle(fontSize: 19),
+                      style: TextStyle(fontSize: 14),
                     ),
                   )
                 ],

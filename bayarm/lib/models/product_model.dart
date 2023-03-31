@@ -65,7 +65,7 @@ var productsData = <ProductModel>[
   ProductModel(
       userId: "devpea",
       name: "Bafoussam tomato",
-      description: "this tomato comes directly from the western lands",
+      description: "tomato from the western lands",
       price: "45000",
       images: [
         "assets/images/png/tomate1.jpg",
@@ -87,7 +87,7 @@ var productsData = <ProductModel>[
   ProductModel(
       userId: "devpea",
       name: "Kumba Banana",
-      description: "good quality banana straight out of Kumba",
+      description: "good quality banana",
       price: "435100",
       images: [
         "assets/images/png/banane1.jpg",
@@ -97,7 +97,7 @@ var productsData = <ProductModel>[
   ProductModel(
       userId: "devpea",
       name: "Village papaya",
-      description: "natural papayas straight from the plantations",
+      description: "natural papayas straight ",
       price: "104500",
       images: [
         "assets/images/png/papaye1.jpg",
