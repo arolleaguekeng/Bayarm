@@ -42,7 +42,16 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
+<<<<<<< HEAD
+      home: StreamBuilder<User?>(
+        stream: auth.authStateChanges(),
+        builder: (context, snapshot) {
+          return NavigationScreen();
+        },
+      ),
+=======
       home: kIsWeb ? HomeWebScreen() : NavigationScreen(),
+>>>>>>> 8c6bc3657ff7a5e071ec8e478d3747891cc77943
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );
