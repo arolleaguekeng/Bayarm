@@ -5,9 +5,11 @@ import 'package:bayarm/screens/orders/orders_screen.dart';
 import 'package:bayarm/screens/producer/pcer_poducts_list_screen.dart';
 import 'package:bayarm/screens/profiles/profiles_screen.dart';
 import 'package:bayarm/screens/wallets/wallets_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
+import '../chat/convesations_list/conversation_web_screen.dart';
 
 late TextEditingController myController;
 
@@ -53,7 +55,7 @@ class _NavigationContent extends State<NavigationContent> {
               appBarIcon("Cart", Icons.shopping_bag_rounded, 1, CartScreen()),
               appBarIcon("Orders", Icons.shopping_cart, 2, OrderScreen()),
               appBarIcon(
-                  "Messages", Icons.message_outlined, 3, ConversationScreen()),
+                  "Messages", Icons.message_outlined, 3, ConversationWebScreen()),
               appBarIcon(
                   isProducer ? "Products" : "Profile",
                   isProducer

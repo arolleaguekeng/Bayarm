@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:bayarm/constants/constants.dart';
+import 'package:bayarm/constants/responsive.dart';
 import 'package:bayarm/models/chat_model.dart';
 import 'package:bayarm/screens/chat/chat_screen/chat_item_card.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +9,7 @@ import 'package:flutter/material.dart';
 import '../../../models/conversation_model.dart';
 
 class BodyChatCard extends StatefulWidget {
-  const BodyChatCard({Key? key,required this.conversation}) : super(key: key);
+  const BodyChatCard({Key? key, required this.conversation}) : super(key: key);
   final ConversationModel conversation;
 
   @override
@@ -22,18 +25,21 @@ class _BodyChatCardState extends State<BodyChatCard> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Expanded(
+    return Expanded(
+      child: Container(
+        height: size.height * 0.85,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              padding: EdgeInsets.only(left: appPadding*0.5, right: appPadding*0.3, top: 25),
+              padding: EdgeInsets.only(
+                  left: appPadding * 0.5, right: appPadding * 0.3, top: 25),
               width: double.infinity,
-              height: size.height*0.64,
+              height: size.height * 0.64,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
                 color: bgLightColor,
               ),
               child: ListView.builder(
@@ -52,12 +58,13 @@ class _BodyChatCardState extends State<BodyChatCard> {
       ),
     );
   }
+
   Positioned buildBottom(Size size) {
     return Positioned(
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          height: 80,
+            height: 80,
             color: transparent,
             child: Container(
               child: Row(
@@ -68,7 +75,9 @@ class _BodyChatCardState extends State<BodyChatCard> {
                     width: 10,
                   ),
                   Container(
-                    width: size.width * 0.2,
+                    width: Responsive.isDesktop(context)
+                        ? size.width * 0.2
+                        : size.width * 0.8,
                     height: 60,
                     child: TextField(
                       onChanged: (value) {
@@ -133,7 +142,15 @@ class _BodyChatCardState extends State<BodyChatCard> {
                                 chat: 0,
                                 message: questionController.value.text,
                                 time:
+                                    "${DateTime.now().hour}:${DateTime.now().minute}"));
+                            var timer = Timer.periodic(
+                                const Duration(seconds: 6), (t) {
+                                  this.conversation.chatModels.add(ChatModel(
+                                chat: 1,
+                                message: "Wich product interest you ?",
+                                time:
                                 "${DateTime.now().hour}:${DateTime.now().minute}"));
+                                });
                             questionController.clear();
                           }
                         });

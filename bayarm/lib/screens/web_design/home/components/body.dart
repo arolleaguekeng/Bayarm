@@ -5,7 +5,7 @@ import 'package:bayarm/constants/responsive.dart';
 import 'package:bayarm/models/categories.dart';
 import '../../../../models/product_model.dart';
 import '../../../../services/db_services.dart';
-import '../../../home/special_offers.dart';
+import '../../../home/special_offers/special_offers.dart';
 import 'email_banner.dart';
 import 'most_popular.dart';
 import 'services_card.dart';
@@ -24,7 +24,7 @@ class _BodyContainerState extends State<BodyContainer> {
   List<ProductModel> products = [];
 
   Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
+    var liste = await db.getAllProducts();
     products =  <ProductModel>[];
     products = liste;
     setState(() {
@@ -33,6 +33,8 @@ class _BodyContainerState extends State<BodyContainer> {
   }
   void initState() {
     getMupesInsurees();
+    print("############################# Liste of products ############################");
+    // print(products[0]);
   }
   @override
   Widget build(BuildContext context) {

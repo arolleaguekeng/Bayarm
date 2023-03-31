@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constants/constants.dart';
 import '../welcome/welcom_content.dart';
 
+/// Display Welcome Page full Sceen
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 

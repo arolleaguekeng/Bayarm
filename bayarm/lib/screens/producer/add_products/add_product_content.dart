@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:io';
 
 import 'package:bayarm/main.dart';
 import 'package:bayarm/screens/components/forms/custom_button.dart';
@@ -6,9 +6,9 @@ import 'package:bayarm/screens/shared_ui/showSnackBar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker_web/image_picker_web.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../../../models/product_model.dart';
 import '../../../services/db_services.dart';
 
@@ -23,22 +23,23 @@ class _AddProductContent extends State<AddProductContent> {
   bool isLoading = true;
   User? user = MyApp.auth.currentUser;
   String _user_id = '';
-  Uint8List? piker;
+  File? file;
+  XFile? _pickedFile;
 
   void initState() {}
+
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     bool imageShow = false;
-
     final _keyForm1 = GlobalKey<FormState>();
     final _keyForm2 = GlobalKey<FormState>();
     final _keyForm3 = GlobalKey<FormState>();
     String _pName = '';
     String _pDescription = '';
     String _price = '';
-    _user_id = _user_id ?? " ";
+    _user_id = _user_id;
     _user_id = user!.uid;
     String _formError = "Please Enter Produtc name";
     print("***********************************");
@@ -53,19 +54,24 @@ class _AddProductContent extends State<AddProductContent> {
                   ? IconButton(
                       onPressed: () {
                         setState(() async {
-                          final pickedFile = await ImagePickerWeb.getImageInfo;
-                          piker = pickedFile!.data;
-                          imageShow = true;
+                          _pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+                          file = File(_pickedFile!.path);
+                          imageShow == true;
                         });
                       },
                       icon: const Icon(
                         Icons.add_photo_alternate_rounded,
                         size: 80,
                       ))
-                  : Image.memory(
-                      piker!,
-                      fit: BoxFit.cover,
-                    ),
+                  : kIsWeb
+                  ? Image(
+                image: NetworkImage(file!.path),
+                fit: BoxFit.cover,
+              )
+                  : Image(
+                image: FileImage(file!),
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(
               height: 30,
@@ -136,7 +142,7 @@ class _AddProductContent extends State<AddProductContent> {
       Navigator.of(context).pop();
       showNotification(context, "Loading...");
       DataBaseService _db = DataBaseService();
-      String pUrlImg = await _db.startUpload(piker!);
+      String pUrlImg = await _db.uploadFile(file!, _pickedFile!);
 
       _db.addProduct(ProductModel(
           name: pName,

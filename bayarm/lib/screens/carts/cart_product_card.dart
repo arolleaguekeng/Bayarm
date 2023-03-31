@@ -1,10 +1,10 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/carts/cart_content.dart';
-import 'package:bayarm/screens/carts/cart_screen.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:flutter/material.dart';
 
+/// Display product card item
 class ProductCard extends StatefulWidget {
   final GestureTapCallback? onTap;
   final ProductModelCart productModel;

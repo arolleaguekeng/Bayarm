@@ -1,9 +1,16 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../constants/responsive.dart';
+import '../../../services/auth_services.dart';
 import '../../components/forms/custom_button.dart';
 import '../../components/forms/custom_text.dart';
+import '../../home/home_screen.dart';
+import '../../shared_ui/showSnackBar.dart';
+import '../../web_design/home/home_screen.dart';
 import '../phone_number_login/phone_login_screen.dart';
 
 class LoginContent extends StatefulWidget {
@@ -15,7 +22,7 @@ class LoginContent extends StatefulWidget {
 
 class _LoginContent extends State<LoginContent> {
   bool isLoading = true;
-
+  bool inLoginProcess = false;
   void initState() {}
 
   @override
@@ -60,7 +67,7 @@ class _LoginContent extends State<LoginContent> {
             ),
             if (Responsive.isMobile(context))
               const CustumText(
-                text: "S'inscrire maintenant",
+                text: "Let's Login",
                 size: 35,
                 weight: FontWeight.bold,
                 color: primaryColor,
@@ -77,29 +84,39 @@ class _LoginContent extends State<LoginContent> {
           children: [
             if (!Responsive.isMobile(context))
               const CustumText(
-                text: "S'inscrire maintenant",
+                text: "Let's Login",
                 size: 35,
                 weight: FontWeight.bold,
                 color: primaryColor,
               ),
-              SizedBox(height: appPadding*3,),
+            SizedBox(
+              height: appPadding * 3,
+            ),
             buildConatainerIcons(
-                "assets/icons/ic_google.png", "Continuer avec Google"),
+                iconUrl: "assets/icons/ic_google.png",
+                text: "Continue with Google",
+                ontap: () {
+                  AuthService.signInWithGoogle();
+                }),
             const SizedBox(
               height: appPadding,
             ),
             buildConatainerIcons(
-                "assets/icons/ic_faceboock.png", "Continuer with Faceboock"),
+                iconUrl: "assets/icons/ic_faceboock.png",
+                text: "Continue with Faceboock",
+                ontap: () {}),
             const SizedBox(
               height: appPadding,
             ),
             buildConatainerIcons(
-                "assets/icons/ic_apple.png", "Continuer avec Apple"),
+                iconUrl: "assets/icons/ic_apple.png",
+                text: "Continue with Apple",
+                ontap: () {}),
             const SizedBox(
               height: appPadding,
             ),
             const CustumText(
-              text: "OU",
+              text: "OR",
               size: 16,
               color: lightTextColor,
             ),
@@ -109,13 +126,11 @@ class _LoginContent extends State<LoginContent> {
             Container(
               width: 400,
               child: CustomButton(
-                  text: "S'inscrire avec le Téléphone",
+                  text: "Login with Phonenumber",
                   width: size.width * 0.8,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => PhoneLoginScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => PhoneLoginScreen()));
                   }),
             ),
           ],
@@ -124,8 +139,12 @@ class _LoginContent extends State<LoginContent> {
     ];
   }
 
-  GestureDetector buildConatainerIcons(String iconUrl, String text) {
+  GestureDetector buildConatainerIcons(
+      {required String iconUrl,
+      required String text,
+      required Function() ontap}) {
     return GestureDetector(
+      onTap: ontap,
       child: Container(
         width: 400,
         padding: EdgeInsets.all(8),
@@ -152,7 +171,28 @@ class _LoginContent extends State<LoginContent> {
           ],
         ),
       ),
-      onTap: () {},
     );
+  }
+  Future signIn(BuildContext context) async {
+    if (kIsWeb) {
+      setState(() {
+        inLoginProcess = true;
+        AuthService.signInWithGoogle();
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>HomeWebScreen()));
+      });
+    } else {
+      try {
+        final result = await InternetAddress.lookup('google.com');
+        if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+          setState(() async {
+            inLoginProcess = true;
+            AuthService.signInWithGoogle();
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>HomeScreen()));
+          });
+        }
+      } on SocketException catch (_) {
+        showNotification(context, 'No Network Access...');
+      }
+    }
   }
 }

@@ -1,7 +1,10 @@
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/models/product_model.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../../main.dart';
+import '../../login/social_login/social_login_screen.dart';
 import '../../paiement/paiement_screen.dart';
 
 class DetailsCard extends StatefulWidget {
@@ -9,11 +12,12 @@ class DetailsCard extends StatefulWidget {
   const DetailsCard({super.key, required this.product});
 
   @override
-  State<DetailsCard> createState() => _DetailsCardState();
+  State<DetailsCard> createState() => _DetailsCardState(product);
 }
 
 class _DetailsCardState extends State<DetailsCard>
     with SingleTickerProviderStateMixin {
+  final ProductModel product;
   bool isOpenened = false;
   AnimationController? _animationController;
   Animation<Color?>? _buttonColor;
@@ -21,6 +25,8 @@ class _DetailsCardState extends State<DetailsCard>
   Animation<double>? _translateButton;
   Curve _curve = Curves.easeOut;
   double _fabHeight = 56.0;
+
+  _DetailsCardState(this.product);
   @override
   void initState() {
     _animationController = AnimationController(
@@ -59,7 +65,16 @@ class _DetailsCardState extends State<DetailsCard>
   Widget buttonAsk() {
     return Container(
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          MyApp.CARD.add(ProductModelCart(
+              id: product.id,
+              userId: product.userId,
+              name: product.name,
+              description: product.description,
+              price: product.price,
+              images: product.images,
+              created_at: product.created_at));
+        },
         tooltip: "Ask",
         child: Icon(
           Icons.add,
@@ -146,30 +161,62 @@ class _DetailsCardState extends State<DetailsCard>
         color: Colors.transparent,
         margin: const EdgeInsets.only(left: 5, right: 5, bottom: 10),
         height: 50,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(left: 5),
-              height: 40,
-              child: Column(
-                children: [
-                  CustumText(
-                    text: "Price",
-                    size: 18,
-                    weight: FontWeight.bold,
-                  ),
-                  CustumText(
-                    text: "18FCFA",
-                    size: 15,
-                    color: Colors.grey,
-                  )
-                ],
+        child: Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 5),
+                height: 40,
+                child: Column(
+                  children: [
+                    CustumText(
+                      text: "Price",
+                      size: 18,
+                      weight: FontWeight.bold,
+                    ),
+                    CustumText(
+                      text: "18 000 FCFA",
+                      size: 15,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              child: MaterialButton(
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (__) {
+                      return StreamBuilder<User?>(
+                        stream: MyApp.auth.authStateChanges(),
+                        builder: (context, snapshot) {
+                          return snapshot.data == null
+                              ? LoginScreen()
+                              : PaiementScreen();
+                        },
+                      );
+                    }));
+                  },
+                  height: 40,
+                  elevation: 0,
+                  textColor: Colors.green,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: green,
+                  child: Center(
+                    child: Expanded(
+                      child: CustumText(
+                        size: 18,
+                        text: "Discuter maintenant",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              MaterialButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (__) {
                     return PaiementScreen();
@@ -177,44 +224,21 @@ class _DetailsCardState extends State<DetailsCard>
                 },
                 height: 40,
                 elevation: 0,
-                textColor: Colors.green,
+                splashColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
                 color: green,
                 child: Center(
-                  child: Expanded(
-                    child: CustumText(
-                      size: 18,
-                      text: "Discuter maintenant",
-                      color: Colors.white,
-                    ),
+                  child: CustumText(
+                    size: 18,
+                    text: "Add to Card",
+                    color: Colors.white,
                   ),
                 ),
               ),
-            ),
-            MaterialButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (__) {
-                  return PaiementScreen();
-                }));
-              },
-              height: 40,
-              elevation: 0,
-              splashColor: Colors.green,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              color: green,
-              child: Center(
-                child: CustumText(
-                  size: 18,
-                  text: "Add to Card",
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: CustomScrollView(
@@ -347,7 +371,7 @@ class _DetailsCardState extends State<DetailsCard>
                                 title: Row(
                                   children: [
                                     const CustumText(
-                                      text: 'Les plus populaires...',
+                                      text: 'Most Popular...',
                                       size: 20,
                                     ),
                                   ],
@@ -372,7 +396,7 @@ class _DetailsCardState extends State<DetailsCard>
                                 title: Row(
                                   children: [
                                     const CustumText(
-                                      text: 'Détails du produit.',
+                                      text: 'Product Details.',
                                       size: 20,
                                     ),
                                   ],
@@ -497,7 +521,7 @@ class _DetailsCardState extends State<DetailsCard>
                             Container(
                               margin: const EdgeInsets.symmetric(horizontal: 5),
                               child: CustumText(
-                                text: '(4.80000à reviews)',
+                                text: '(4.80000 à reviews)',
                                 size: 20,
                                 weight: FontWeight.bold,
                               ),

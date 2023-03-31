@@ -4,37 +4,40 @@ import 'dart:typed_data';
 import 'package:bayarm/models/product_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:image_picker_web/image_picker_web.dart';
-
+/// Data operations manager.
+///
+/// You can upload image on firebase by calling [uploadFile].
+/// For example:
+///
+/// ```dart
+/// DataBaseService database =DataBaseService();
+/// database.uploadFile(file, fileWeb);
+///
+/// database.addProduct(productModel);
+/// ```
 class DataBaseService {
-  CollectionReference _products =
+  final CollectionReference _products =
       FirebaseFirestore.instance.collection('products');
-  FirebaseStorage _storage = FirebaseStorage.instanceFor(bucket: "bayarm.appspot.com");
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  // //upload image to Firebase Storage Mobile
-  // Future<String> uploadFile() async {
-  //   XFile? _pikedFile = await ImagePicker().pickImage(source: source);
-  //   File file = File(_pikedFile!.path);
-  //   Reference reference =
-  //       _storage.ref().child('products/${DateTime.now()}.png');
-  //   UploadTask uploadTask = reference.putFile(file);
-  //   TaskSnapshot taskSnapshot = await uploadTask;
-  //   return await taskSnapshot.ref.getDownloadURL();
-  // }
-
-  Future<String> startUpload(Uint8List? imageBytes) async {
-    final FirebaseStorage storage = FirebaseStorage.instance;
-    final Reference ref = storage.ref().child('products/${DateTime.now()}.png');
-    final UploadTask uploadTask = ref.putData(imageBytes!);
-    final snapshot = await uploadTask.whenComplete(() => print('Upload complete'));
-    final downloadUrl =  snapshot.ref.getDownloadURL();
-    return  downloadUrl;
+  /// Upload a [File] to Firebase Starage.
+  Future<String> uploadFile(File file, XFile fileWeb) async {
+    Reference reference =
+        _storage.ref().child('products/${DateTime.now()}.png');
+    Uint8List imageTosave = await fileWeb.readAsBytes();
+    SettableMetadata metaData = SettableMetadata(contentType: 'image/jpeg');
+    UploadTask uploadTask = kIsWeb
+        ? reference.putData(imageTosave, metaData)
+        : reference.putFile(file);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    return await taskSnapshot.ref.getDownloadURL();
   }
 
   // Add products in FireStore Database
+  /// Write a [ProductModel] to Firebase Firestore.
   void addProduct(ProductModel productModel) {
     _products.add({
       "userId": productModel.userId,
@@ -46,28 +49,19 @@ class DataBaseService {
     });
   }
 
-  Future<List<ProductModel>> getListeDesObjets() async {
+  /// Get all products in Firestore and map to  [ProductModel] to Firebase Firestore.
+  Future<List<ProductModel>> getAllProducts() async {
     List<ProductModel> listeDesObjets = [];
 
-    QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('products').get();
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('products').get();
 
     for (DocumentSnapshot documentSnapshot in querySnapshot.docs) {
       ProductModel objet = ProductModel.fromFirestore(documentSnapshot);
       listeDesObjets.add(objet);
     }
+    print("************************ products list********************");
     print(listeDesObjets);
     return listeDesObjets;
   }
 }
-
-
-//
-// required super.id,
-// required super.user,
-// required super.name,
-// required super.description,
-// required super.price,
-// required super.images,
-// this.quantity = 1,
-// required super.tarrifModel,
-// required super.created_at,

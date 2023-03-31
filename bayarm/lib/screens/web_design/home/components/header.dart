@@ -30,12 +30,24 @@ class Header extends StatelessWidget {
                     },
                     icon: Icon(Icons.menu))),
           InkWell(
-            child: const Text(
-              "Bayarm",
-              style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w900,
-                  color: primaryColor),
+            child: Row(
+              children: [
+                const SizedBox(width: appPadding*0.5,),
+                if (!Responsive.isMobile(context))
+                Container(
+                  width: 50,
+                  height: 50,
+                  child: Image.asset("assets/images/png/logo.png"),
+                ),
+                const SizedBox(width: appPadding*0.5,),
+                const Text(
+                  "Bayarm",
+                  style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w900,
+                      color: primaryColor),
+                ),
+              ],
             ),
             onTap: () {
               Navigator.pushReplacement(

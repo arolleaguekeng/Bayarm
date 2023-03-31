@@ -1,10 +1,8 @@
-import 'package:bayarm/constants/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 
 import '../../../../screens/home/home_screen.dart';
 import '../../../chat/convesations_list/conversation_screen.dart';
-import '../../../chat/convesations_list/conversation_web_screen.dart';
 
 class HeaderWebMenu extends StatelessWidget {
   const HeaderWebMenu({
@@ -88,6 +86,7 @@ List<Widget> menuItems(BuildContext context) {
     ),
     SizedBox(
       width: appPadding,
+      height: appPadding,
     ),
     HeaderMenu(
       press: () {
@@ -98,6 +97,7 @@ List<Widget> menuItems(BuildContext context) {
     ),
     SizedBox(
       width: appPadding,
+      height: appPadding,
     ),
     HeaderMenu(
       press: () {
@@ -108,15 +108,14 @@ List<Widget> menuItems(BuildContext context) {
     ),
     SizedBox(
       width: appPadding,
+      height: appPadding,
     ),
     HeaderMenu(
       press: () {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (_) => Responsive.isMobile(context)
-                    ? ConversationScreen()
-                    : ConversationWebScreen()));
+                builder: (_) => ConversationScreen()));
       },
       title: "Chat",
     ),

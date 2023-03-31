@@ -1,11 +1,12 @@
 import 'package:bayarm/screens/home/home_content.dart';
-import 'package:bayarm/screens/home/homes_pages/popular_allPage.dart';
+import 'package:bayarm/screens/home/most_popular/most_popular_screen.dart';
 import 'package:bayarm/services/db_services.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
 import '../../../models/product_model.dart';
 import '../../models/categories.dart';
+import '../home/special_offers/special_offer_product_item.dart';
 
 
 class PcProductListContent extends StatefulWidget {
@@ -22,7 +23,7 @@ class _PcProductListContent extends State<PcProductListContent> {
   List<ProductModel> products = [];
 
   Future<void> getMupesInsurees() async {
-    var liste = await db.getListeDesObjets();
+    var liste = await db.getAllProducts();
     products =  <ProductModel>[];
     products = liste;
     setState(() {
@@ -52,9 +53,9 @@ class _PcProductListContent extends State<PcProductListContent> {
                       mainAxisSpacing: 10,
                       mainAxisExtent: 300),
                   itemBuilder: (_, index) {
-                    return productWidget2(
+                    return SoProductCard(
                       product: products[index],
-                      btnicon: IconButton(
+                      likebtn: IconButton(
                         icon: Icon(
                           Icons.heart_broken,
                           color: green,
