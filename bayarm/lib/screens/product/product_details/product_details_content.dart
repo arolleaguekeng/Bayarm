@@ -4,8 +4,11 @@ import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../main.dart';
+import '../../chat/chat_screen/chat_screen.dart';
+import '../../chat/convesations_list/conversation_screen.dart';
 import '../../login/social_login/social_login_screen.dart';
 import '../../paiement/paiement_screen.dart';
+import '../../shared_ui/showSnackBar.dart';
 
 class DetailsCard extends StatefulWidget {
   final ProductModel product;
@@ -65,16 +68,7 @@ class _DetailsCardState extends State<DetailsCard>
   Widget buttonAsk() {
     return Container(
       child: FloatingActionButton(
-        onPressed: () {
-          MyApp.CARD.add(ProductModelCart(
-              id: product.id,
-              userId: product.userId,
-              name: product.name,
-              description: product.description,
-              price: product.price,
-              images: product.images,
-              created_at: product.created_at));
-        },
+        onPressed: () {},
         tooltip: "Ask",
         child: Icon(
           Icons.add,
@@ -193,7 +187,7 @@ class _DetailsCardState extends State<DetailsCard>
                         builder: (context, snapshot) {
                           return snapshot.data == null
                               ? LoginScreen()
-                              : PaiementScreen();
+                              : ConversationScreen();
                         },
                       );
                     }));
@@ -209,7 +203,7 @@ class _DetailsCardState extends State<DetailsCard>
                     child: Expanded(
                       child: CustumText(
                         size: 18,
-                        text: "Discuter maintenant",
+                        text: "Chat now",
                         color: Colors.white,
                       ),
                     ),
@@ -218,9 +212,15 @@ class _DetailsCardState extends State<DetailsCard>
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (__) {
-                    return PaiementScreen();
-                  }));
+                  MyApp.CARD.add(ProductModelCart(
+                      id: product.id,
+                      userId: product.userId,
+                      name: product.name,
+                      description: product.description,
+                      price: product.price,
+                      images: product.images,
+                      created_at: product.created_at));
+                  showNotification(context, "Succesfull add to card...");
                 },
                 height: 40,
                 elevation: 0,

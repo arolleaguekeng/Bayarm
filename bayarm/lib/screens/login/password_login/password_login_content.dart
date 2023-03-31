@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../constants/constants.dart';
 import '../../components/forms/custom_text.dart';
+import '../../home/home_screen.dart';
 
 class PasswordLoginContent extends StatefulWidget {
   const PasswordLoginContent({Key? key}) : super(key: key);
@@ -66,7 +67,7 @@ class _PasswordLoginContent extends State<PasswordLoginContent> {
                 width: size.width * 0.8,
                 onPressed: () {
                   Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (_) => NavigationScreen()));
+                      MaterialPageRoute(builder: (_) => NavigationScreen(screen: HomeScreen(),)));
                 })
           ],
         ),

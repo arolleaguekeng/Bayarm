@@ -14,13 +14,15 @@ import '../chat/convesations_list/conversation_web_screen.dart';
 late TextEditingController myController;
 
 class NavigationContent extends StatefulWidget {
-  const NavigationContent({Key? key}) : super(key: key);
+  NavigationContent({Key? key, required this.currentPage}) : super(key: key);
+  Widget currentPage = HomeScreen();
 
   @override
-  State<NavigationContent> createState() => _NavigationContent();
+  State<NavigationContent> createState() => _NavigationContent(currentPage!);
 }
 
 class _NavigationContent extends State<NavigationContent> {
+  Widget currentPage;
   int currentTab = 0;
   bool isProducer = false;
   final List<Widget> screens = [
@@ -34,13 +36,17 @@ class _NavigationContent extends State<NavigationContent> {
   AppBar? appBar = null;
 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = HomeScreen();
+
+  _NavigationContent(this.currentPage);
   @override
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
+    if (currentPage == null) {
+      currentPage = HomeScreen();
+    }
     return Scaffold(
       body: PageStorage(
-        child: currentScreen,
+        child: currentPage,
         bucket: bucket,
       ),
       bottomNavigationBar: BottomAppBar(
@@ -55,7 +61,7 @@ class _NavigationContent extends State<NavigationContent> {
               appBarIcon("Cart", Icons.shopping_bag_rounded, 1, CartScreen()),
               appBarIcon("Orders", Icons.shopping_cart, 2, OrderScreen()),
               appBarIcon(
-                  "Messages", Icons.message_outlined, 3, ConversationWebScreen()),
+                  "Messages", Icons.message_outlined, 3, ConversationScreen()),
               appBarIcon(
                   isProducer ? "Products" : "Profile",
                   isProducer
@@ -77,7 +83,7 @@ class _NavigationContent extends State<NavigationContent> {
         onPressed: () {
           setState(
             () {
-              currentScreen = screen;
+              currentPage = screen;
               currentTab = tab;
             },
           );

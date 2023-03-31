@@ -8,6 +8,8 @@ import 'package:bayarm/screens/product/product_details/product_details_screen.da
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../paiement/paiement_screen.dart';
+
 /// Display cart Content page
 class CartContent extends StatefulWidget {
   const CartContent({Key? key}) : super(key: key);
@@ -19,6 +21,7 @@ class CartContent extends StatefulWidget {
 class _CartContent extends State<CartContent> {
   bool isLoading = true;
   var productList = [];
+  double amound = 0;
   void initState() {
     productList = CartContent.productList;
     if (productList.isNotEmpty) {
@@ -29,6 +32,9 @@ class _CartContent extends State<CartContent> {
 
   @override
   Widget build(BuildContext context) {
+    for (var prd in MyApp.CARD) {
+      amound += (double.parse(prd.price)) * prd.quantity;
+    }
     var size = MediaQuery.of(context).size;
     return Container(
       child: Scaffold(
@@ -146,8 +152,8 @@ class _CartContent extends State<CartContent> {
                         BoxDecoration(borderRadius: BorderRadius.circular(30)),
                     child: Column(
                       children: [
-                        const CustumText(
-                          text: "25000 XAF",
+                        CustumText(
+                          text: "${amound} XAF",
                           size: 20,
                           color: textColor,
                           weight: FontWeight.bold,
@@ -155,7 +161,14 @@ class _CartContent extends State<CartContent> {
                         const SizedBox(
                           height: appPadding,
                         ),
-                        CustomButton(text: "Chechkout", onPressed: () {})
+                        CustomButton(
+                            text: "Chechkout",
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => PaiementScreen()));
+                            })
                       ],
                     )),
               )

@@ -77,7 +77,7 @@ var productsData = <ProductModel>[
       userId: "ss",
       name: "Douala laying hen",
       description: "30 month old laying chickens",
-      price: "56 999",
+      price: "56999",
       images: [
         "assets/images/png/poulet1.jpg",
         "assets/images/png/poulet2.jpg",
@@ -88,7 +88,7 @@ var productsData = <ProductModel>[
       userId: "devpea",
       name: "Kumba Banana",
       description: "good quality banana straight out of Kumba",
-      price: "435 100",
+      price: "435100",
       images: [
         "assets/images/png/banane1.jpg",
         "assets/images/png/banane2.jpg",
@@ -98,7 +98,7 @@ var productsData = <ProductModel>[
       userId: "devpea",
       name: "Village papaya",
       description: "natural papayas straight from the plantations",
-      price: "104 500",
+      price: "104500",
       images: [
         "assets/images/png/papaye1.jpg",
         "assets/images/png/papaye2.jpg",

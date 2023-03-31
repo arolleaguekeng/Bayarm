@@ -1,3 +1,4 @@
+import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/notfoundPage.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/paiement/PinPages/pinPages.dart';
@@ -71,11 +72,11 @@ class _PaiementContentState extends State<PaiementContent> {
                 color: Colors.black,
               ),
               Container(
+                height: 400,
                 margin: const EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 15,
                 ),
-                height: 700,
                 child: ListView(
                   children: [
                     Column(
@@ -309,6 +310,7 @@ class _PaiementContentState extends State<PaiementContent> {
                   ],
                 ),
               ),
+              const SizedBox(height: appPadding,),
               MaterialButton(
                 onPressed: () {
                   Navigator.push(
@@ -322,11 +324,11 @@ class _PaiementContentState extends State<PaiementContent> {
                 },
                 height: 50,
                 elevation: 0,
-                splashColor: Colors.green,
+                splashColor: primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                color: Colors.green,
+                color: primaryColor,
                 child: Center(
                   child: CustumText(
                     text: "Confirm Payment",

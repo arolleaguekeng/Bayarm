@@ -1,7 +1,10 @@
+import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/screens/components/forms/custom_text.dart';
 import 'package:bayarm/screens/orders/orders_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+
+import '../../navigations/navigation_screen.dart';
 
 class PinPages extends StatefulWidget {
   const PinPages({super.key});
@@ -27,51 +30,54 @@ class _PinPagesState extends State<PinPages> {
         ),
       ),
       body: Center(
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustumText(
-                text: "Enter your Pin to Confirm payment",
-                size: 18,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Pinput(
-                length: 4,
-                onChanged: (value) {
-                  setState(() {});
-                },
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-              MaterialButton(
-                height: 50,
-                elevation: 0,
-                splashColor: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            margin: const EdgeInsets.all(appPadding),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustumText(
+                  text: "Enter your Pin to Confirm payment",
+                  size: 18,
                 ),
-                color: Colors.green,
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) =>
-                        _buildPopupDialog(context),
-                  );
-                },
-                child: Center(
-                  child: CustumText(
-                    text: "Continue",
-                    size: 18,
-                    color: Colors.white,
+                const SizedBox(
+                  height: 15,
+                ),
+                Pinput(
+                  length: 4,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                MaterialButton(
+                  height: 50,
+                  elevation: 0,
+                  splashColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: primaryColor,
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildPopupDialog(context),
+                    );
+                  },
+                  child: Center(
+                    child: CustumText(
+                      text: "Continue",
+                      size: 18,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -91,7 +97,7 @@ class _PinPagesState extends State<PinPages> {
       title: Icon(
         Icons.check,
         size: 50,
-        color: Colors.green,
+        color: primaryColor,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -126,18 +132,18 @@ class _PinPagesState extends State<PinPages> {
                   context,
                   MaterialPageRoute(
                     builder: (__) {
-                      return OrderScreen();
+                      return NavigationScreen(screen: OrderScreen(),);
                     },
                   ),
                 );
               },
               height: 50,
               elevation: 0,
-              splashColor: Colors.green,
+              splashColor: primaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              color: Colors.green,
+              color: primaryColor,
               child: Center(
                 child: CustumText(
                   text: "View Order",
@@ -160,7 +166,7 @@ class _PinPagesState extends State<PinPages> {
               child: CustumText(
                 text: "E-receipt",
                 size: 18,
-                color: Colors.green,
+                color: primaryColor,
               ),
             ),
           ),

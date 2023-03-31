@@ -5,8 +5,8 @@ import '../../constants/constants.dart';
 import 'navigation_content.dart';
 
 class NavigationScreen extends StatelessWidget {
-   NavigationScreen({Key? key}) : super(key: key);
-
+  NavigationScreen({Key? key, required this.screen}) : super(key: key);
+  final Widget screen;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -17,10 +17,10 @@ class NavigationScreen extends StatelessWidget {
           child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
+          children:  [
             Expanded(
               flex: 5,
-              child: NavigationContent(),
+              child: NavigationContent(currentPage: screen,),
             )
           ],
         ),

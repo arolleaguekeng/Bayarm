@@ -9,6 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'constants/constants.dart';
 import 'models/product_model.dart';
+import 'screens/home/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,12 +43,13 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
-      home: StreamBuilder<User?>(
-        stream: auth.authStateChanges(),
-        builder: (context, snapshot) {
-          return NavigationScreen();
-        },
-      ),
+      home: kIsWeb
+          ? NavigationScreen(
+              screen: HomeScreen(),
+            )
+          : NavigationScreen(
+              screen: HomeScreen(),
+            ),
       color: secondaryColor,
       onGenerateRoute: CustomRoute.allRoutes,
     );

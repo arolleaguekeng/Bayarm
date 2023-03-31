@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:bayarm/constants/constants.dart';
 import 'package:bayarm/constants/responsive.dart';
@@ -31,23 +30,24 @@ class _BodyContainerState extends State<BodyContainer> {
       isLoading = false;
     });
   }
+
   void initState() {
     getMupesInsurees();
-    print("############################# Liste of products ############################");
+    print(
+        "############################# Liste of products ############################");
     // print(products[0]);
   }
+
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.all(appPadding*2),
+      padding: EdgeInsets.all(appPadding * 2),
       width: kMaxWidth,
       child: Column(
         children: [
           ServicesCard(),
-
           SpecialOfferCard(),
-
           Container(
             margin: const EdgeInsets.symmetric(vertical: 2),
             height: 30,
@@ -108,7 +108,7 @@ class _BodyContainerState extends State<BodyContainer> {
             );
           } else if (categories[index].isSelected == false) {
             selectedCategorie.removeWhere(
-                    (element) => element.name == categories[index].name);
+                (element) => element.name == categories[index].name);
           }
         });
       },
@@ -119,7 +119,7 @@ class _BodyContainerState extends State<BodyContainer> {
           borderRadius: BorderRadius.circular(10),
         ),
         padding: const EdgeInsets.all(5),
-        width: 50,
+        width: 10,
         margin: const EdgeInsets.symmetric(horizontal: 5),
         child: Center(
           child: Text(
@@ -134,8 +134,3 @@ class _BodyContainerState extends State<BodyContainer> {
     );
   }
 }
-
-
-
-
-

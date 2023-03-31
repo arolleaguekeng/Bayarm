@@ -10,6 +10,7 @@ import 'package:pinput/pinput.dart';
 
 import '../../../constants/constants.dart';
 import '../../../services/auth_services.dart';
+import '../../home/home_screen.dart';
 
 class VerificationOtp extends StatefulWidget {
   const VerificationOtp(
@@ -55,7 +56,8 @@ class _VerificationOtpState extends State<VerificationOtp> {
   void onResendSmsCode() {
     resend = false;
     setState(() {});
-    AuthService.authWithPhoneNumber(widget.phoneNumber, onCodeSend: (verificationId, v) {
+    AuthService.authWithPhoneNumber(widget.phoneNumber,
+        onCodeSend: (verificationId, v) {
       loading = false;
       decompte();
       setState(() {});
@@ -75,7 +77,14 @@ class _VerificationOtpState extends State<VerificationOtp> {
     await AuthService.validateOtp(smsCode, widget.verificationId);
     loading = true;
     setState(() {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> kIsWeb? HomeWebScreen() : NavigationScreen()));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (_) => kIsWeb
+                ? HomeWebScreen()
+                : NavigationScreen(
+                    screen: HomeScreen(),
+                  )));
     print("Vérification éfectué avec succès");
   }
 
@@ -132,19 +141,20 @@ class _VerificationOtpState extends State<VerificationOtp> {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: primaryColor,
+                            backgroundColor: primaryColor,
                             padding: const EdgeInsets.symmetric(vertical: 15)),
                         onPressed: smsCode.length < 6 || loading
                             ? null
                             : onVerifySmsCode,
                         child: loading
                             ? const CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.white),
-                        )
+                                valueColor:
+                                    AlwaysStoppedAnimation(Colors.white),
+                              )
                             : const Text(
-                          'Check',
-                          style: TextStyle(fontSize: 20),
-                        ),
+                                'Check',
+                                style: TextStyle(fontSize: 20),
+                              ),
                       ),
                     ],
                   )
