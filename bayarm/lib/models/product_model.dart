@@ -63,17 +63,6 @@ DocumentReference<Map<String, dynamic>> _products =
 
 var productsData = <ProductModel>[
   ProductModel(
-      userId: "devpea",
-      name: "Bafoussam tomato",
-      description: "tomato from the western lands",
-      price: "45000",
-      images: [
-        "assets/images/png/tomate1.jpg",
-        "assets/images/png/tomate2.jpg",
-        "assets/images/png/tomate3.jpg",
-      ],
-      created_at: Timestamp.now()),
-  ProductModel(
       userId: "ss",
       name: "Douala laying hen",
       description: "30 month old laying chickens",
@@ -84,6 +73,18 @@ var productsData = <ProductModel>[
         "assets/images/png/poulet3.jpg",
       ],
       created_at: Timestamp.now()),
+  ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "tomato from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
+  
   ProductModel(
       userId: "devpea",
       name: "Kumba Banana",
@@ -114,4 +115,63 @@ var productsData = <ProductModel>[
         "assets/images/png/boeuf2.jpg",
       ],
       created_at: Timestamp.now()),
+];
+
+
+var productsDataPop = <ProductModel>[
+  ProductModel(
+      userId: "devpea",
+      name: "Kumba Banana",
+      description: "good quality banana",
+      price: "435100",
+      images: [
+        "assets/images/png/banane1.jpg",
+        "assets/images/png/banane2.jpg",
+      ],
+      created_at: Timestamp.now()),
+      ProductModel(
+      userId: "devpea",
+      name: "Garoua beef",
+      description: "Beef straight from farms",
+      price: "45000",
+      images: [
+        "assets/images/png/boeuf1.jpg",
+        "assets/images/png/boeuf2.jpg",
+      ],
+      created_at: Timestamp.now()),
+  ProductModel(
+      userId: "ss",
+      name: "Douala laying hen",
+      description: "30 month old laying chickens",
+      price: "56999",
+      images: [
+        "assets/images/png/poulet1.jpg",
+        "assets/images/png/poulet2.jpg",
+        "assets/images/png/poulet3.jpg",
+      ],
+      created_at: Timestamp.now()),
+  ProductModel(
+      userId: "devpea",
+      name: "Bafoussam tomato",
+      description: "tomato from the western lands",
+      price: "45000",
+      images: [
+        "assets/images/png/tomate1.jpg",
+        "assets/images/png/tomate2.jpg",
+        "assets/images/png/tomate3.jpg",
+      ],
+      created_at: Timestamp.now()),
+  
+  
+  ProductModel(
+      userId: "devpea",
+      name: "Village papaya",
+      description: "natural papayas straight ",
+      price: "104500",
+      images: [
+        "assets/images/png/papaye1.jpg",
+        "assets/images/png/papaye2.jpg",
+      ],
+      created_at: Timestamp.now()),
+  
 ];

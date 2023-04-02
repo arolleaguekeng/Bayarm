@@ -5,15 +5,11 @@ import 'package:bayarm/screens/paiement/PinPages/pinPages.dart';
 import 'package:flutter/material.dart';
 
 enum Pet {
-  wallet,
-  paypal,
   googlePay,
-  applePay,
+  paypal,
   orangeM,
   momo,
   card,
-  titi,
-  tack
 }
 
 class PaiementContent extends StatefulWidget {
@@ -89,39 +85,11 @@ class _PaiementContentState extends State<PaiementContent> {
                             elevation: 1,
                             child: ListTile(
                               leading: Image.asset(
-                                "assets/images/png/online.png",
+                                "assets/images/png/gpay.png",
                                 height: 40,
                               ),
                               title: CustumText(
-                                text: 'My Wallet',
-                                size: 18,
-                                weight: FontWeight.bold,
-                              ),
-                              trailing: Radio<Pet>(
-                                value: Pet.wallet,
-                                groupValue: _pet,
-                                onChanged: (Pet? value) {
-                                  setState(() {
-                                    _pet = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            color: Colors.white,
-                            elevation: 1,
-                            child: ListTile(
-                              leading: Image.asset(
-                                "assets/images/png/online.png",
-                                height: 40,
-                              ),
-                              title: CustumText(
-                                text: 'Paypal',
+                                text: 'Google Pay',
                                 size: 18,
                                 weight: FontWeight.bold,
                               ),
@@ -145,63 +113,7 @@ class _PaiementContentState extends State<PaiementContent> {
                             elevation: 1,
                             child: ListTile(
                               leading: Image.asset(
-                                "assets/images/png/online.png",
-                                height: 40,
-                              ),
-                              title: CustumText(
-                                text: 'Google Pay',
-                                size: 18,
-                                weight: FontWeight.bold,
-                              ),
-                              trailing: Radio<Pet>(
-                                value: Pet.googlePay,
-                                groupValue: _pet,
-                                onChanged: (Pet? value) {
-                                  setState(() {
-                                    _pet = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            color: Colors.white,
-                            elevation: 1,
-                            child: ListTile(
-                              leading: Image.asset(
-                                "assets/images/png/online.png",
-                                height: 40,
-                              ),
-                              title: CustumText(
-                                text: 'Apple Pay',
-                                size: 18,
-                                weight: FontWeight.bold,
-                              ),
-                              trailing: Radio<Pet>(
-                                value: Pet.applePay,
-                                groupValue: _pet,
-                                onChanged: (Pet? value) {
-                                  setState(() {
-                                    _pet = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            color: Colors.white,
-                            elevation: 1,
-                            child: ListTile(
-                              leading: Image.asset(
-                                "assets/images/png/online.png",
+                                "assets/images/png/orange.png",
                                 height: 40,
                               ),
                               title: CustumText(
@@ -229,11 +141,39 @@ class _PaiementContentState extends State<PaiementContent> {
                             elevation: 1,
                             child: ListTile(
                               leading: Image.asset(
-                                "assets/images/png/online.png",
+                                "assets/images/png/mtn.png",
                                 height: 40,
                               ),
                               title: CustumText(
                                 text: 'Mobile Money',
+                                size: 18,
+                                weight: FontWeight.bold,
+                              ),
+                              trailing: Radio<Pet>(
+                                value: Pet.momo,
+                                groupValue: _pet,
+                                onChanged: (Pet? value) {
+                                  setState(() {
+                                    _pet = value!;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: Card(
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            color: Colors.white,
+                            elevation: 1,
+                            child: ListTile(
+                              leading: Image.asset(
+                                "assets/images/png/master.png",
+                                height: 40,
+                              ),
+                              title: CustumText(
+                                text: 'master Card',
                                 size: 18,
                                 weight: FontWeight.bold,
                               ),
@@ -249,68 +189,14 @@ class _PaiementContentState extends State<PaiementContent> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            color: Colors.white,
-                            elevation: 1,
-                            child: ListTile(
-                              leading: Image.asset(
-                                "assets/images/png/online.png",
-                                height: 40,
-                              ),
-                              title: CustumText(
-                                text: 'Mobile Money',
-                                size: 18,
-                                weight: FontWeight.bold,
-                              ),
-                              trailing: Radio<Pet>(
-                                value: Pet.tack,
-                                groupValue: _pet,
-                                onChanged: (Pet? value) {
-                                  setState(() {
-                                    _pet = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Card(
-                            margin: const EdgeInsets.symmetric(vertical: 10),
-                            color: Colors.white,
-                            elevation: 1,
-                            child: ListTile(
-                              leading: Image.asset(
-                                "assets/images/png/online.png",
-                                height: 40,
-                              ),
-                              title: CustumText(
-                                text: 'Mobile Money',
-                                size: 18,
-                                weight: FontWeight.bold,
-                              ),
-                              trailing: Radio<Pet>(
-                                value: Pet.titi,
-                                groupValue: _pet,
-                                onChanged: (Pet? value) {
-                                  setState(() {
-                                    _pet = value!;
-                                  });
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: appPadding,),
+              const SizedBox(
+                height: appPadding,
+              ),
               MaterialButton(
                 onPressed: () {
                   Navigator.push(
@@ -334,7 +220,6 @@ class _PaiementContentState extends State<PaiementContent> {
                     text: "Confirm Payment",
                     size: 20,
                     color: Colors.white,
-                    weight: FontWeight.bold,
                   ),
                 ),
               ),

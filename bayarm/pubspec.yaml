@@ -82,6 +82,9 @@ dependencies:
   # To manage login with google.http:
   google_sign_in: ^5.0.7
 
+  # To use google map APi
+  google_maps_flutter: ^2.2.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

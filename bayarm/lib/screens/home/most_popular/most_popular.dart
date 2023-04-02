@@ -21,7 +21,7 @@ class _MostPopularCardState extends State<MostPopularCard> {
   DataBaseService db = DataBaseService();
   bool isLoading = true;
   List<Categorie> selectedCategorie = [];
-  List<ProductModel> products = productsData;
+  List<ProductModel> products = productsDataPop;
 
   Future<void> getMupesInsurees() async {
     var liste = await db.getAllProducts();

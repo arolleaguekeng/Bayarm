@@ -43,10 +43,9 @@ class MyApp extends StatelessWidget {
           secondaryHeaderColor: Colors.white,
           textTheme: const TextTheme(bodyText2: TextStyle(color: textColor)),
           backgroundColor: Colors.brown),
-      home: kIsWeb ? WelcomeScreen() : WelcomeScreen(),
+      home: kIsWeb ? HomeWebScreen() : HomeWebScreen(),
       color: secondaryColor,
-      onGenerateRoute: CustomRoute.allRoutes,
+      onGenerateRoute: CustomRoute.allRoutes, 
     );
   }
 }
-
