@@ -24,33 +24,35 @@ class _ConversationContent extends State<ConversationContent> {
   bool isLoading = true;
   List<ConversationModel> conversationsList = [
     ConversationModel(
-        userModel: UserModel(userName: "Pharaon", statut: "online"),
+        userModel: UserModel(userName: "Aguekeng", statut: "Last seen 01:12AM"),
         chatModels: [
           ChatModel(chat: 1, message: "Hello", time: "12:11"),
           ChatModel(chat: 0, message: "Hi !", time: "12:12"),
           ChatModel(chat: 1, message: "How are you ?", time: "12:13"),
-          ChatModel(chat: 0, message: "I'm fine", time: "12:13"),
+          ChatModel(chat: 0, message: "I'm fine and you ?", time: "12:14"),
+          ChatModel(chat: 0, message: "Fine Thanks !", time: "12:14"),
+          ChatModel(chat: 0, message: "I'm interest by your product ", time: "12:15"),
         ]),
     ConversationModel(
-        userModel: UserModel(userName: "Aguekeng", statut: "online"),
+        userModel: UserModel(userName: "Tientcheu", statut: "online"),
         chatModels: [
-          ChatModel(chat: 1, message: "Helsdddddlo", time: "12:11"),
+          ChatModel(chat: 1, message: "Hello !", time: "12:11"),
           ChatModel(chat: 0, message: "Hi !", time: "12:12"),
           ChatModel(chat: 1, message: "How are you ?", time: "12:13"),
           ChatModel(chat: 0, message: "I'm fine", time: "12:13"),
         ]),
     ConversationModel(
-        userModel: UserModel(userName: "Arolle", statut: "Last seen 08:12AM"),
+        userModel: UserModel(userName: "Nogue", statut: "online"),
         chatModels: [
-          ChatModel(chat: 1, message: "Helbbbbbbbblo", time: "12:11"),
-          ChatModel(chat: 0, message: "Hi !", time: "12:12"),
+          ChatModel(chat: 1, message: "Good morning", time: "12:11"),
+          ChatModel(chat: 0, message: "Hello !", time: "12:12"),
           ChatModel(chat: 1, message: "How are you ?", time: "12:13"),
           ChatModel(chat: 0, message: "I'm fine", time: "12:13"),
         ]),
     ConversationModel(
-        userModel: UserModel(userName: "Dubois", statut: "Last seen 08:12AM"),
+        userModel: UserModel(userName: "Nokize", statut: "Last seen 08:12AM"),
         chatModels: [
-          ChatModel(chat: 1, message: "H,,,,,,,,,,ello", time: "12:11"),
+          ChatModel(chat: 1, message: "Hello", time: "12:11"),
           ChatModel(chat: 0, message: "Hi !", time: "12:12"),
           ChatModel(chat: 1, message: "How are you ?", time: "12:13"),
           ChatModel(chat: 0, message: "I'm fine", time: "12:13"),
